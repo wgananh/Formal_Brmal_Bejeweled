@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/new/picture">
+        <file>background.bmp</file>
+        <file>gem1.bmp</file>
+        <file>gem2.bmp</file>
+        <file>gem3.bmp</file>
+        <file>gem4.bmp</file>
+        <file>gem5.bmp</file>
+        <file>gem6.bmp</file>
+        <file>gem7.bmp</file>
+        <file>gem8.bmp</file>
+    </qresource>
+</RCC>

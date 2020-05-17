@@ -24,10 +24,13 @@ private:
 
 signals:
     void setToMenu();
+    void setToTheme();
 
 private slots:
     void doMenuToSet();
     void on_btn_setToMenu_clicked();
+    void on_btn_setToTheme_clicked();
+    void doThemeToSet();
 };
 
 #endif // CSETDLG_H

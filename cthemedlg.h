@@ -16,6 +16,14 @@ public:
     explicit CThemeDlg(QWidget *parent = nullptr);
     ~CThemeDlg();
 
+signals:
+    void themeToSet();
+
+private slots:
+    void doSetToTheme();
+
+    void on_btn_themeToSet_clicked();
+
 private:
     Ui::CThemeDlg *ui;
 };

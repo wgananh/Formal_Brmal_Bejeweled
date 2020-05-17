@@ -6,7 +6,10 @@ CSetDlg::CSetDlg(QWidget *parent) :
     ui(new Ui::CSetDlg)
 {
     ui->setupUi(this);
+    this->hide();
+    CThemeDlg *theme = new CThemeDlg(this);
     connect(parent,SIGNAL(menuToSet()),this,SLOT(doMenuToSet()));
+    connect(theme,SIGNAL(themeToSet()),this,SLOT(doThemeToSet()));
 }
 
 CSetDlg::~CSetDlg()
@@ -22,4 +25,14 @@ void CSetDlg::on_btn_setToMenu_clicked()
 {
     this->hide();
     emit setToMenu();
+}
+
+void CSetDlg::on_btn_setToTheme_clicked()
+{
+    this->hide();
+    emit setToTheme();
+}
+
+void CSetDlg::doThemeToSet(){
+    this->show();
 }
