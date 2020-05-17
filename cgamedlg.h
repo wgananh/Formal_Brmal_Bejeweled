@@ -21,10 +21,14 @@ public:
 
 signals:
     void gameToMain();
+    void gameToMenu();
 
 private slots:
     void on_btn_gameToMain_clicked();
     void doMainToGame();
+    void doMenuToGame();
+    void on_btn_gameToMenu_clicked();
+
 private:
     Ui::CGameDlg *ui;
 };

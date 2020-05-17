@@ -18,6 +18,7 @@ public:
     explicit CSetDlg(QWidget *parent = nullptr);
     ~CSetDlg();
 
+
 private:
     Ui::CSetDlg *ui;
 };

@@ -7,7 +7,9 @@ CGameDlg::CGameDlg(QWidget *parent) :
 {
     ui->setupUi(this);
     this->hide();
+    CMenuDlg *menu = new CMenuDlg(this);
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
+    connect(menu,SIGNAL(doMenuToGame()),this,SLOT(doMenuToGame()));
 }
 
 CGameDlg::~CGameDlg()
@@ -23,5 +25,16 @@ void CGameDlg::on_btn_gameToMain_clicked()
 
 void CGameDlg::doMainToGame()
 {
+    this->show();
+}
+
+
+void CGameDlg::on_btn_gameToMenu_clicked()
+{
+    this->hide();
+    emit gameToMenu();
+}
+
+void CGameDlg::doMenuToGame(){
     this->show();
 }

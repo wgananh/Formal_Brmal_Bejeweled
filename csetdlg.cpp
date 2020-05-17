@@ -12,3 +12,5 @@ CSetDlg::~CSetDlg()
 {
     delete ui;
 }
+
+
