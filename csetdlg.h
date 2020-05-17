@@ -21,6 +21,13 @@ public:
 
 private:
     Ui::CSetDlg *ui;
+
+signals:
+    void setToMenu();
+
+private slots:
+    void doMenuToSet();
+    void on_btn_setToMenu_clicked();
 };
 
 #endif // CSETDLG_H

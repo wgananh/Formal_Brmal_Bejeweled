@@ -17,14 +17,27 @@
    <widget class="QPushButton" name="btn_menuToGame">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>180</y>
+      <x>340</x>
+      <y>200</y>
       <width>93</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
      <string>返回Game</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_menuToSet">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>290</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>设置</string>
     </property>
    </widget>
   </widget>

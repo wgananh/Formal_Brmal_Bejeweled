@@ -14,17 +14,17 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btn_setToGame">
+   <widget class="QPushButton" name="btn_setToMenu">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>200</y>
+      <x>340</x>
+      <y>250</y>
       <width>93</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>返回Game</string>
+     <string>返回菜单</string>
     </property>
    </widget>
   </widget>

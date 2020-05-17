@@ -18,11 +18,16 @@ public:
 
 signals:
     void menuToGame();
+    void menuToSet();
 
 private slots:
     void doGameToMenu();
 
     void on_btn_menuToGame_clicked();
+
+    void on_btn_menuToSet_clicked();
+
+    void doSetToMenu();
 
 private:
     Ui::CMenuDlg *ui;

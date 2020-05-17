@@ -9,7 +9,7 @@ CGameDlg::CGameDlg(QWidget *parent) :
     this->hide();
     CMenuDlg *menu = new CMenuDlg(this);
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
-    connect(menu,SIGNAL(doMenuToGame()),this,SLOT(doMenuToGame()));
+    connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
 }
 
 CGameDlg::~CGameDlg()
