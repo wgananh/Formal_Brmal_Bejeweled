@@ -9,7 +9,7 @@ typedef struct RANKINFORMATION
     int nRank;
 } RANKINFOR;
 
-RANKINFOR g_rank;
+extern RANKINFOR g_rank;
 
 typedef struct PICTUREELEMENT
 {
@@ -18,6 +18,6 @@ typedef struct PICTUREELEMENT
     int nPicNum;
 } PICELEM;
 
-PICELEM g_picelem;
+extern PICELEM g_picelem;
 
 #endif // GLOBAL_H
