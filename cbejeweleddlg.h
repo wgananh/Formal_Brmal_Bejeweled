@@ -6,7 +6,6 @@
 #include "chelpdlg.h"
 #include "cmenudlg.h"
 #include "cmusicdlg.h"
-#include "cnamedlg.h"
 #include "csetdlg.h"
 #include "cthemedlg.h"
 #include "crankdlg.h"

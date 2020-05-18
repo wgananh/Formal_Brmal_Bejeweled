@@ -9,11 +9,15 @@ typedef struct RANKINFORMATION
     int nRank;
 } RANKINFOR;
 
+RANKINFOR g_rank;
+
 typedef struct PICTUREELEMENT
 {
     int nRow;
     int nCol;
     int nPicNum;
 } PICELEM;
+
+PICELEM g_picelem;
 
 #endif // GLOBAL_H

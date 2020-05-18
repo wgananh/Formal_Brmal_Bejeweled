@@ -18,6 +18,7 @@ public:
 
 private:
     Ui::CRankDlg *ui;
+
 };
 
 #endif // CRANKDLG_H

@@ -1,7 +1,6 @@
 #ifndef CGAMELOGIC_H
 #define CGAMELOGIC_H
 
-
 class CGameLogic
 {
 public:
