@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QDebug>
+#include <QCloseEvent>
 
 namespace Ui {
 class CThemeDlg;
@@ -20,7 +21,8 @@ public:
     ~CThemeDlg();
 
 signals:
-    void themeToSet();
+    void themeToSet(); //主题设置返回设置的信号
+    void theme_background_change(QString); //用户自定义游戏界面背景的信号，返回给CgameDlg
 
 private slots:
     void doSetToTheme();
@@ -37,6 +39,8 @@ private slots:
 
     void on_toolButton_selsect_maskimags_clicked();
 
+
+    void on_btn_theme_confirm_clicked();
 
 private:
     void Theme_default_locking(); //当主题默认时，设置lineedit和toolbutton为锁定状态并初始化lineedit中默认主题的图片路径

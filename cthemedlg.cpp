@@ -104,3 +104,13 @@ void CThemeDlg::on_toolButton_selsect_maskimags_clicked()
         ui->lineEdit_path_maskimags->setText(maskiamgs_path);
     }
 }
+
+void CThemeDlg::on_btn_theme_confirm_clicked()
+{
+    if(!ui->lineEdit_path_backgroundimags->text().isEmpty()){
+        this->hide();
+        emit theme_background_change(ui->lineEdit_path_backgroundimags->text());
+        emit themeToSet();
+    }
+}
+
