@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "cconfig.h"
+#include "cconfiglogic.h"
 #include <QFileDialog>
 #include <QFile>
 #include <QDebug>
@@ -22,7 +23,6 @@ public:
 
 signals:
     void themeToSet(); //主题设置返回设置的信号
-    void theme_background_change(QString); //用户自定义游戏界面背景的信号，返回给CgameDlg
 
 private slots:
     void doSetToTheme();
@@ -47,8 +47,9 @@ private:
 
 private:
     Ui::CThemeDlg *ui;
-
-    //自定义时，用户选择的背景图片、宝石图片、掩码图片的文件路径
+    CConfig *config = new CConfig();
+    CConfigLogic *configlogic = new CConfigLogic();
+    //默认的背景图片、宝石图片、掩码图片的文件路径
     QString backgroundimags_path="/new/picture/background.bmp"
             ,gemimags_path="/new/picture/gem1.bmp,gem2.bmp,gem3.bmp,gem4.bmp,gem5.bmp,gem6.bmp,gem7.bmp,gem8.bmp"
             ,maskiamgs_path;
