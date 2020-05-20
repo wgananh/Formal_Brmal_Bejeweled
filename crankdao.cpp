@@ -1,4 +1,5 @@
 #include "crankdao.h"
+#include <direct.h>
 
 CRankDao::CRankDao()
 {
@@ -9,11 +10,11 @@ CRankDao::CRankDao()
 void CRankDao::getRank()
 {
     string str;
-    int time;
-    int grade;
+    int time = 0;
+    int grade = 0;
     ifstream infile("rank.ini");
     infile >> str;
-    for(totalNumber = 0; !str.empty(); totalNumber++)
+    for(totalNumber = 0; !infile.eof(); totalNumber++)
     {
         ranks[totalNumber] = new RANKINFOR();
         memcpy((*ranks[totalNumber]).strName, str.c_str(), 50);

@@ -14,10 +14,14 @@ class CRankDlg : public QMainWindow
 
 public:
     explicit CRankDlg(QWidget *parent = nullptr);
+    void showRank();
     ~CRankDlg();
 
 private:
+    CRankLogic * cranklogic;
     Ui::CRankDlg *ui;
+
+private slots:
 
 };
 

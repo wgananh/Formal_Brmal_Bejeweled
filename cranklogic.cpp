@@ -7,6 +7,11 @@ CRankLogic::CRankLogic(QObject *parent) : QObject(parent)
     QObject::connect(cnamedlg, SIGNAL(nameConfirm(const char*)), this, SLOT(doNameConfirm(const char*)));
 }
 
+void CRankLogic::updateRank()
+{
+    crankdao->getRank();
+}
+
 int CRankLogic::insertIndex()
 {
     int i = 0;

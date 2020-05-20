@@ -9,7 +9,6 @@
 #include "csetdlg.h"
 #include "cthemedlg.h"
 #include "crankdlg.h"
-#include "crankdlg.h"
 #include "caboutdlg.h"
 
 QT_BEGIN_NAMESPACE
@@ -28,10 +27,14 @@ private slots:
     void on_btn_mainToGame_clicked();
     void doGameToMain();
 
+    void on_btn_mainToRank_clicked();
+
 signals:
     void mainToGame();
 
 private:
     Ui::CBejeweledDlg *ui;
+    CGameDlg *game;
+    CRankDlg *rank;
 };
 #endif // CBEJEWELEDDLG_H
