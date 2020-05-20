@@ -78,29 +78,46 @@ void CThemeDlg::on_radioButton_Theme_custom_clicked()
     Theme_default_locking();
 }
 
-//自定义时，选择背景图片
+//自定义时，选择背景图片,将路径传递到CConfig类
 void CThemeDlg::on_toolButton_selsect_backgroundiamgs_clicked()
 {
-    backgroundimags_path = QFileDialog::getOpenFileName(this, "选择背景文件","/","所有文件 (*.*)");
-    if(!backgroundimags_path.isEmpty()){
-        ui->lineEdit_path_backgroundimags->setText(backgroundimags_path);
+    QString background_path = QFileDialog::getOpenFileName(this, "选择背景文件","/","所有文件 (*.*)");
+    if(!background_path.isEmpty()){
+        ui->lineEdit_path_backgroundimags->setText(background_path);
     }
 }
 
-//自定义时，选择宝石图片
+//自定义时，选择宝石图片，将路径传递到CConfig类
 void CThemeDlg::on_toolButton_selsect_gemimags_clicked()
 {
-    gemimags_path = QFileDialog::getOpenFileName(this, "选择宝石文件","/","所有文件 (*.*)");
-    if(!gemimags_path.isEmpty()){
-        ui->lineEdit_path_gemiamgs->setText(gemimags_path);
+    QString gem_path = QFileDialog::getOpenFileName(this, "选择宝石文件","/","所有文件 (*.*)");
+    if(!gem_path.isEmpty()){
+        ui->lineEdit_path_gemiamgs->setText(gem_path);
     }
 }
 
-//自定义时，选择掩码图片
+//自定义时，选择掩码图片，将路径传递到CConfig类
 void CThemeDlg::on_toolButton_selsect_maskimags_clicked()
 {
-    maskiamgs_path = QFileDialog::getOpenFileName(this, "选择掩码文件","/","所有文件 (*.*)");
-    if(!gemimags_path.isEmpty()){
-        ui->lineEdit_path_maskimags->setText(maskiamgs_path);
+    QString mask_path = QFileDialog::getOpenFileName(this, "选择掩码文件","/","所有文件 (*.*)");
+    if(!mask_path.isEmpty()){
+        ui->lineEdit_path_maskimags->setText(mask_path);
     }
 }
+
+//确定后对背景图片、宝石图片、掩码图片进行更改，将其路径保存到config类中，在configlogic类中对cgame的背景、宝石图片进行具体修改
+void CThemeDlg::on_btn_theme_confirm_clicked()
+{
+    QString background_path,gem_path,mask_path;
+    if(!ui->lineEdit_path_backgroundimags->text().isEmpty()&&!ui->lineEdit_path_gemiamgs->text().isEmpty()&&!ui->lineEdit_path_maskimags->text().isEmpty()){
+        this->hide();
+        config->set_theme_background(background_path);
+        configlogic->Theme_background_change();
+        config->set_theme_gem(gem_path);
+        configlogic->Theme_gem_change();
+        config->set_theme_mask(mask_path);
+        configlogic->Theme_mask_change();
+        emit themeToSet();
+    }
+}
+

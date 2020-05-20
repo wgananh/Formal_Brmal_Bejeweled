@@ -6,6 +6,7 @@
 #include "cconfiglogic.h"
 #include "cmenudlg.h"
 #include "cranklogic.h"
+#include <QDebug>
 
 namespace Ui {
 class CGameDlg;
@@ -31,6 +32,7 @@ private slots:
 
 private:
     Ui::CGameDlg *ui;
+    CMenuDlg *menu = new CMenuDlg(this);
 };
 
 #endif // CGAMEDLG_H
