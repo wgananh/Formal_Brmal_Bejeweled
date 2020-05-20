@@ -14,12 +14,6 @@ CGameDlg::CGameDlg(QWidget *parent) :
     CMusicPlayer *mus = new CMusicPlayer;
     mus->MusicOn();
 
-    QMediaPlayer *music = new QMediaPlayer();
-    music=new QMediaPlayer;
-    connect(music,SIGNAL(positionChanged(qint64)),this,SLOT(postitionChanged(qint64)));
-    music->setMedia(QUrl::fromLocalFile("D:\\Da Er 2\\Program\\Bejeweled\\bgm.mp3"));
-    music->setVolume(80);
-    music->play();
 }
 
 CGameDlg::~CGameDlg()
@@ -47,5 +41,14 @@ void CGameDlg::on_btn_gameToMenu_clicked()
 
 void CGameDlg::doMenuToGame(){
     this->show();
+}
+
+void CGameDlg::Music(){
+    QMediaPlayer *music = new QMediaPlayer();
+    music=new QMediaPlayer;
+    connect(music,SIGNAL(positionChanged(qint64)),this,SLOT(postitionChanged(qint64)));
+    music->setMedia(QUrl::fromLocalFile("D:\\Da Er 2\\Program\\Bejeweled\\bgm.mp3"));
+    music->setVolume(80);
+    music->play();
 }
 
