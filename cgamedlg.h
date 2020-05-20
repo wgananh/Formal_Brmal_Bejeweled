@@ -20,6 +20,8 @@ public:
     explicit CGameDlg(QWidget *parent = nullptr);
     ~CGameDlg();
 
+    void Music();
+
 signals:
     void gameToMain();
     void gameToMenu();
@@ -29,6 +31,7 @@ private slots:
     void doMainToGame();
     void doMenuToGame();
     void on_btn_gameToMenu_clicked();
+
 
 private:
     Ui::CGameDlg *ui;

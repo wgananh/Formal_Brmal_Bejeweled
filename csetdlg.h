@@ -31,6 +31,8 @@ private slots:
     void on_btn_setToMenu_clicked();
     void on_btn_setToTheme_clicked();
     void doThemeToSet();
+    void doMusicToSet();
+    void on_btn_setToMusic_clicked();
 };
 
 #endif // CSETDLG_H
