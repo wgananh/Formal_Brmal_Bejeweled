@@ -16,8 +16,21 @@ public:
     explicit CMusicDlg(QWidget *parent = nullptr);
     ~CMusicDlg();
 
+private slots:
+
+    void on_Button_exit_clicked();
+
+    void on_Button_sure_clicked();
+
+signals:
+    void musicToSet();
+
 private:
     Ui::CMusicDlg *ui;
+
+    QString BGM;
+
+    void Music_Default();
 };
 
 #endif // CMUSICDLG_H

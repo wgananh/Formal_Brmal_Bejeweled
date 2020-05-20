@@ -36,3 +36,15 @@ void CSetDlg::on_btn_setToTheme_clicked()
 void CSetDlg::doThemeToSet(){
     this->show();
 }
+
+void CSetDlg::on_btn_setToMusic_clicked()
+{
+    this->hide();
+    CMusicDlg *cm = new CMusicDlg(this);
+    connect(cm,SIGNAL(musicToSet()),this,SLOT(doMusicToSet()));
+    cm->show();
+}
+
+void CSetDlg::doMusicToSet(){
+    this->show();
+}
