@@ -13,9 +13,11 @@ public:
     explicit CRankLogic(QObject *parent = nullptr);
 
 private:
+    int insertIndex();
     void showNameDLg();
-    void saveName();
+    void insertRank(int index);
     CNameDlg * cnamedlg;
+    CRankDao * crankdao;
 
 private slots:
     void doNameConfirm(const char * name);
