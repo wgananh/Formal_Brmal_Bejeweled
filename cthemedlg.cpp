@@ -6,7 +6,6 @@ CThemeDlg::CThemeDlg(QWidget *parent) :
     ui(new Ui::CThemeDlg)
 {
     ui->setupUi(this);
-    this->hide();
 
     connect(parent,SIGNAL(setToTheme()),this,SLOT(doSetToTheme()));
     Theme_default_locking();
@@ -23,7 +22,7 @@ void CThemeDlg::doSetToTheme(){
 
 void CThemeDlg::on_btn_themeToSet_clicked()
 {
-    this->hide();
+    this->close();
     emit themeToSet();
 }
 
