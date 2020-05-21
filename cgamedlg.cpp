@@ -10,7 +10,7 @@ CGameDlg::CGameDlg(QWidget *parent) :
     this->hide();
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
     connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
-    connect(theme,SIGNAL(theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
+    connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
 
     CMusicPlayer *mus = new CMusicPlayer;
     mus->MusicOn();
@@ -54,5 +54,6 @@ void CGameDlg::Music(){
 }
 
 void CGameDlg::do_theme_background_change(QString path){
-    this->setStyleSheet("#CGameDlg{border-image: url(:/new/picture/background.bmp);}");
+        qDebug()<<path;
+    this->setStyleSheet("#CGameDlg{border-image:url("+path+");}");
 }

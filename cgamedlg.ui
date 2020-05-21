@@ -14,7 +14,8 @@
    <string>CGameDlg</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#CGameDlg{
+border-image: url(:/new/picture/background.bmp);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btn_gameToMain">
