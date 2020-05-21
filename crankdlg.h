@@ -21,8 +21,6 @@ private:
     CRankLogic * cranklogic;
     Ui::CRankDlg *ui;
 
-private slots:
-
 };
 
 #endif // CRANKDLG_H
