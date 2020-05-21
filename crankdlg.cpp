@@ -97,3 +97,8 @@ CRankDlg::~CRankDlg()
 {
     delete ui;
 }
+
+void CRankDlg::on_actionClear_triggered()
+{
+//    cranklogic->crankdao->saveRank();
+}

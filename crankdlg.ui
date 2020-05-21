@@ -32,7 +32,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -54,7 +54,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -76,7 +76,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -98,7 +98,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -120,7 +120,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -142,7 +142,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -164,7 +164,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -186,7 +186,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -208,7 +208,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -246,7 +246,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -268,7 +268,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -290,7 +290,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -312,7 +312,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -334,7 +334,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -356,7 +356,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -378,7 +378,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -400,7 +400,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -422,7 +422,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -444,7 +444,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -466,7 +466,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -488,7 +488,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -510,7 +510,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -532,7 +532,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -554,7 +554,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -592,7 +592,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -614,7 +614,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -636,7 +636,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -658,7 +658,7 @@
          </font>
         </property>
         <property name="text">
-         <string>grade</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -680,7 +680,7 @@
          </font>
         </property>
         <property name="text">
-         <string>name</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -702,7 +702,7 @@
          </font>
         </property>
         <property name="text">
-         <string>time</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

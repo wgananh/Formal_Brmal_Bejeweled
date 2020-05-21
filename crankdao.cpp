@@ -9,30 +9,34 @@ CRankDao::CRankDao()
 
 void CRankDao::getRank()
 {
-    string str;
+    QString str;
     int time = 0;
     int grade = 0;
-    ifstream infile("rank.ini");
-    infile >> str;
-    for(totalNumber = 0; !infile.eof(); totalNumber++)
+    QFile file(":/rank/rank.ini");
+    file.open(QIODevice::ReadOnly);
+    QTextStream instream(&file);
+    instream >> str;
+    for(totalNumber = 0; str != ""; totalNumber++)
     {
         ranks[totalNumber] = new RANKINFOR();
-        memcpy((*ranks[totalNumber]).strName, str.c_str(), 50);
-        infile >> time;
+        memcpy((*ranks[totalNumber]).strName, str.toStdString().c_str(), 50);
+        instream >> time;
         (*ranks[totalNumber]).nTime = time;
-        infile >> grade;
+        instream >> grade;
         (*ranks[totalNumber]).nGrade = grade;
-        infile >> str;
+        instream >> str;
     }
-    infile.close();
+    file.close();
 }
 
 void CRankDao::saveRank()
 {
-    ofstream outfile("rank.ini");
+    QFile file(":/rank/rank.ini");
+    file.open(QIODevice::WriteOnly);
+    QTextStream outstream(&file);
     for(int i = 0; ranks[i] != nullptr && i < 10; i++)
     {
-        outfile << (*ranks[i]).strName << " " << (*ranks[i]).nTime << " " << (*ranks[i]).nGrade << endl;
+        outstream << (*ranks[i]).strName << " " << (*ranks[i]).nTime << " " << (*ranks[i]).nGrade << endl;
     }
-    outfile.close();
+    file.close();
 }
