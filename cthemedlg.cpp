@@ -108,15 +108,12 @@ void CThemeDlg::on_toolButton_selsect_maskimags_clicked()
 void CThemeDlg::on_btn_theme_confirm_clicked()
 {
     QString background_path,gem_path,mask_path;
-    if(!ui->lineEdit_path_backgroundimags->text().isEmpty()&&!ui->lineEdit_path_gemiamgs->text().isEmpty()&&!ui->lineEdit_path_maskimags->text().isEmpty()){
-        this->hide();
-        config->set_theme_background(background_path);
-        configlogic->Theme_background_change();
-        config->set_theme_gem(gem_path);
-        configlogic->Theme_gem_change();
-        config->set_theme_mask(mask_path);
-        configlogic->Theme_mask_change();
-        emit themeToSet();
-    }
+    this->hide();
+    config->set_theme_background(background_path);
+    emit theme_background_change(background_path);
+    config->set_theme_gem(gem_path);
+    config->set_theme_mask(mask_path);
+
+    emit themeToSet();
 }
 
