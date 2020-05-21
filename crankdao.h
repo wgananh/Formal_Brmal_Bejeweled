@@ -5,6 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <QFile>
+#include <QTextStream>
 
 using namespace std;
 

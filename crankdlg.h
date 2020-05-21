@@ -17,6 +17,9 @@ public:
     void showRank();
     ~CRankDlg();
 
+private slots:
+    void on_actionClear_triggered();
+
 private:
     CRankLogic * cranklogic;
     Ui::CRankDlg *ui;

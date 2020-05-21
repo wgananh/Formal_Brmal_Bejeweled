@@ -10,7 +10,7 @@
         <file>gem7.bmp</file>
         <file>gem8.bmp</file>
     </qresource>
-    <qresource prefix="/new/rank">
-        <file>rank.txt</file>
+    <qresource prefix="/rank">
+        <file>rank.ini</file>
     </qresource>
 </RCC>
