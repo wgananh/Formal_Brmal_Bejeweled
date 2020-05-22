@@ -107,13 +107,15 @@ void CThemeDlg::on_toolButton_selsect_maskimags_clicked()
 //确定后对背景图片、宝石图片、掩码图片进行更改，将其路径保存到config类中，在configlogic类中对cgame的背景、宝石图片进行具体修改
 void CThemeDlg::on_btn_theme_confirm_clicked()
 {
-    QString background_path=ui->lineEdit_path_backgroundimags->text(),gem_path,mask_path;
-    this->hide();
-    config->set_theme_background(background_path);
-    emit set_theme_background_change(background_path);
-    config->set_theme_gem(gem_path);
-    config->set_theme_mask(mask_path);
+    if(!ui->lineEdit_path_backgroundimags->text().isEmpty()){
+        QString background_path=ui->lineEdit_path_backgroundimags->text(),gem_path,mask_path;
+        this->hide();
+        config->set_theme_background(background_path);
+        emit set_theme_background_change(background_path);
+        config->set_theme_gem(gem_path);
+        config->set_theme_mask(mask_path);
 
-    emit themeToSet();
+        emit themeToSet();
+    }
 }
 
