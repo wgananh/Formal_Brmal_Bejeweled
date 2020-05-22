@@ -5,7 +5,7 @@
 CMusicPlayer::CMusicPlayer()
 {
     gameSound->setMedia(QUrl::fromLocalFile("D:\\Da Er 2\\Program\\Bejeweled\\bgm.mp3"));
-    gameSound->setVolume(80);
+    gameSound->setVolume(10);
 }
 
 void CMusicPlayer::MusicOn(){

@@ -49,7 +49,7 @@ void CGameDlg::Music(){
     music=new QMediaPlayer;
     connect(music,SIGNAL(positionChanged(qint64)),this,SLOT(postitionChanged(qint64)));
     music->setMedia(QUrl::fromLocalFile("bgm.mp3"));
-    music->setVolume(50);
+    music->setVolume(20);
     music->play();
 }
 
