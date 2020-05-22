@@ -23,6 +23,7 @@ public:
 
 signals:
     void themeToSet(); //主题设置返回设置的信号
+    void set_theme_background_change(QString);
 
 private slots:
     void doSetToTheme();
@@ -48,10 +49,10 @@ private:
 private:
     Ui::CThemeDlg *ui;
     CConfig *config = new CConfig();
-    CConfigLogic *configlogic = new CConfigLogic();
+    //CConfigLogic *configlogic = new CConfigLogic();
     //默认的背景图片、宝石图片、掩码图片的文件路径
-    QString backgroundimags_path="/new/picture/background.bmp"
-            ,gemimags_path="/new/picture/gem1.bmp,gem2.bmp,gem3.bmp,gem4.bmp,gem5.bmp,gem6.bmp,gem7.bmp,gem8.bmp"
+    QString backgroundimags_path=":/new/picture/background.bmp"
+            ,gemimags_path=":/new/picture/gem1.bmp,gem2.bmp,gem3.bmp,gem4.bmp,gem5.bmp,gem6.bmp,gem7.bmp,gem8.bmp"
             ,maskiamgs_path;
 };
 

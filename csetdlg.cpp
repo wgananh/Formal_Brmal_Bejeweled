@@ -10,6 +10,7 @@ CSetDlg::CSetDlg(QWidget *parent) :
     CThemeDlg *theme = new CThemeDlg(this);
     connect(parent,SIGNAL(menuToSet()),this,SLOT(doMenuToSet()));
     connect(theme,SIGNAL(themeToSet()),this,SLOT(doThemeToSet()));
+    connect(theme,SIGNAL(set_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
 }
 
 CSetDlg::~CSetDlg()
@@ -47,4 +48,8 @@ void CSetDlg::on_btn_setToMusic_clicked()
 
 void CSetDlg::doMusicToSet(){
     this->show();
+}
+
+void CSetDlg::do_theme_background_change(QString path){
+    emit menu_theme_background_change(path);
 }

@@ -7,6 +7,7 @@ CConfigLogic::CConfigLogic()
 void CConfigLogic::Theme_background_change(){
     QString path=config->get_theme_background();
     configdao->set_theme_background(path);
+
 }
 
 void CConfigLogic::Theme_gem_change(){

@@ -13,4 +13,7 @@
     <qresource prefix="/rank">
         <file>rank.ini</file>
     </qresource>
+    <qresource prefix="/">
+        <file>bgm.mp3</file>
+    </qresource>
 </RCC>

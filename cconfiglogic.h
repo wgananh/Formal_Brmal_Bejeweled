@@ -6,6 +6,7 @@
 #include "cconfigdao.h"
 
 class CConfigLogic
+
 {
 public:
     CConfigLogic();

@@ -25,6 +25,7 @@ private:
 signals:
     void setToMenu();
     void setToTheme();
+    void menu_theme_background_change(QString);
 
 private slots:
     void doMenuToSet();
@@ -33,6 +34,7 @@ private slots:
     void doThemeToSet();
     void doMusicToSet();
     void on_btn_setToMusic_clicked();
+    void do_theme_background_change(QString);
 };
 
 #endif // CSETDLG_H

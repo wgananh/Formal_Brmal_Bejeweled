@@ -10,6 +10,7 @@ CMenuDlg::CMenuDlg(QWidget *parent) :
     connect(parent, SIGNAL(gameToMenu()), this, SLOT(doGameToMenu()));
     CSetDlg *set=new CSetDlg(this);
     connect(set,SIGNAL(setToMenu()),this,SLOT(doSetToMenu()));
+    connect(set,SIGNAL(menu_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
 }
 
 CMenuDlg::~CMenuDlg()
@@ -36,4 +37,8 @@ void CMenuDlg::on_btn_menuToSet_clicked()
 
 void CMenuDlg::doSetToMenu(){
     this->show();
+}
+
+void CMenuDlg::do_theme_background_change(QString path){
+    emit game_theme_background_change(path);
 }

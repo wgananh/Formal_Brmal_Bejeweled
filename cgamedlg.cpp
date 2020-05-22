@@ -10,6 +10,7 @@ CGameDlg::CGameDlg(QWidget *parent) :
     this->hide();
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
     connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
+    connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
 
     CMusicPlayer *mus = new CMusicPlayer;
     mus->MusicOn();
@@ -47,8 +48,12 @@ void CGameDlg::Music(){
     QMediaPlayer *music = new QMediaPlayer();
     music=new QMediaPlayer;
     connect(music,SIGNAL(positionChanged(qint64)),this,SLOT(postitionChanged(qint64)));
-    music->setMedia(QUrl::fromLocalFile("D:\\Da Er 2\\Program\\Bejeweled\\bgm.mp3"));
-    music->setVolume(80);
+    music->setMedia(QUrl::fromLocalFile("bgm.mp3"));
+    music->setVolume(50);
     music->play();
 }
 
+void CGameDlg::do_theme_background_change(QString path){
+        qDebug()<<path;
+    this->setStyleSheet("#CGameDlg{border-image:url("+path+");}");
+}

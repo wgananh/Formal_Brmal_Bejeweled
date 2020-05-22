@@ -19,6 +19,7 @@ public:
 signals:
     void menuToGame();
     void menuToSet();
+    void game_theme_background_change(QString);
 
 private slots:
     void doGameToMenu();
@@ -28,6 +29,8 @@ private slots:
     void on_btn_menuToSet_clicked();
 
     void doSetToMenu();
+
+    void do_theme_background_change(QString);
 
 private:
     Ui::CMenuDlg *ui;
