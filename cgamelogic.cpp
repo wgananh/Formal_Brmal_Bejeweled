@@ -14,7 +14,7 @@ void CGameLogic::BuildMap(){
     //初始生成8*8的数字矩阵
     for(int n=0;n<maprownum;n++){
         for(int m =0;m<mapcolnum;m++){
-            gemnum = rand()%8+1;
+            gemnum = rand()%8+1; //生成1-8的随机数
             m_aMap[n][m]=gemnum;
         }
     }
