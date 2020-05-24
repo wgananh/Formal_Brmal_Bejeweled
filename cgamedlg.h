@@ -39,6 +39,7 @@ private:
     Ui::CGameDlg *ui;
     CMenuDlg *menu = new CMenuDlg(this);
     CThemeDlg *theme = new CThemeDlg();
+    CGameLogic *gamelogic = new CGameLogic();
 };
 
 #endif // CGAMEDLG_H
