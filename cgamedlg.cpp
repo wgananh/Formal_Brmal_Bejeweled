@@ -14,7 +14,6 @@ CGameDlg::CGameDlg(QWidget *parent) :
 
     CMusicPlayer *mus = new CMusicPlayer;
     mus->MusicOn();
-
 }
 
 CGameDlg::~CGameDlg()
