@@ -12,12 +12,15 @@ CGameDlg::CGameDlg(QWidget *parent) :
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
     connect(timer, SIGNAL(timeout()), this, SLOT(update_timebar()));
     timer->start(1000); //每一秒更新一次timerbar
-    ui->pushButton_continue->hide(); //初始时继续游戏按钮不可见
-    ui->pushButton_continue->setEnabled(false); //初始时继续游戏按钮不可用
+    ui->pushButton_continue->hide(); //初始时"继续游戏"按钮不可见
+    ui->pushButton_restart->hide();  //初始时"重新开始"按钮不可见
+    ui->pushButton_continue->setEnabled(false); //初始时"继续游戏"按钮不可用
+    ui->pushButton_restart->setEnabled(false); //初始时"重新开始"按钮不可用
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
     connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
     connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
     connect(this,SIGNAL(gameToMenu()),this,SLOT(on_pushButton_stop_clicked())); //当点击“菜单”进入menu界面时，游戏自动暂停
+    connect(this,SIGNAL(gameToMain()),this,SLOT(on_pushButton_stop_clicked())); //当点击“返回标题”进入bejeweled的最初始界面时，游戏自动暂停
 
 
     CMusicPlayer *mus = new CMusicPlayer;
@@ -67,16 +70,19 @@ void CGameDlg::do_theme_background_change(QString path){
 void CGameDlg::update_timebar(){
     int CurrentValue=ui->progressBar_time->value();
     CurrentValue--;
-    if(CurrentValue>20&&CurrentValue<=151){
+    if(CurrentValue>150&&CurrentValue<=300){
+        ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
+        ui->progressBar_time->setAlignment(Qt::AlignCenter);
+    }
+    if(CurrentValue>20&&CurrentValue<=150){
         ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 255, 0) }");
         ui->progressBar_time->setAlignment(Qt::AlignCenter);
     }
-    if(CurrentValue<=21){
+    if(CurrentValue<=20){
         ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 0, 0) }");
         ui->progressBar_time->setAlignment(Qt::AlignCenter);
     }
-    if (CurrentValue <= 0){
-        timer->stop();
+    if (CurrentValue<=0){
         Game_over();
     }
     ui->progressBar_time->setValue(CurrentValue);
@@ -85,6 +91,12 @@ void CGameDlg::update_timebar(){
 
 //时间耗尽，游戏结束
 void CGameDlg::Game_over(){
+    timer->stop();
+    gamelogic->setgame_running(false);
+    ui->pushButton_stop->hide();
+    ui->pushButton_stop->setEnabled(false);
+    ui->pushButton_restart->show();
+    ui->pushButton_restart->setEnabled(true);
 
 }
 
@@ -107,4 +119,22 @@ void CGameDlg::on_pushButton_continue_clicked()
     ui->pushButton_continue->hide();
     ui->pushButton_stop->setEnabled(true);
     ui->pushButton_continue->setEnabled(false);
+}
+
+void CGameDlg::on_pushButton_restart_clicked()
+{
+    timer->start();
+    ui->progressBar_time->setValue(300);
+    ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
+    ui->progressBar_time->setAlignment(Qt::AlignCenter);
+
+    //重新生成地图，待完成
+    //*****写地图显示的时候，麻烦再在这里重新加载一遍地图，用于倒计时结束后，玩家重新开始游戏*******
+
+    gamelogic->setgame_running(true);
+    ui->pushButton_restart->hide();
+    ui->pushButton_restart->setEnabled(false);
+    ui->pushButton_stop->show();
+    ui->pushButton_stop->setEnabled(true);
+
 }

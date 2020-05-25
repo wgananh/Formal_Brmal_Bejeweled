@@ -39,6 +39,8 @@ private slots:
     void update_timebar(); //每隔一秒timebar就更新一次的槽函数
     void on_pushButton_continue_clicked();
 
+    void on_pushButton_restart_clicked();
+
 private:
     Ui::CGameDlg *ui;
     QTimer *timer;

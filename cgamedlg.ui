@@ -27,6 +27,12 @@ border-image: url(:/new/picture/background.bmp);}</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="maximum">
      <number>300</number>
     </property>
@@ -102,6 +108,19 @@ border-image: url(:/new/picture/background.bmp);}</string>
     </property>
     <property name="default">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_restart">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>410</y>
+      <width>93</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>重新开始</string>
     </property>
    </widget>
   </widget>
