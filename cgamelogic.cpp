@@ -94,3 +94,7 @@ bool CGameLogic::checkmap(){
     return false;
 }
 
+
+void CGameLogic::setgame_running(bool game_running){
+    this->game_running=game_running;
+}

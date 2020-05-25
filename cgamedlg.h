@@ -8,6 +8,7 @@
 #include "cranklogic.h"
 #include "cthemedlg.h"
 #include <QDebug>
+#include <QTimer>
 
 namespace Ui {
 class CGameDlg;
@@ -22,6 +23,7 @@ public:
     ~CGameDlg();
 
     void Music();
+    void Game_over(); //时间耗尽时游戏结束
 
 signals:
     void gameToMain();
@@ -33,10 +35,13 @@ private slots:
     void doMenuToGame();
     void on_btn_gameToMenu_clicked();
     void do_theme_background_change(QString);
-
+    void on_pushButton_stop_clicked();
+    void update_timebar(); //每隔一秒timebar就更新一次的槽函数
+    void on_pushButton_continue_clicked();
 
 private:
     Ui::CGameDlg *ui;
+    QTimer *timer;
     CMenuDlg *menu = new CMenuDlg(this);
     CThemeDlg *theme = new CThemeDlg();
     CGameLogic *gamelogic = new CGameLogic();

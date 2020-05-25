@@ -18,30 +18,90 @@
 border-image: url(:/new/picture/background.bmp);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QProgressBar" name="progressBar_time">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>751</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>300</number>
+    </property>
+    <property name="value">
+     <number>300</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="textVisible">
+     <bool>true</bool>
+    </property>
+    <property name="format">
+     <string> %v秒</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="btn_gameToMain">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>270</y>
+      <x>680</x>
+      <y>470</y>
       <width>93</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>返回标题</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_stop">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>410</y>
+      <width>93</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>暂停游戏</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="btn_gameToMenu">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>340</y>
+      <x>680</x>
+      <y>350</y>
       <width>93</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>菜单</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_continue">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>410</y>
+      <width>93</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>继续游戏</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>

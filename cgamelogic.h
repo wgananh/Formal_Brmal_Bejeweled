@@ -11,6 +11,10 @@ public:
     CGameLogic();
 
 private:
+
+    //*******请在写 “交换函数（swap）” 时，务必判断该布尔变量game_running是否为true，只有为true是才能继续操作*********
+    bool game_running; //游戏运行状态，该布尔变量默认为true,当在cgamelog界面中点击“暂停游戏”按钮时该值为false。true时表示游戏处于运行状态
+
     int species;//宝石种类数
     int m_aMap[8][8];//0代表空，1~n代表第n种宝石
     int mapsize=64,maprownum=8,mapcolnum=8;
@@ -26,8 +30,9 @@ public:
     bool eliminate();//消子
     void down();//下移
     void produce();//产生新子
-    //这里有计时函数
-    //暂停函数
+
+    void setgame_running(bool game_running); //cgamedlg中用于设置游戏是否暂停
+
     void newGrade();//不太清楚怎么做
     bool isWin();//胜负判断？或者升级？
     void hint();//提示（需要扣分）
