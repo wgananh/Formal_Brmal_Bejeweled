@@ -9,6 +9,8 @@
 #include "cthemedlg.h"
 #include <QDebug>
 #include <QTimer>
+#include <QLabel>
+#include <QPixmap>
 
 namespace Ui {
 class CGameDlg;
@@ -44,6 +46,8 @@ private slots:
 private:
     Ui::CGameDlg *ui;
     QTimer *timer;
+    QImage *image_stop = new QImage(":/new/picture/stop.png"); //游戏暂停的图片
+    QLabel *label_stop=new QLabel(this); //存放暂停图片的容器
     CMenuDlg *menu = new CMenuDlg(this);
     CThemeDlg *theme = new CThemeDlg();
     CGameLogic *gamelogic = new CGameLogic();

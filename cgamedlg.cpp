@@ -117,6 +117,9 @@ void CGameDlg::Game_over(){
 void CGameDlg::on_pushButton_stop_clicked()
 {
     timer->stop();
+    label_stop->setGeometry(20,50,400,400);
+    label_stop->setPixmap(QPixmap::fromImage(*image_stop));
+    label_stop->show();
     gamelogic->setgame_running(false);
     ui->pushButton_stop->hide();
     ui->pushButton_continue->show();
@@ -128,6 +131,7 @@ void CGameDlg::on_pushButton_stop_clicked()
 void CGameDlg::on_pushButton_continue_clicked()
 {
     timer->start();
+    label_stop->hide();
     gamelogic->setgame_running(true);
     ui->pushButton_stop->show();
     ui->pushButton_continue->hide();

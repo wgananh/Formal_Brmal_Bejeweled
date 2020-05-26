@@ -13,6 +13,7 @@
         <file>gem6.png</file>
         <file>gem7.png</file>
         <file>gem8.png</file>
+        <file>stop.png</file>
     </qresource>
     <qresource prefix="/rank">
         <file>rank.ini</file>
