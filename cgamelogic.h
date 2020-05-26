@@ -24,7 +24,7 @@ private:
     int hint2y;
 
 public:
-    void BuildMap();//生成不三连的图形，用于camglog中调用来初始化地图，以下消子、交换、下移、产生新子等函数需要地图时只需调用 "m_aMap[8][8]"
+    void BuildMap(int gemspecies);//生成不三连的图形，用于camglog中调用来初始化地图，以下消子、交换、下移、产生新子等函数需要地图时只需调用 "m_aMap[8][8]"
     bool checkmap(); //只是为了再次判断地图中是否有相邻的三个宝石相同，只用于BuildMap()中引用,写其他代码时可忽略此函数。
 
     bool swap(int a, int b, int m, int n);//交换（不相邻或无法消子，返回false）需要调用eliminate；也可以不这样写

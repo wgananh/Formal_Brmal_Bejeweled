@@ -7,14 +7,14 @@ CGameLogic::CGameLogic()
 
 
 //生成地图并且任意相邻的三个宝石不同，将8*8随机数矩阵传递给m_aMap二维数组中
-void CGameLogic::BuildMap(){
+void CGameLogic::BuildMap(int gemspecies){
     int gemnum;//宝石编号，从1-8
     srand((int)time(0));
 
     //初始生成8*8的数字矩阵
     for(int n=0;n<maprownum;n++){
         for(int m =0;m<mapcolnum;m++){
-            gemnum = rand()%8+1; //生成1-8的随机数
+            gemnum = rand()%gemspecies+1; //生成1-gemspecies的随机数
             m_aMap[n][m]=gemnum;
         }
     }
@@ -29,7 +29,7 @@ void CGameLogic::BuildMap(){
                 }
                 if(check[0]==check[1]&&check[1]==check[2]){
                     while(check[1]==check[0]){
-                        check[1]=rand()%8+1;
+                        check[1]=rand()%gemspecies+1;
                         m_aMap[j][i+1]=check[1];
                     }
                 }
@@ -45,7 +45,7 @@ void CGameLogic::BuildMap(){
                 }
                 if(check[0]==check[1]&&check[1]==check[2]){
                     while(check[1]==check[0]){
-                        check[1]=rand()%8+1;
+                        check[1]=rand()%gemspecies+1;
                         m_aMap[i+1][j]=check[1];
                     }
                 }
@@ -53,7 +53,7 @@ void CGameLogic::BuildMap(){
         }
     }
 
-    qDebug()<<"\n====这是生成的宝石地图（1-8表示宝石号码），若要删除这个显示，在cgamelogic.cpp下的BuildMap()函数末尾=====";
+    qDebug()<<"\n====这是生成的宝石地图（1-n表示宝石号码），若要删除这个显示，在cgamelogic.cpp下的BuildMap()函数末尾=====";
     for(int n=0;n<maprownum;n++){
         QString temp="";
         for(int m =0;m<mapcolnum;m++){

@@ -88,7 +88,7 @@ void CGameDlg::Game_start(){
     timer->start(1000); //每一秒更新一次timerbar
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
-    gamelogic->BuildMap();  //初始化游戏地图
+    gamelogic->BuildMap(5);  //初始化游戏地图
 
     ui->progressBar_time->setValue(300);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
@@ -143,7 +143,7 @@ void CGameDlg::on_pushButton_restart_clicked()
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
 
     //重新生成地图，待完成
-    gamelogic->BuildMap();
+    gamelogic->BuildMap(5);
     gamelogic->setgame_running(true);
 
     ui->pushButton_restart->hide();
