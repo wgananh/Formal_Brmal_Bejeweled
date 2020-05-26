@@ -9,6 +9,10 @@
         <file>gem6.bmp</file>
         <file>gem7.bmp</file>
         <file>gem8.bmp</file>
+        <file>tx1.png</file>
+        <file>tx2.png</file>
+        <file>tx3.png</file>
+        <file>select.png</file>
     </qresource>
     <qresource prefix="/rank">
         <file>rank.ini</file>
