@@ -94,6 +94,73 @@ bool CGameLogic::checkmap(){
     return false;
 }
 
+bool CGameLogic::eliminate(bool noChange)
+{
+    if(!game_running)
+        return false;
+    bool isChange = false;
+    int current = 0;
+    int temp_aMap[8][8];
+    memcpy(temp_aMap, m_aMap, sizeof(m_aMap));
+    for(int j = 0; j < 8; j++)
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            current = m_aMap[i][j];
+            if(current == m_aMap[i + 1][j] && current == m_aMap[i + 2][j])
+            {
+                temp_aMap[i][j] = 0;
+                temp_aMap[i + 1][j] = 0;
+                temp_aMap[i + 2][j] = 0;
+                isChange = true;
+            }
+        }
+    }
+    for(int j = 0; j < 8; j++)
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            current = m_aMap[j][i];
+            if(current == m_aMap[j][i + 1] && current == m_aMap[j][i + 2])
+            {
+                temp_aMap[j][i] = 0;
+                temp_aMap[j][i + 1] = 0;
+                temp_aMap[j][i + 2] = 0;
+                isChange = true;
+            }
+        }
+    }
+    if(noChange)
+        return isChange;
+    memcpy(m_aMap, temp_aMap, sizeof(m_aMap));
+    return isChange;
+}
+
+void CGameLogic::down()
+{
+    for(int i = 0; i < 8; i++)
+    {
+        for(int j = 7; j >= 0; j--)
+        {
+            if(m_aMap[i][j] == 0)
+                for(int k = j; k > 0; k--)
+                {
+                    m_aMap[i][k] = m_aMap[i][k - 1];
+                    m_aMap[i][0] = 0;
+                }
+        }
+    }
+    //下移完毕
+    srand((int)time(0));
+    for(int i = 0; i < 8; i++)
+    {
+        for(int j = 0; j < 8; j++)
+        {
+            if(m_aMap[i][j] == 0)
+                m_aMap[i][j] = rand()%5 + 1;
+        }
+    }
+}
 
 void CGameLogic::setgame_running(bool game_running){
     this->game_running=game_running;

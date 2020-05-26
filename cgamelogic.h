@@ -28,9 +28,8 @@ public:
     bool checkmap(); //只是为了再次判断地图中是否有相邻的三个宝石相同，只用于BuildMap()中引用,写其他代码时可忽略此函数。
 
     bool swap(int a, int b, int m, int n);//交换（不相邻或无法消子，返回false）需要调用eliminate；也可以不这样写
-    bool eliminate();//消子
+    bool eliminate(bool noChange = false);//消子
     void down();//下移
-    void produce();//产生新子
 
     void setgame_running(bool game_running); //cgamedlg中用于设置游戏是否暂停，写其他代码时可忽略本函数。
                                              //写消子、交换、下移、产生新子等函数时只用判断布尔变量 "game_running"是否为真
