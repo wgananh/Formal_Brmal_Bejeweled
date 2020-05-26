@@ -53,7 +53,7 @@ void CGameLogic::BuildMap(){
         }
     }
 
-    qDebug()<<"=======================";
+    qDebug()<<"\n====这是生成的宝石地图（1-8表示宝石号码），若要删除这个显示，在cgamelogic.cpp下的BuildMap()函数末尾=====";
     for(int n=0;n<maprownum;n++){
         QString temp="";
         for(int m =0;m<mapcolnum;m++){
