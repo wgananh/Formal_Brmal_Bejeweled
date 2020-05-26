@@ -173,7 +173,14 @@ bool CGameLogic::swap(int a,int b,int m,int n){//传入坐标(a,b)和(m,n)
                     int mid=m_aMap[a][b];
                     m_aMap[a][b]=m_aMap[m][n];
                     m_aMap[m][n]=mid;
-                    return true;
+                    if(checkmap()){
+                        return true;
+                    }else{
+                        mid=m_aMap[a][b];
+                        m_aMap[a][b]=m_aMap[m][n];
+                        m_aMap[m][n]=mid;
+                        return false;
+                    }
                 }else{
                     return false;
                 }
@@ -183,6 +190,14 @@ bool CGameLogic::swap(int a,int b,int m,int n){//传入坐标(a,b)和(m,n)
                         int mid=m_aMap[a][b];
                         m_aMap[a][b]=m_aMap[m][n];
                         m_aMap[m][n]=mid;
+                        if(checkmap()){
+                            return true;
+                        }else{
+                            mid=m_aMap[a][b];
+                            m_aMap[a][b]=m_aMap[m][n];
+                            m_aMap[m][n]=mid;
+                            return false;
+                        }
                         return true;
                     }else{
                         return false;
