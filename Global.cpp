@@ -2,4 +2,4 @@
 
 RANKINFOR g_rank;
 
-PICELEM g_picelem;
+PICELEM m_aMap[8][8];

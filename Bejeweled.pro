@@ -35,7 +35,8 @@ SOURCES += \
     csetdlg.cpp \
     cthemedlg.cpp \
     main.cpp \
-    cbejeweleddlg.cpp
+    cbejeweleddlg.cpp \
+    myqpixmap.cpp
 
 HEADERS += \
     Global.h \
@@ -56,7 +57,8 @@ HEADERS += \
     crankdlg.h \
     cranklogic.h \
     csetdlg.h \
-    cthemedlg.h
+    cthemedlg.h \
+    myqpixmap.h
 
 FORMS += \
     caboutdlg.ui \
