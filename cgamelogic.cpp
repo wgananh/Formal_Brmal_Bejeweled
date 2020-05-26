@@ -98,3 +98,33 @@ bool CGameLogic::checkmap(){
 void CGameLogic::setgame_running(bool game_running){
     this->game_running=game_running;
 }
+
+bool CGameLogic::swap(int a,int b,int m,int n){//传入坐标(a,b)和(m,n)
+        if(game_running){
+            if(a==m){//同行？
+                if(((b-n)==1)or((b-n)==-1)){//相邻？
+                    int mid=m_aMap[a][b];
+                    m_aMap[a][b]=m_aMap[m][n];
+                    m_aMap[m][n]=mid;
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                if(b==n){//同列？
+                    if(((a-m)==1)or((a-m)==-1)){//相邻？
+                        int mid=m_aMap[a][b];
+                        m_aMap[a][b]=m_aMap[m][n];
+                        m_aMap[m][n]=mid;
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+            }
+        }else{
+            return false;
+        }
+}
