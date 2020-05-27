@@ -30,7 +30,7 @@ public:
 signals:
     void gameToMain();
     void gameToMenu();
-    void clicked();//鼠标点击信号
+    //void clicked();//鼠标点击信号
 
 private slots:
     void on_btn_gameToMain_clicked();
@@ -43,20 +43,21 @@ private slots:
     void Game_start();
     void on_pushButton_continue_clicked();
     void on_pushButton_restart_clicked();
-    void mouseClicked();
+    //void mouseClicked();
 
 private:
     Ui::CGameDlg *ui;
     QTimer *timer;
     QImage *image_stop = new QImage(":/new/picture/stop.png"); //游戏暂停的图片
-    QLabel *label_stop=new QLabel(this); //存放暂停图片的容器
+    QImage *image_gameover = new QImage(":/new/picture/gameover.png"); //游戏结束的图片
+    QLabel *label_image=new QLabel(this); //存放暂停图片的容器
     CMenuDlg *menu = new CMenuDlg(this);
     CThemeDlg *theme = new CThemeDlg();
     CGameLogic *gamelogic = new CGameLogic();
     QPoint mousePos;//鼠标位置
-protected:
-    void mousePressEvent(QMouseEvent *ev);
-    void mouseReleaseEvent(QMouseEvent *ev);
+//protected:
+//    void mousePressEvent(QMouseEvent *ev);
+//    void mouseReleaseEvent(QMouseEvent *ev);
 };
 
 #endif // CGAMEDLG_H

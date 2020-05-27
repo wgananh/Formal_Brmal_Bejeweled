@@ -14,6 +14,7 @@
         <file>gem7.png</file>
         <file>gem8.png</file>
         <file>stop.png</file>
+        <file>gameover.png</file>
     </qresource>
     <qresource prefix="/rank">
         <file>rank.ini</file>

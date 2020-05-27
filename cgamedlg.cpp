@@ -99,11 +99,15 @@ void CGameDlg::Game_start(){
     ui->pushButton_continue->setEnabled(false); //初始时"继续游戏"按钮不可用
     ui->pushButton_restart->setEnabled(false); //初始时"重新开始"按钮不可用
     ui->pushButton_stop->setEnabled(true); //初始时"暂停游戏"按钮可用
+    label_image->hide(); //初始时暂停游戏以及结束的图片都隐藏
 }
 
 //时间耗尽，游戏结束
 void CGameDlg::Game_over(){
     timer->stop();
+    label_image->setGeometry(20,50,400,400);
+    label_image->setPixmap(QPixmap::fromImage(*image_gameover));
+    label_image->show();
     gamelogic->setgame_running(false);
     ui->pushButton_stop->hide();
     ui->pushButton_stop->setEnabled(false);
@@ -117,9 +121,9 @@ void CGameDlg::Game_over(){
 void CGameDlg::on_pushButton_stop_clicked()
 {
     timer->stop();
-    label_stop->setGeometry(20,50,400,400);
-    label_stop->setPixmap(QPixmap::fromImage(*image_stop));
-    label_stop->show();
+    label_image->setGeometry(20,50,400,400);
+    label_image->setPixmap(QPixmap::fromImage(*image_stop));
+    label_image->show();
     gamelogic->setgame_running(false);
     ui->pushButton_stop->hide();
     ui->pushButton_continue->show();
@@ -131,7 +135,7 @@ void CGameDlg::on_pushButton_stop_clicked()
 void CGameDlg::on_pushButton_continue_clicked()
 {
     timer->start();
-    label_stop->hide();
+    label_image->hide();
     gamelogic->setgame_running(true);
     ui->pushButton_stop->show();
     ui->pushButton_continue->hide();
@@ -142,6 +146,7 @@ void CGameDlg::on_pushButton_continue_clicked()
 void CGameDlg::on_pushButton_restart_clicked()
 {
     timer->start();
+    label_image->hide();
     ui->progressBar_time->setValue(300);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
