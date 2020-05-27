@@ -30,7 +30,6 @@ public:
 signals:
     void gameToMain();
     void gameToMenu();
-    //void clicked();//鼠标点击信号
 
 private slots:
     void on_btn_gameToMain_clicked();
@@ -43,7 +42,6 @@ private slots:
     void Game_start();
     void on_pushButton_continue_clicked();
     void on_pushButton_restart_clicked();
-    //void mouseClicked();
 
 private:
     Ui::CGameDlg *ui;
@@ -55,9 +53,7 @@ private:
     CThemeDlg *theme = new CThemeDlg();
     CGameLogic *gamelogic = new CGameLogic();
     QPoint mousePos;//鼠标位置
-//protected:
-//    void mousePressEvent(QMouseEvent *ev);
-//    void mouseReleaseEvent(QMouseEvent *ev);
+
 };
 
 #endif // CGAMEDLG_H
