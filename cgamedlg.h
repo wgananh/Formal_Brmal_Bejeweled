@@ -72,7 +72,7 @@ private:
 protected:
     void mousePressEvent(QMouseEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);
-    QPoint mousePos;//鼠标位置
+    QPoint mousePos;//鼠标位置a
 
 };
 
