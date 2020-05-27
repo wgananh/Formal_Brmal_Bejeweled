@@ -35,10 +35,12 @@ CGameDlg::CGameDlg(QWidget *parent) :
         path = ":/new/picture/number" + QString::number(i,10) + ".png";//宝石图片
         number[i].load(path);
     }
+    circle.load(":/new/picture/circle.png");
     pixmap_di.load(":/new/picture/select.png");//被选中显示
     disappear1.load(":/new/picture/tx1.png");
     disappear2.load(":/new/picture/tx2.png");
     disappear3.load(":/new/picture/tx3.png");//三消的动画过程
+    disappear3.load(":/new/picture/tx3.png");
 
 
     CMusicPlayer *mus = new CMusicPlayer;
@@ -54,7 +56,7 @@ CGameDlg::~CGameDlg()
 void CGameDlg::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     int num;
-    //painter.drawPixmap(500,50,20,50,number[0]);530 80
+    painter.drawPixmap(510,55,100,100,circle);
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             num=gamelogic->m_aMap[i][j];

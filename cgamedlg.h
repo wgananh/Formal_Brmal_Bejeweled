@@ -63,12 +63,13 @@ private:
     QPoint point;//鼠标位置
     QPoint point1;
     QPoint point2;
-    QPixmap pixmap[8];
-    QPixmap pixmap_di;
-    QPixmap number[10];
+    QPixmap pixmap[8];//存宝石图片
+    QPixmap pixmap_di;//储存被选中框
+    QPixmap number[10];//分数图片
     QPixmap disappear1;
     QPixmap disappear2;
-    QPixmap disappear3;
+    QPixmap disappear3;//消除泡泡的过程
+    QPixmap circle;//圆圈
     int mouseflag;
     int focus;
     int focus_x;
