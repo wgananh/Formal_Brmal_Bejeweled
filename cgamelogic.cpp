@@ -136,32 +136,29 @@ bool CGameLogic::eliminate(bool noChange)
     return isChange;
 }
 
-void CGameLogic::down()
+bool CGameLogic::down()//每调用一次全图可以下移的下移一次
 {
+    srand(GetTickCount());
+    int isChanged = false;
     for(int i = 0; i < 8; i++)
     {
         for(int j = 7; j >= 0; j--)
         {
             if(m_aMap[j][i] == 0)
             {
+
                 for(int k = j; k > 0; k--)
                 {
                     m_aMap[k][i] = m_aMap[k - 1][i];
                 }
-                m_aMap[0][i] = 0;
+
+                m_aMap[0][i] = rand()%g_spc + 1;
+                isChanged = true;
+                break;
             }
         }
     }
-    //下移完毕
-    srand((int)time(0));
-    for(int i = 0; i < 8; i++)
-    {
-        for(int j = 0; j < 8; j++)
-        {
-            if(m_aMap[i][j] == 0)
-                m_aMap[i][j] = rand()%5 + 1;
-        }
-    }
+    return isChanged;
 }
 
 void CGameLogic::setgame_running(bool game_running){

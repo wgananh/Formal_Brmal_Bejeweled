@@ -60,7 +60,7 @@ private:
     QPoint point;//鼠标位置
     QPoint point1;
     QPoint point2;
-    QPixmap pixmap[5];
+    QPixmap pixmap[8];
     QPixmap pixmap_di;
     QPixmap disappear1;
     QPixmap disappear2;
@@ -70,6 +70,8 @@ private:
     int focus_x;
     int focus_y;
     int eliminateNumber = 0;
+    int isSelected[8][8];//是否选中（0/1）
+    int midSituation[8][8];//消除中间过程（1，2，3，对应三张图片）
 protected:
     void mousePressEvent(QMouseEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);

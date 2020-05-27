@@ -17,9 +17,15 @@ CGameDlg::CGameDlg(QWidget *parent) :
     connect(this,SIGNAL(gameToMenu()),this,SLOT(on_pushButton_stop_clicked())); //当点击“菜单”进入menu界面时，游戏自动暂停
 
     focus=0;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            isSelected[i][j]=0;//初始化为未被选中
+            midSituation[i][j]=0;//状态为0
+        }
+    }
         QString path;
         int i;
-        for(i=0;i<5;i++)
+        for(i=0;i<8;i++)
             {
                 path = ":/new/picture/gem" + QString::number(i+1,10) + ".png";//宝石图片
                 pixmap[i].load(path);
@@ -48,10 +54,23 @@ void CGameDlg::paintEvent(QPaintEvent *event){
             //qDebug()<<num;
             //painter.drawPixmap(20+i*50,50+j*50,50,50,pixmap[num-1]);
             painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap[num-1]);
+            if(isSelected[i][j]==1){
+                painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap_di);
+                isSelected[i][j]=0;
+            }
+            if(midSituation[i][j]==1){
+                painter.drawPixmap(20+j*50,50+i*50,50,50,disappear1);
+            }else if(midSituation[i][j]==2){
+                painter.drawPixmap(20+j*50,50+i*50,50,50,disappear2);
+            }else if(midSituation[i][j]==3){
+                painter.drawPixmap(20+j*50,50+i*50,50,50,disappear3);
+                midSituation[i][j]=0;
+            }
         }
     }
 }
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
+    QPainter painter(this);
     mouseflag=1;
     int xx;
     int yy;
@@ -59,88 +78,97 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
     yy=ev->y()-50;
     focus_y=xx/50;
     focus_x=yy/50;
-    //qDebug()<<focus_x;
-    //qDebug()<<focus_y;
-    /*if(focus_x==0&&focus_y==0){
-        int temp;
-        temp=gamelogic->m_aMap[focus_x][focus_y];
-        gamelogic->m_aMap[focus_x][focus_y]=gamelogic->m_aMap[focus_x][focus_y+1];
-        gamelogic->m_aMap[focus_x][focus_y+1]=temp;
-        this->repaint();
-    }*/
     if(focus_x<8){
         if(focus==0){
             point.setX(focus_x);
             point.setY(focus_y);//存下了第一次点击的横纵坐标（换算后的，可以直接用来访问矩阵）
+            isSelected[focus_x][focus_y]=1;
             focus=1;
-            //this->repaint();//其实是调用了paintevent
+            this->repaint();//其实是调用了paintevent
         }else{
             int x=point.x();
             int y=point.y();//取得第一次点击的横纵坐标与新的坐标相比较
-            qDebug()<<x;
-            qDebug()<<y;
-            qDebug()<<focus_x;
-            qDebug()<<focus_y;
+            isSelected[focus_x][focus_y]=1;
+            this->repaint();
+            //painter.drawPixmap(20+focus_y*50,50+focus_x*50,50,50,pixmap_di);
 
             if((focus_x==x && (focus_y==y-1 || focus_y==y+1)) || (focus_y == y && (focus_x==x-1 || focus_x==x+1))){//相邻情况（上下左右）==边界？？？
                 point1.setX(focus_x);
                 point1.setY(focus_y);//把第二次的坐标也存下了，便于后面访问
-                focus = 0;//？
-                if(focus_x==x&&focus_y==y-1){//第一次选中的宝石要和左边的交换
+                focus = 0;//标志
+
+
                     int temp;
                     temp=gamelogic->m_aMap[x][y];
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
                     gamelogic->m_aMap[focus_x][focus_y]=temp;
                     this->repaint();
-                    if(!gamelogic->eliminate(true))
+                    _sleep(100);
+                    if(!gamelogic->eliminate(true))//点的两个不能交换
                     {
                         //换回来
-                        //
-                        //break
+                        int temp1;
+                        temp1=gamelogic->m_aMap[x][y];
+                        gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
+                        gamelogic->m_aMap[focus_x][focus_y]=temp1;
+                        this->repaint();
+                        _sleep(100);
+
                     }
                     while (gamelogic->eliminate()) {
                         eliminateNumber = 0;
-                        for(int i = 0; i < 8; i++)
+                        for(int i = 0; i < 8; i++){
                             for(int j = 0; j < 8; j++)
                             {
                                 if(gamelogic->m_aMap[i][j] == 0)
                                 {
-                                    eliminateNumber++;
-                                    //更换图片
+                                    eliminateNumber++;//这个是0的个数 消除数
+                                    midSituation[i][j]=1;//状态1
+
                                 }
                             }
+                        }
                         g_rank.nGrade += eliminateNumber*10;//分数增加
                         this->repaint();
                         _sleep(100);
-                        for(int i = 0; i < 8; i++)
+                        for(int i = 0; i < 8; i++){
                             for(int j = 0; j < 8; j++)
                             {
                                 if(gamelogic->m_aMap[i][j] == 0)
                                 {
                                     //更换图片
+                                    midSituation[i][j]=2;//状态1
+
                                 }
+                            }
                             }
                         this->repaint();
                         _sleep(100);
-                        for(int i = 0; i < 8; i++)
+                        for(int i = 0; i < 8; i++){
                             for(int j = 0; j < 8; j++)
                             {
                                 if(gamelogic->m_aMap[i][j] == 0)
                                 {
                                     //更换图片
+                                    midSituation[i][j]=3;//状态1
+
                                 }
+                            }
                             }
                         this->repaint();
                         _sleep(100);
 
-                        gamelogic->down();
-                        this->repaint();
-                        _sleep(500);
-                        if(gamelogic->hint())
-                        {
-                            gamelogic->BuildMap(g_spc);
+                        while(gamelogic->down()){
                             this->repaint();
+                            _sleep(100);
                         }
+                        /*this->repaint();
+                        _sleep(500);*/
+//                        if(gamelogic->hint())
+//                        {
+//                            gamelogic->BuildMap(g_spc);
+//                            this->repaint();
+//                        }
                     }
                     if(g_rank.nGrade / 1000 != g_spc - 5)
                     {
@@ -148,46 +176,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                         gamelogic->BuildMap(g_spc);
                         this->repaint();
                     }
-                }else if(focus_x==x&&focus_y==y+1){//第一次选中的宝石要和右边的交换11
-                    int temp;
-                    temp=gamelogic->m_aMap[x][y];
-                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
-                    gamelogic->m_aMap[focus_x][focus_y]=temp;
-                    this->repaint();
-                    while (gamelogic->eliminate()) {
-                        this->repaint();
-                        _sleep(500);
-                        gamelogic->down();
-                        this->repaint();
-                        _sleep(500);
-                    }
-                }else if(focus_x==x-1&&focus_y==y){//第一次选中的宝石要和上边的交换
-                    int temp;
-                    temp=gamelogic->m_aMap[x][y];
-                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
-                    gamelogic->m_aMap[focus_x][focus_y]=temp;
-                    this->repaint();
-                    while (gamelogic->eliminate()) {
-                        this->repaint();
-                        _sleep(500);
-                        gamelogic->down();
-                        this->repaint();
-                        _sleep(500);
-                    }
-                }else if(focus_x==x+1&&focus_y==y){//第一次选中的宝石要和下边的交换
-                    int temp;
-                    temp=gamelogic->m_aMap[x][y];
-                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
-                    gamelogic->m_aMap[focus_x][focus_y]=temp;
-                    this->repaint();
-                    while (gamelogic->eliminate()) {
-                        this->repaint();
-                        _sleep(500);
-                        gamelogic->down();
-                        this->repaint();
-                        _sleep(500);
-                    }
-                }
+
             }
         }
     }

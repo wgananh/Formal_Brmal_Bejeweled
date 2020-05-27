@@ -4,6 +4,8 @@
 #include<cstdlib>
 #include<ctime>
 #include<QDebug>
+#include<Global.h>
+#include<windows.h>
 
 class CGameLogic
 {
@@ -26,7 +28,7 @@ public:
 
     bool swap(int a, int b, int m, int n);//交换（不相邻或无法消子，返回false）需要调用eliminate；也可以不这样写
     bool eliminate(bool noChange = false);//消子
-    void down();//下移
+    bool down();//下移
 
     void setgame_running(bool game_running); //cgamedlg中用于设置游戏是否暂停，写其他代码时可忽略本函数。
                                              //写消子、交换、下移、产生新子等函数时只用判断布尔变量 "game_running"是否为真
