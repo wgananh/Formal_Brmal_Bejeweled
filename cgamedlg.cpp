@@ -271,6 +271,10 @@ void CGameDlg::Game_start(){
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
     gamelogic->BuildMap(g_spc);  //初始化游戏地图
+    g_rank.nGrade=0;
+    string_grade="";
+    this->repaint();
+
 
     ui->progressBar_time->setValue(60);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
@@ -329,7 +333,7 @@ void CGameDlg::on_pushButton_restart_clicked()
 {
     timer->start();
     label_image->hide();
-    ui->progressBar_time->setValue(300);
+    ui->progressBar_time->setValue(60);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
 
