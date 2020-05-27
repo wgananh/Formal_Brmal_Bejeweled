@@ -15,6 +15,14 @@
         <file>gem8.png</file>
         <file>stop.png</file>
         <file>gameover.png</file>
+        <file>mine (1).png</file>
+        <file>mine (2).png</file>
+        <file>mine (3).png</file>
+        <file>mine (4).png</file>
+        <file>mine (5).png</file>
+        <file>mine (6).png</file>
+        <file>mine (7).png</file>
+        <file>mine (8).png</file>
     </qresource>
     <qresource prefix="/rank">
         <file>rank.ini</file>
