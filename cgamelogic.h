@@ -9,14 +9,13 @@ class CGameLogic
 {
 public:
     CGameLogic();
-
+    int m_aMap[8][8];//0代表空，1~n代表第n种宝石（宝石号码取值为1-8）
 private:
 
     //*******请在写 “交换函数（swap）” 时，务必判断该布尔变量game_running是否为true，只有为true是才能继续操作*********
     bool game_running; //游戏运行状态，该布尔变量默认为true,当在cgamelog界面中点击“暂停游戏”按钮时该值为false。true时表示游戏处于运行状态
 
     int species=8;//一共有8中宝石种类数
-    int m_aMap[8][8];//0代表空，1~n代表第n种宝石（宝石号码取值为1-8）
     int mapsize=64,maprownum=8,mapcolnum=8; //定义地图尺寸，行数、列数
     int hint1x;
     int hint1y;

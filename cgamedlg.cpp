@@ -16,6 +16,18 @@ CGameDlg::CGameDlg(QWidget *parent) :
     connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
     connect(this,SIGNAL(gameToMenu()),this,SLOT(on_pushButton_stop_clicked())); //当点击“菜单”进入menu界面时，游戏自动暂停
 
+    focus=0;
+        QString path;
+        int i;
+        for(i=0;i<5;i++)
+            {
+                path = ":/new/picture/gem" + QString::number(i+1,10) + ".png";//宝石图片
+                pixmap[i].load(path);
+            }
+            pixmap_di.load(":/new/picture/select.png");//被选中显示
+            disappear1.load(":/new/picture/tx1.png");
+            disappear2.load(":/new/picture/tx2.png");
+            disappear3.load(":/new/picture/tx3.png");//三消的动画过程
 
     CMusicPlayer *mus = new CMusicPlayer;
     mus->MusicOn();
@@ -25,6 +37,90 @@ CGameDlg::~CGameDlg()
 {
     delete ui;
 }
+
+
+void CGameDlg::paintEvent(QPaintEvent *event){
+    QPainter painter(this);
+    int num;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            num=gamelogic->m_aMap[i][j];
+            //qDebug()<<num;
+            //painter.drawPixmap(20+i*50,50+j*50,50,50,pixmap[num-1]);
+            painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap[num-1]);
+        }
+    }
+}
+void CGameDlg::mousePressEvent(QMouseEvent *ev){
+    mouseflag=1;
+    int xx;
+    int yy;
+    xx=ev->x()-20;
+    yy=ev->y()-50;
+    focus_y=xx/50;
+    focus_x=yy/50;
+    //qDebug()<<focus_x;
+    //qDebug()<<focus_y;
+    /*if(focus_x==0&&focus_y==0){
+        int temp;
+        temp=gamelogic->m_aMap[focus_x][focus_y];
+        gamelogic->m_aMap[focus_x][focus_y]=gamelogic->m_aMap[focus_x][focus_y+1];
+        gamelogic->m_aMap[focus_x][focus_y+1]=temp;
+        this->repaint();
+    }*/
+    if(focus_x<8){
+        if(focus==0){
+            point.setX(focus_x);
+            point.setY(focus_y);//存下了第一次点击的横纵坐标（换算后的，可以直接用来访问矩阵）
+            focus=1;
+            //this->repaint();//其实是调用了paintevent
+        }else{
+            int x=point.x();
+            int y=point.y();//取得第一次点击的横纵坐标与新的坐标相比较
+            qDebug()<<x;
+            qDebug()<<y;
+            qDebug()<<focus_x;
+            qDebug()<<focus_y;
+
+            if((focus_x==x && (focus_y==y-1 || focus_y==y+1)) || (focus_y == y && (focus_x==x-1 || focus_x==x+1))){//相邻情况（上下左右）==边界？？？
+                point1.setX(focus_x);
+                point1.setY(focus_y);//把第二次的坐标也存下了，便于后面访问
+                focus = 0;//？
+                if(focus_x==x&&focus_y==y-1){//第一次选中的宝石要和左边的交换
+                    int temp;
+                    temp=gamelogic->m_aMap[x][y];
+                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
+                    gamelogic->m_aMap[focus_x][focus_y]=temp;
+                    this->repaint();
+                }else if(focus_x==x&&focus_y==y+1){//第一次选中的宝石要和右边的交换11
+                    int temp;
+                    temp=gamelogic->m_aMap[x][y];
+                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
+                    gamelogic->m_aMap[focus_x][focus_y]=temp;
+                    this->repaint();
+                }else if(focus_x==x-1&&focus_y==y){//第一次选中的宝石要和上边的交换
+                    int temp;
+                    temp=gamelogic->m_aMap[x][y];
+                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
+                    gamelogic->m_aMap[focus_x][focus_y]=temp;
+                    this->repaint();
+                }else if(focus_x==x+1&&focus_y==y){//第一次选中的宝石要和下边的交换
+                    int temp;
+                    temp=gamelogic->m_aMap[x][y];
+                    gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
+                    gamelogic->m_aMap[focus_x][focus_y]=temp;
+                    this->repaint();
+                }
+            }
+        }
+    }
+
+}
+void CGameDlg::mouseReleaseEvent(QMouseEvent *ev){
+
+}
+
+
 
 void CGameDlg::on_btn_gameToMain_clicked()
 {
