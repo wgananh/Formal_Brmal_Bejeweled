@@ -80,6 +80,7 @@ void CGameDlg::paintEvent(QPaintEvent *event){
     }
 }
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
+    if(!gamelogic->game_running)return;
     QPainter painter(this);
     mouseflag=1;
     int xx;
@@ -189,6 +190,10 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     }
 
             }
+            else{
+                point.setX(focus_x);
+                point.setY(focus_y);
+            }
         }
     }
 
@@ -263,7 +268,7 @@ void CGameDlg::Game_start(){
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
     gamelogic->BuildMap(g_spc);  //初始化游戏地图
 
-    ui->progressBar_time->setValue(300);
+    ui->progressBar_time->setValue(60);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
     ui->pushButton_continue->hide(); //初始时"继续游戏"按钮不可见

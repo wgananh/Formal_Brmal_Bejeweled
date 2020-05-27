@@ -37,10 +37,10 @@ border-image: url(:/new/picture/background.bmp);}</string>
      </font>
     </property>
     <property name="maximum">
-     <number>300</number>
+     <number>60</number>
     </property>
     <property name="value">
-     <number>300</number>
+     <number>60</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
