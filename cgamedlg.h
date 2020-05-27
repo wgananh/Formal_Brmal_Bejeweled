@@ -11,6 +11,8 @@
 #include <QTimer>
 #include <QLabel>
 #include <QPixmap>
+#include <QPainter>
+#include <QMouseEvent>
 
 namespace Ui {
 class CGameDlg;
@@ -30,6 +32,7 @@ public:
 signals:
     void gameToMain();
     void gameToMenu();
+    //void clicked();//鼠标点击信号
 
 private slots:
     void on_btn_gameToMain_clicked();
@@ -42,6 +45,8 @@ private slots:
     void Game_start();
     void on_pushButton_continue_clicked();
     void on_pushButton_restart_clicked();
+    void paintEvent(QPaintEvent *event);
+
 
 private:
     Ui::CGameDlg *ui;
@@ -52,6 +57,21 @@ private:
     CMenuDlg *menu = new CMenuDlg(this);
     CThemeDlg *theme = new CThemeDlg();
     CGameLogic *gamelogic = new CGameLogic();
+    QPoint point;//鼠标位置
+    QPoint point1;
+    QPoint point2;
+    QPixmap pixmap[5];
+    QPixmap pixmap_di;
+    QPixmap disappear1;
+    QPixmap disappear2;
+    QPixmap disappear3;
+    int mouseflag;
+    int focus;
+    int focus_x;
+    int focus_y;
+protected:
+    void mousePressEvent(QMouseEvent *ev);
+    void mouseReleaseEvent(QMouseEvent *ev);
     QPoint mousePos;//鼠标位置
 
 };
