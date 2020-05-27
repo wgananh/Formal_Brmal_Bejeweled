@@ -41,6 +41,7 @@
         <file>number7.png</file>
         <file>number8.png</file>
         <file>number9.png</file>
+        <file>circle.png</file>
     </qresource>
     <qresource prefix="/rank">
         <file>rank.ini</file>
