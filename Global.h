@@ -20,4 +20,6 @@ typedef struct PICTUREELEMENT
 
 extern PICELEM m_aMap[8][8];
 
+extern int g_spc;
+
 #endif // GLOBAL_H

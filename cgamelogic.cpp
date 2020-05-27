@@ -213,209 +213,209 @@ bool CGameLogic::swap(int a,int b,int m,int n){//传入坐标(a,b)和(m,n)
         }
 }
 
-void CGameLogic::hint(int Map[8][8]){
+bool CGameLogic::hint(){
     int map[8][8];
     int i,j;
     int mid;//交换过渡
-    int point[2][2];//记录交换点
     int tap = 0;//判断找到没有
 
     for(i = 0; i < 8; i++){
             for(j = 0; j < 8; j++){
-                map[i][j]=Map[i][j];
+                map[i][j]=m_aMap[i][j];
             }
         }
 
-        for(i = 0; i < 7; i++){
-            for(j = 0; j < 8; j++){
-                mid = map[i][j];
-                map[i][j] = map[i+1][j];
-                map[i+1][j] = mid;
+    for(i = 0; i < 7; i++){
+        for(j = 0; j < 8; j++){
+            mid = map[i][j];
+            map[i][j] = map[i+1][j];
+            map[i+1][j] = mid;
 
-                    if(map[i+1][j]==map[i+2][j]&&map[i+2][j]==map[i+3][j]){
-                        if(i<=4){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j]==map[i][j+1]&&map[i][j+1]==map[i][j+2]){
-                        if(j<=5){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i+1][j]==map[i+1][j+1]&&map[i+1][j+1]==map[i+1][j+2]){
-                        if(j<=4){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j]==map[i-1][j]&&map[i-1][j]==map[i-2][j]){
-                        if(i>=2){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j]==map[i][j-1]&&map[i][j-1]==map[i][j+1]){
-                        if(j>0&&j<7){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j]==map[i][j-1]&&map[i][j-1]==map[i][j-2]){
-                        if(j>=2){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i+1][j]==map[i+1][j-1]&&map[i+1][j-1]==map[i+1][j-2]){
-                        if(j>=2){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i+1][j]==map[i+1][j-1]&&map[i+1][j-1]==map[i][j+1]){
-                        if(j>0&&j<7){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i+1;
-                            point[1][1] = j;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else{
-                        mid = map[i][j];
-                        map[i][j] = map[i+1][j];
-                        map[i+1][j] = mid;
-                        tap = 0;
+                if(map[i+1][j]==map[i+2][j]&&map[i+2][j]==map[i+3][j]){
+                    if(i<=4){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
                     }
-            }
-
-        }
-
-        if(tap == 0){
-            for(i = 0; i < 8; i++){
-                for(j = 0; j < 7; j++){
+                }else if(map[i][j]==map[i][j+1]&&map[i][j+1]==map[i][j+2]){
+                    if(j<=5){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i+1][j]==map[i+1][j+1]&&map[i+1][j+1]==map[i+1][j+2]){
+                    if(j<=4){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j]==map[i-1][j]&&map[i-1][j]==map[i-2][j]){
+                    if(i>=2){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j]==map[i][j-1]&&map[i][j-1]==map[i][j+1]){
+                    if(j>0&&j<7){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j]==map[i][j-1]&&map[i][j-1]==map[i][j-2]){
+                    if(j>=2){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i+1][j]==map[i+1][j-1]&&map[i+1][j-1]==map[i+1][j-2]){
+                    if(j>=2){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i+1][j]==map[i+1][j-1]&&map[i+1][j-1]==map[i][j+1]){
+                    if(j>0&&j<7){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i+1;
+                        point[1][1] = j;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else{
                     mid = map[i][j];
-                    map[i][j] = map[i][j+1];
-                    map[i][j+1] = mid;
+                    map[i][j] = map[i+1][j];
+                    map[i+1][j] = mid;
+                    tap = 0;
+                }
+        }
 
-                    if(map[i][j]==map[i+1][j]&&map[i+1][j]==map[i+2][j]){
-                        if(i<=5){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j]==map[i][j-1]&&map[i][j-1]==map[i][j-2]){
-                        if(j>=2){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i+1][j]==map[i][j]&&map[i][j]==map[i-1][j]){
-                        if(i>0&&i<7){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j]==map[i-1][j]&&map[i-1][j]==map[i-2][j]){
-                        if(i>=2){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j+1]==map[i-1][j+1]&&map[i-1][j+1]==map[i+1][j+1]){
-                        if(i>0&&i<7){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j+1]==map[i+1][j+1]&&map[i+1][j+1]==map[i+2][j+1]){
-                        if(i<=5){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j+1]==map[i][j+2]&&map[i][j+2]==map[i][j+3]){
-                        if(j<=4){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else if(map[i][j+1]==map[i-1][j+1]&&map[i-1][j+1]==map[i-2][j+1]){
-                        if(i>=2){
-                            point[0][0] = i;
-                            point[0][1] = j;
-                            point[1][0] = i;
-                            point[1][1] = j+1;
-                            i=8;
-                            j=8;
-                            tap = 1;
-                        }
-                    }else{
-                        mid = map[i][j];
-                        map[i][j] = map[i+1][j];
-                        map[i+1][j] = mid;
-                        tap = 0;
+    }
+
+    if(tap == 0){
+        for(i = 0; i < 8; i++){
+            for(j = 0; j < 7; j++){
+                mid = map[i][j];
+                map[i][j] = map[i][j+1];
+                map[i][j+1] = mid;
+
+                if(map[i][j]==map[i+1][j]&&map[i+1][j]==map[i+2][j]){
+                    if(i<=5){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
                     }
+                }else if(map[i][j]==map[i][j-1]&&map[i][j-1]==map[i][j-2]){
+                    if(j>=2){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i+1][j]==map[i][j]&&map[i][j]==map[i-1][j]){
+                    if(i>0&&i<7){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j]==map[i-1][j]&&map[i-1][j]==map[i-2][j]){
+                    if(i>=2){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j+1]==map[i-1][j+1]&&map[i-1][j+1]==map[i+1][j+1]){
+                    if(i>0&&i<7){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j+1]==map[i+1][j+1]&&map[i+1][j+1]==map[i+2][j+1]){
+                    if(i<=5){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j+1]==map[i][j+2]&&map[i][j+2]==map[i][j+3]){
+                    if(j<=4){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else if(map[i][j+1]==map[i-1][j+1]&&map[i-1][j+1]==map[i-2][j+1]){
+                    if(i>=2){
+                        point[0][0] = i;
+                        point[0][1] = j;
+                        point[1][0] = i;
+                        point[1][1] = j+1;
+                        i=8;
+                        j=8;
+                        tap = 1;
+                    }
+                }else{
+                    mid = map[i][j];
+                    map[i][j] = map[i+1][j];
+                    map[i+1][j] = mid;
+                    tap = 0;
                 }
             }
         }
+    }
+    return tap;
 }

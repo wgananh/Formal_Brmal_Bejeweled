@@ -92,12 +92,61 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
                     gamelogic->m_aMap[focus_x][focus_y]=temp;
                     this->repaint();
+                    if(!gamelogic->eliminate(true))
+                    {
+                        //换回来
+                        //
+                        //break
+                    }
                     while (gamelogic->eliminate()) {
+                        eliminateNumber = 0;
+                        for(int i = 0; i < 8; i++)
+                            for(int j = 0; j < 8; j++)
+                            {
+                                if(gamelogic->m_aMap[i][j] == 0)
+                                {
+                                    eliminateNumber++;
+                                    //更换图片
+                                }
+                            }
+                        g_rank.nGrade += eliminateNumber*10;//分数增加
                         this->repaint();
-                        _sleep(500);
+                        _sleep(100);
+                        for(int i = 0; i < 8; i++)
+                            for(int j = 0; j < 8; j++)
+                            {
+                                if(gamelogic->m_aMap[i][j] == 0)
+                                {
+                                    //更换图片
+                                }
+                            }
+                        this->repaint();
+                        _sleep(100);
+                        for(int i = 0; i < 8; i++)
+                            for(int j = 0; j < 8; j++)
+                            {
+                                if(gamelogic->m_aMap[i][j] == 0)
+                                {
+                                    //更换图片
+                                }
+                            }
+                        this->repaint();
+                        _sleep(100);
+
                         gamelogic->down();
                         this->repaint();
                         _sleep(500);
+                        if(gamelogic->hint())
+                        {
+                            gamelogic->BuildMap(g_spc);
+                            this->repaint();
+                        }
+                    }
+                    if(g_rank.nGrade / 1000 != g_spc - 5)
+                    {
+                        g_spc++;
+                        gamelogic->BuildMap(g_spc);
+                        this->repaint();
                     }
                 }else if(focus_x==x&&focus_y==y+1){//第一次选中的宝石要和右边的交换11
                     int temp;
@@ -212,7 +261,7 @@ void CGameDlg::Game_start(){
     timer->start(1000); //每一秒更新一次timerbar
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
-    gamelogic->BuildMap(5);  //初始化游戏地图
+    gamelogic->BuildMap(g_spc);  //初始化游戏地图
 
     ui->progressBar_time->setValue(300);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
@@ -276,7 +325,7 @@ void CGameDlg::on_pushButton_restart_clicked()
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
 
     //重新生成地图，待完成
-    gamelogic->BuildMap(5);
+    gamelogic->BuildMap(g_spc);
     gamelogic->setgame_running(true);
 
     ui->pushButton_restart->hide();

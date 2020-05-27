@@ -69,6 +69,7 @@ private:
     int focus;
     int focus_x;
     int focus_y;
+    int eliminateNumber = 0;
 protected:
     void mousePressEvent(QMouseEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);
