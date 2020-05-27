@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>642</width>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@ border-image: url(:/new/picture/background.bmp);}</string>
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>751</width>
+      <width>601</width>
       <height>31</height>
      </rect>
     </property>
@@ -55,8 +55,8 @@ border-image: url(:/new/picture/background.bmp);}</string>
    <widget class="QPushButton" name="btn_gameToMain">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>470</y>
+      <x>530</x>
+      <y>400</y>
       <width>93</width>
       <height>31</height>
      </rect>
@@ -68,8 +68,8 @@ border-image: url(:/new/picture/background.bmp);}</string>
    <widget class="QPushButton" name="pushButton_stop">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>410</y>
+      <x>530</x>
+      <y>340</y>
       <width>93</width>
       <height>31</height>
      </rect>
@@ -81,8 +81,8 @@ border-image: url(:/new/picture/background.bmp);}</string>
    <widget class="QPushButton" name="btn_gameToMenu">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>350</y>
+      <x>530</x>
+      <y>280</y>
       <width>93</width>
       <height>31</height>
      </rect>
@@ -94,8 +94,8 @@ border-image: url(:/new/picture/background.bmp);}</string>
    <widget class="QPushButton" name="pushButton_continue">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>410</y>
+      <x>530</x>
+      <y>340</y>
       <width>93</width>
       <height>31</height>
      </rect>
@@ -116,8 +116,8 @@ border-image: url(:/new/picture/background.bmp);}</string>
    <widget class="QPushButton" name="pushButton_restart">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>410</y>
+      <x>530</x>
+      <y>340</y>
       <width>93</width>
       <height>31</height>
      </rect>
@@ -126,13 +126,26 @@ border-image: url(:/new/picture/background.bmp);}</string>
      <string>重新开始</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_hint">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>220</y>
+      <width>93</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>提示</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>642</width>
      <height>26</height>
     </rect>
    </property>

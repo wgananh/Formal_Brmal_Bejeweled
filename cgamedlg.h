@@ -7,12 +7,15 @@
 #include "cmenudlg.h"
 #include "cranklogic.h"
 #include "cthemedlg.h"
+#include <string.h>
 #include <QDebug>
 #include <QTimer>
 #include <QLabel>
 #include <QPixmap>
 #include <QPainter>
 #include <QMouseEvent>
+
+
 
 namespace Ui {
 class CGameDlg;
@@ -62,6 +65,7 @@ private:
     QPoint point2;
     QPixmap pixmap[8];
     QPixmap pixmap_di;
+    QPixmap number[10];
     QPixmap disappear1;
     QPixmap disappear2;
     QPixmap disappear3;
@@ -72,6 +76,8 @@ private:
     int eliminateNumber = 0;
     int isSelected[8][8];//是否选中（0/1）
     int midSituation[8][8];//消除中间过程（1，2，3，对应三张图片）
+    string string_grade;//分数转成string类型
+
 protected:
     void mousePressEvent(QMouseEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);

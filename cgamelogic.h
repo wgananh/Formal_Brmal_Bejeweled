@@ -14,6 +14,7 @@ public:
     int m_aMap[8][8];//0代表空，1~n代表第n种宝石（宝石号码取值为1-8）
     int point[2][2];//记录交换点
 
+
 private:
 
     //*******请在写 “交换函数（swap）” 时，务必判断该布尔变量game_running是否为true，只有为true是才能继续操作*********

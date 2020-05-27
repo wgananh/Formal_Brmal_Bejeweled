@@ -30,10 +30,16 @@ CGameDlg::CGameDlg(QWidget *parent) :
                 path = ":/new/picture/gem" + QString::number(i+1,10) + ".png";//宝石图片
                 pixmap[i].load(path);
             }
+        for(i=0;i<10;i++)
+            {
+                path = ":/new/picture/number" + QString::number(i,10) + ".png";//宝石图片
+                number[i].load(path);
+            }
             pixmap_di.load(":/new/picture/select.png");//被选中显示
             disappear1.load(":/new/picture/tx1.png");
             disappear2.load(":/new/picture/tx2.png");
             disappear3.load(":/new/picture/tx3.png");//三消的动画过程
+
 
     CMusicPlayer *mus = new CMusicPlayer;
     mus->MusicOn();
@@ -48,6 +54,7 @@ CGameDlg::~CGameDlg()
 void CGameDlg::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     int num;
+    //painter.drawPixmap(500,50,20,50,number[0]);530 80
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             num=gamelogic->m_aMap[i][j];
@@ -67,6 +74,9 @@ void CGameDlg::paintEvent(QPaintEvent *event){
                 midSituation[i][j]=0;
             }
         }
+    }
+    for(int i=0;i<string_grade.length();i++){
+        painter.drawPixmap(530+i*20,80,20,50,number[string_grade[i]-48]);
     }
 }
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
@@ -129,6 +139,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             }
                         }
                         g_rank.nGrade += eliminateNumber*10;//分数增加
+                        string_grade=std::to_string(g_rank.nGrade);
                         this->repaint();
                         _sleep(100);
                         for(int i = 0; i < 8; i++){
