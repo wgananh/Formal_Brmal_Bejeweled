@@ -31,16 +31,6 @@
         <file>fish6.png</file>
         <file>fish7.png</file>
         <file>fish8.png</file>
-        <file>number0.png</file>
-        <file>number1.png</file>
-        <file>number2.png</file>
-        <file>number3.png</file>
-        <file>number4.png</file>
-        <file>number5.png</file>
-        <file>number6.png</file>
-        <file>number7.png</file>
-        <file>number8.png</file>
-        <file>number9.png</file>
     </qresource>
     <qresource prefix="/rank">
         <file>rank.ini</file>
