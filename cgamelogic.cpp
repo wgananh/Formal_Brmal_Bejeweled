@@ -142,12 +142,14 @@ void CGameLogic::down()
     {
         for(int j = 7; j >= 0; j--)
         {
-            if(m_aMap[i][j] == 0)
+            if(m_aMap[j][i] == 0)
+            {
                 for(int k = j; k > 0; k--)
                 {
-                    m_aMap[i][k] = m_aMap[i][k - 1];
-                    m_aMap[i][0] = 0;
+                    m_aMap[k][i] = m_aMap[k - 1][i];
                 }
+                m_aMap[0][i] = 0;
+            }
         }
     }
     //下移完毕

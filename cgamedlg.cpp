@@ -92,24 +92,52 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
                     gamelogic->m_aMap[focus_x][focus_y]=temp;
                     this->repaint();
+                    while (gamelogic->eliminate()) {
+                        this->repaint();
+                        _sleep(500);
+                        gamelogic->down();
+                        this->repaint();
+                        _sleep(500);
+                    }
                 }else if(focus_x==x&&focus_y==y+1){//第一次选中的宝石要和右边的交换11
                     int temp;
                     temp=gamelogic->m_aMap[x][y];
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
                     gamelogic->m_aMap[focus_x][focus_y]=temp;
                     this->repaint();
+                    while (gamelogic->eliminate()) {
+                        this->repaint();
+                        _sleep(500);
+                        gamelogic->down();
+                        this->repaint();
+                        _sleep(500);
+                    }
                 }else if(focus_x==x-1&&focus_y==y){//第一次选中的宝石要和上边的交换
                     int temp;
                     temp=gamelogic->m_aMap[x][y];
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
                     gamelogic->m_aMap[focus_x][focus_y]=temp;
                     this->repaint();
+                    while (gamelogic->eliminate()) {
+                        this->repaint();
+                        _sleep(500);
+                        gamelogic->down();
+                        this->repaint();
+                        _sleep(500);
+                    }
                 }else if(focus_x==x+1&&focus_y==y){//第一次选中的宝石要和下边的交换
                     int temp;
                     temp=gamelogic->m_aMap[x][y];
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
                     gamelogic->m_aMap[focus_x][focus_y]=temp;
                     this->repaint();
+                    while (gamelogic->eliminate()) {
+                        this->repaint();
+                        _sleep(500);
+                        gamelogic->down();
+                        this->repaint();
+                        _sleep(500);
+                    }
                 }
             }
         }
