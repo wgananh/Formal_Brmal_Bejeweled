@@ -23,22 +23,22 @@ CGameDlg::CGameDlg(QWidget *parent) :
             midSituation[i][j]=0;//状态为0
         }
     }
-        QString path;
-        int i;
-        for(i=0;i<8;i++)
-            {
-                path = ":/new/picture/gem" + QString::number(i+1,10) + ".png";//宝石图片
-                pixmap[i].load(path);
-            }
-        for(i=0;i<10;i++)
-            {
-                path = ":/new/picture/number" + QString::number(i,10) + ".png";//宝石图片
-                number[i].load(path);
-            }
-            pixmap_di.load(":/new/picture/select.png");//被选中显示
-            disappear1.load(":/new/picture/tx1.png");
-            disappear2.load(":/new/picture/tx2.png");
-            disappear3.load(":/new/picture/tx3.png");//三消的动画过程
+    QString path;
+    int i;
+    for(i=0;i<8;i++)
+    {
+        path = ":/new/picture/gem" + QString::number(i+1,10) + ".png";//宝石图片
+        pixmap[i].load(path);
+    }
+    for(i=0;i<10;i++)
+    {
+        path = ":/new/picture/number" + QString::number(i,10) + ".png";//宝石图片
+        number[i].load(path);
+    }
+    pixmap_di.load(":/new/picture/select.png");//被选中显示
+    disappear1.load(":/new/picture/tx1.png");
+    disappear2.load(":/new/picture/tx2.png");
+    disappear3.load(":/new/picture/tx3.png");//三消的动画过程
 
 
     CMusicPlayer *mus = new CMusicPlayer;
@@ -109,85 +109,87 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                 focus = 0;//标志
 
 
-                    int temp;
-                    temp=gamelogic->m_aMap[x][y];
+                int temp;
+                temp=gamelogic->m_aMap[x][y];
+                gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
+                gamelogic->m_aMap[focus_x][focus_y]=temp;
+                this->repaint();
+                _sleep(100);
+                if(!gamelogic->eliminate(true))//点的两个不能交换
+                {
+                    //换回来
+                    int temp1;
+                    temp1=gamelogic->m_aMap[x][y];
                     gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
-                    gamelogic->m_aMap[focus_x][focus_y]=temp;
+                    gamelogic->m_aMap[focus_x][focus_y]=temp1;
                     this->repaint();
                     _sleep(100);
-                    if(!gamelogic->eliminate(true))//点的两个不能交换
-                    {
-                        //换回来
-                        int temp1;
-                        temp1=gamelogic->m_aMap[x][y];
-                        gamelogic->m_aMap[x][y]=gamelogic->m_aMap[focus_x][focus_y];
-                        gamelogic->m_aMap[focus_x][focus_y]=temp1;
-                        this->repaint();
-                        _sleep(100);
 
+                }
+                while (gamelogic->eliminate()) {
+                    eliminateNumber = 0;
+                    for(int i = 0; i < 8; i++){
+                        for(int j = 0; j < 8; j++)
+                        {
+                            if(gamelogic->m_aMap[i][j] == 0)
+                            {
+                                eliminateNumber++;//这个是0的个数 消除数
+                                midSituation[i][j]=1;//状态1
+
+                            }
+                        }
                     }
-                    while (gamelogic->eliminate()) {
-                        eliminateNumber = 0;
-                        for(int i = 0; i < 8; i++){
-                            for(int j = 0; j < 8; j++)
+                    g_rank.nGrade += eliminateNumber*10;//分数增加
+                    string_grade=std::to_string(g_rank.nGrade);
+                    this->repaint();
+                    _sleep(100);
+                    for(int i = 0; i < 8; i++){
+                        for(int j = 0; j < 8; j++)
+                        {
+                            if(gamelogic->m_aMap[i][j] == 0)
                             {
-                                if(gamelogic->m_aMap[i][j] == 0)
-                                {
-                                    eliminateNumber++;//这个是0的个数 消除数
-                                    midSituation[i][j]=1;//状态1
+                                //更换图片
+                                midSituation[i][j]=2;//状态1
 
-                                }
                             }
                         }
-                        g_rank.nGrade += eliminateNumber*10;//分数增加
-                        string_grade=std::to_string(g_rank.nGrade);
-                        this->repaint();
-                        _sleep(100);
-                        for(int i = 0; i < 8; i++){
-                            for(int j = 0; j < 8; j++)
+                    }
+                    this->repaint();
+                    _sleep(100);
+                    for(int i = 0; i < 8; i++){
+                        for(int j = 0; j < 8; j++)
+                        {
+                            if(gamelogic->m_aMap[i][j] == 0)
                             {
-                                if(gamelogic->m_aMap[i][j] == 0)
-                                {
-                                    //更换图片
-                                    midSituation[i][j]=2;//状态1
+                                //更换图片
+                                midSituation[i][j]=3;//状态1
 
-                                }
                             }
-                            }
-                        this->repaint();
-                        _sleep(100);
-                        for(int i = 0; i < 8; i++){
-                            for(int j = 0; j < 8; j++)
-                            {
-                                if(gamelogic->m_aMap[i][j] == 0)
-                                {
-                                    //更换图片
-                                    midSituation[i][j]=3;//状态1
-
-                                }
-                            }
-                            }
-                        this->repaint();
-                        _sleep(100);
-
-                        while(gamelogic->down()){
-                            this->repaint();
-                            _sleep(100);
                         }
-                        /*this->repaint();
+                    }
+                    this->repaint();
+                    _sleep(100);
+
+                    while(gamelogic->down()){
+                        this->repaint();
+                        _sleep(100);
+                    }
+                    /*this->repaint();
                         _sleep(500);*/
-//                        if(gamelogic->hint())
-//                        {
-//                            gamelogic->BuildMap(g_spc);
-//                            this->repaint();
-//                        }
-                    }
-                    if(g_rank.nGrade / 1000 != g_spc - 5)
-                    {
+                    //                        if(gamelogic->hint())
+                    //                        {
+                    //                            gamelogic->BuildMap(g_spc);
+                    //                            this->repaint();
+                    //                        }
+                }
+                if(g_rank.nGrade / 1000 != g_spc - 5)
+                {
+                    if(g_spc<8){
                         g_spc++;
                         gamelogic->BuildMap(g_spc);
                         this->repaint();
                     }
+                }
 
             }
             else{
