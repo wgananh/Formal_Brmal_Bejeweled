@@ -7,11 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>557</width>
-    <height>471</height>
+    <height>476</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>排行榜</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(247, 255, 222);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">

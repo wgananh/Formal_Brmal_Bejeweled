@@ -101,8 +101,12 @@ void CRankDlg::on_actionClear_triggered()
 {
     for(int i = 0; ranks[i] != 0; i++)
     {
-        delete ranks[i];
-        ranks[i] = 0;
+        ranks[i]->nTime = 0;
+        ranks[i]->nGrade = 0;
+        ranks[i]->strName[0] = '-';
+        ranks[i]->strName[1] = 0;
     }
     CRankDao::saveRank();
+    this->close();
+    this->showRank();
 }
