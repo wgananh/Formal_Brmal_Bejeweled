@@ -209,6 +209,24 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                         ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
                     }
 
+                    //连消的音效播放
+                    if(eliminateNumber>=3&&eliminateNumber<4){
+                        mus->Music_great();
+                    }
+                    if(eliminateNumber>=4&&eliminateNumber<5){
+                        mus->Music_excellent();
+                    }
+                    if(eliminateNumber>=5&&eliminateNumber<6){
+                        mus->Music_amazing();
+                    }
+                    if(eliminateNumber>=6){
+                        mus->Music_unbelievable();
+                    }
+
+                    //消除宝石的音效
+                    mus->Music_eliminate();
+
+
                     this->repaint();
                     _sleep(100);
                     for(int i = 0; i < 8; i++){
@@ -248,8 +266,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     }
                     if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
                     {
-                         gamelogic->BuildMap(g_spc);
-                         this->repaint();
+                        gamelogic->BuildMap(g_spc);
+                        this->repaint();
                     }
                 }
                 if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
@@ -333,6 +351,10 @@ void CGameDlg::update_timebar(){
         ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 0, 0) }");
         ui->progressBar_time->setAlignment(Qt::AlignCenter);
     }
+    if(CurrentValue>4)
+        mus->Music_last_4sOFF();
+    if(CurrentValue==4)
+        mus->Music_last_4sON();
     if (CurrentValue<=0){
         Game_over();
     }
