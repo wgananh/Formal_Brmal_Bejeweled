@@ -197,8 +197,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                 }
                 while (gamelogic->eliminate()) {
                     if(gamelogic->eliminate()){
-                       eli_music=1;
-                       this->repaint();
+                        eli_music=1;
+                        this->repaint();
                     }
                     eliminateNumber = 0;
                     for(int i = 0; i < 8; i++){
@@ -382,9 +382,9 @@ void CGameDlg::Game_start(){
     gemtype="gem"; //默认宝石类型
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
+    g_spc=5;
     gamelogic->BuildMap(g_spc);  //初始化游戏地图
     g_rank.nGrade=0;
-    g_spc=5;
     string_grade="";
     this->repaint();
 
@@ -457,10 +457,10 @@ void CGameDlg::on_pushButton_restart_clicked()
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
 
     //重新生成地图，待完成
+    g_spc=5;
     gamelogic->BuildMap(g_spc);
     gamelogic->setgame_running(true);
     g_rank.nGrade=0;
-    g_spc=5;
     string_grade="";
     this->repaint();
 
