@@ -73,13 +73,46 @@ void CGameDlg::paintEvent(QPaintEvent *event){
                 painter.drawPixmap(20+j*50,50+i*50,50,50,disappear2);
             }else if(midSituation[i][j]==3){
                 painter.drawPixmap(20+j*50,50+i*50,50,50,disappear3);
+                //加分动画
+                if(addScoreSituation==0){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,20,30,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,20,30,number[0]);
+                }else if(addScoreSituation==1){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==2){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==3){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==4){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                }else if(addScoreSituation==5){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==6){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==7){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==8){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }else if(addScoreSituation==9){
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1,40+i*50-(addScoreSituation+1)*1,10,20,number[1]);
+                    painter.drawPixmap(30+j*50+(addScoreSituation+1)*1+20,40+i*50-(addScoreSituation+1)*1,10,20,number[0]);
+                }
                 midSituation[i][j]=0;
             }
         }
     }
     for(int i=0;i<string_grade.length();i++){
-        painter.drawPixmap(530+i*20,80,20,50,number[string_grade[i]-48]);
+        painter.drawPixmap(530+i*20,80,20,50,number[string_grade[i]-48]);//计分板图片更新
     }
+
 }
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
     if(!gamelogic->game_running)return;
@@ -165,12 +198,21 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             {
                                 //更换图片
                                 midSituation[i][j]=3;//状态1
-
+//                                for(int k=0;k<10;k++){
+//                                    addScoreSituation=k;
+//                                    this->repaint();
+//                                    _sleep(100);
+//                                }
                             }
                         }
                     }
                     this->repaint();
                     _sleep(100);
+                    for(int k=0;k<10;k++){
+                        addScoreSituation=k;
+                        this->repaint();
+                        _sleep(35);
+                    }
 
                     while(gamelogic->down()){
                         this->repaint();

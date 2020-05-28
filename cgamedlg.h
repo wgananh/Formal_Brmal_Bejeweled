@@ -70,6 +70,7 @@ private:
     QPixmap disappear2;
     QPixmap disappear3;//消除泡泡的过程
     QPixmap circle;//圆圈
+    QPixmap addscore;//加分
     int mouseflag;
     int focus;
     int focus_x;
@@ -78,6 +79,7 @@ private:
     int isSelected[8][8];//是否选中（0/1）
     int midSituation[8][8];//消除中间过程（1，2，3，对应三张图片）
     string string_grade;//分数转成string类型
+    int addScoreSituation=-1;//加分情况的状态（0-9）
 
 protected:
     void mousePressEvent(QMouseEvent *ev);
