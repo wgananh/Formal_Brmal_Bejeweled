@@ -385,7 +385,6 @@ void CGameDlg::Game_start(){
     g_spc=5;
     gamelogic->BuildMap(g_spc);  //初始化游戏地图
     g_rank.nGrade=0;
-    g_spc=5;
     string_grade="";
     this->repaint();
 
@@ -462,7 +461,6 @@ void CGameDlg::on_pushButton_restart_clicked()
     gamelogic->BuildMap(g_spc);
     gamelogic->setgame_running(true);
     g_rank.nGrade=0;
-    g_spc=5;
     string_grade="";
     this->repaint();
 
