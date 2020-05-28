@@ -197,8 +197,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                 }
                 while (gamelogic->eliminate()) {
                     if(gamelogic->eliminate()){
-                       eli_music=1;
-                       this->repaint();
+                        eli_music=1;
+                        this->repaint();
                     }
                     eliminateNumber = 0;
                     for(int i = 0; i < 8; i++){
@@ -215,15 +215,9 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     eli_number+=eliminateNumber;
                     g_rank.nGrade += eliminateNumber*10;//分数增加
                     string_grade=std::to_string(g_rank.nGrade);
-                    if(eliminateNumber>=6){ //时间奖励，连续消去6个及以上的宝石，时间加5秒
-                        ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
-                    }
-
-
 
                     //消除宝石的音效
                     mus->Music_eliminate();
-
 
                     this->repaint();
                     _sleep(100);
@@ -269,20 +263,20 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                         gamelogic->BuildMap(g_spc);
                         this->repaint();
                     }
-                    _sleep(1000);
                 }
                 //连消的音效播放
-                if(eli_number>=3&&eli_number<4){
+                if(eli_number==5){//五连消
                     mus1->Music_great();
                 }
-                if(eli_number>=4&&eli_number<5){
+                if(eli_number>5&&eli_number<=7){ //6、7连消
                     mus1->Music_excellent();
                 }
-                if(eli_number>=5&&eli_number<6){
+                if(eli_number>7&&eli_number<=9){ //8、9连消
                     mus1->Music_amazing();
                 }
-                if(eli_number>=6){
+                if(eli_number>9){//时间奖励，连续消去10个及以上的宝石，时间加5秒
                     mus1->Music_unbelievable();
+                    ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
                 }
                 if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
                 {
@@ -388,6 +382,7 @@ void CGameDlg::Game_start(){
     gemtype="gem"; //默认宝石类型
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
+    g_spc=5;
     gamelogic->BuildMap(g_spc);  //初始化游戏地图
     g_rank.nGrade=0;
     string_grade="";
@@ -462,6 +457,7 @@ void CGameDlg::on_pushButton_restart_clicked()
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
 
     //重新生成地图，待完成
+    g_spc=5;
     gamelogic->BuildMap(g_spc);
     gamelogic->setgame_running(true);
     g_rank.nGrade=0;
