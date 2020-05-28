@@ -7,6 +7,7 @@
 #include <string>
 #include <QFile>
 #include <QTextStream>
+#include <QDir>
 
 using namespace std;
 
@@ -15,13 +16,12 @@ class CRankDao
 public:
     CRankDao();
 
-    void getRank();
+    static int getRank();
 
-    void saveRank();
+    static void saveRank();
 
 public:
-    RANKINFOR *ranks[10];
-    int totalNumber = 0;
+
 };
 
 #endif // CRANKDAO_H

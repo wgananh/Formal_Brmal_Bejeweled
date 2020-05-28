@@ -3,35 +3,36 @@
 
 CRankDao::CRankDao()
 {
-    for(int i = 0; i < 10; i++)
-        ranks[i] = nullptr;
+
 }
 
-void CRankDao::getRank()
+int CRankDao::getRank()
 {
     QString str;
     int time = 0;
     int grade = 0;
-    QFile file(":/rank/rank.ini");
+    QFile file(QDir::currentPath() + "/rank.ini");
     file.open(QIODevice::ReadOnly);
     QTextStream instream(&file);
     instream >> str;
-    for(totalNumber = 0; str != ""; totalNumber++)
+    int i = 0;
+    for(; str != ""; i++)
     {
-        ranks[totalNumber] = new RANKINFOR();
-        memcpy((*ranks[totalNumber]).strName, str.toStdString().c_str(), 50);
+        ranks[i] = new RANKINFOR();
+        memcpy((*ranks[i]).strName, str.toStdString().c_str(), 50);
         instream >> time;
-        (*ranks[totalNumber]).nTime = time;
+        (*ranks[i]).nTime = time;
         instream >> grade;
-        (*ranks[totalNumber]).nGrade = grade;
+        (*ranks[i]).nGrade = grade;
         instream >> str;
     }
     file.close();
+    return i;
 }
 
 void CRankDao::saveRank()
 {
-    QFile file(":/rank/rank.ini");
+    QFile file(QDir::currentPath() + "/rank.ini");
     file.open(QIODevice::WriteOnly);
     QTextStream outstream(&file);
     for(int i = 0; ranks[i] != nullptr && i < 10; i++)

@@ -2,7 +2,7 @@
 #define CRANKDLG_H
 
 #include <QMainWindow>
-#include "cranklogic.h"
+#include <crankdao.h>
 
 namespace Ui {
 class CRankDlg;
@@ -19,10 +19,9 @@ public:
 
 private slots:
     void on_actionClear_triggered();
-
 private:
-    CRankLogic * cranklogic;
     Ui::CRankDlg *ui;
+    int ranknum;
 
 };
 

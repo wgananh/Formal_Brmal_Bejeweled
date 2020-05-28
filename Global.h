@@ -11,6 +11,8 @@ typedef struct RANKINFORMATION
 
 extern RANKINFOR g_rank;
 
+extern RANKINFOR * ranks[10];
+
 typedef struct PICTUREELEMENT
 {
     int nRow;

@@ -15,8 +15,6 @@
 #include <QPainter>
 #include <QMouseEvent>
 
-
-
 namespace Ui {
 class CGameDlg;
 }
@@ -30,7 +28,7 @@ public:
     ~CGameDlg();
 
     void Music();
-    void Game_over(); //时间耗尽时游戏结束
+    void Game_over(bool saveRank = true); //时间耗尽时游戏结束
 
 signals:
     void gameToMain();
@@ -91,6 +89,7 @@ private:
     int eli_music=0;
     CMusicPlayer *mus = new CMusicPlayer;
     CMusicPlayer *mus1 = new CMusicPlayer;
+    CRankLogic * ranklogic = new CRankLogic();
 
 protected:
     void mousePressEvent(QMouseEvent *ev);

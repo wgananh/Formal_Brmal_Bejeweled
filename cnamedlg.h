@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
+#include <Global.h>
 
 namespace Ui {
 class CNameDlg;
@@ -17,13 +18,13 @@ public:
     ~CNameDlg();
 
 signals:
-    void nameConfirm(const char * name);
+    void nameConfirm();
 
 private slots:
     void on_btn_confirm_clicked();
 
 private:
-    void closeEvent(QCloseEvent *event);
+//    void closeEvent(QCloseEvent *event);
     Ui::CNameDlg *ui;
 };
 

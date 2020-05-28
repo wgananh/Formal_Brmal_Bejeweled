@@ -312,7 +312,7 @@ void CGameDlg::on_btn_gameToMain_clicked()
 {
     this->hide();
     emit gameToMain();
-    Game_over();      //当点击“返回标题”进入bejeweled的最初始界面时，游戏自动结束
+    Game_over(false);      //当点击“返回标题”进入bejeweled的最初始界面时，游戏自动结束
 }
 
 void CGameDlg::doMainToGame()
@@ -407,7 +407,7 @@ void CGameDlg::Game_start(){
 }
 
 //时间耗尽，游戏结束
-void CGameDlg::Game_over(){
+void CGameDlg::Game_over(bool saveRank){
     timer->stop();
     label_image->setGeometry(20,50,400,400);
     label_image->setPixmap(QPixmap::fromImage(*image_gameover));
@@ -420,6 +420,8 @@ void CGameDlg::Game_over(){
     ui->pushButton_restart->show();
     ui->pushButton_restart->setEnabled(true);
 
+    if(saveRank)
+        ranklogic->insertIndex(ranklogic->getIndex());
 }
 
 void CGameDlg::on_pushButton_stop_clicked()

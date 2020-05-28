@@ -3,8 +3,6 @@
 CRankLogic::CRankLogic(QObject *parent) : QObject(parent)
 {
     crankdao = new CRankDao();
-    cnamedlg = new CNameDlg();
-    QObject::connect(cnamedlg, SIGNAL(nameConfirm(const char*)), this, SLOT(doNameConfirm(const char*)));
 }
 
 void CRankLogic::updateRank()
@@ -12,39 +10,33 @@ void CRankLogic::updateRank()
     crankdao->getRank();
 }
 
-int CRankLogic::insertIndex()
+int CRankLogic::getIndex()
 {
-    int i = 0;
-    for(; i < crankdao->totalNumber; i++)
-        if(g_rank.nTime > (*crankdao->ranks[i]).nTime)
+    for(int i = 0; ranks[i] != 0; i++)
+        if(g_rank.nGrade >= (*ranks[i]).nGrade)
+        {
             return i;
-        else if(g_rank.nTime < (*crankdao->ranks[i]).nTime)
-            continue;
+            break;
+        }
         else
-            for(; i < crankdao->totalNumber; i++)
-                if(g_rank.nGrade > (*crankdao->ranks[i]).nGrade)
-                    continue;
-                else
-                    return i;
+            continue;
     return -1;
 }
 
-void CRankLogic::showNameDLg()
-{
-    cnamedlg->show();
-}
 
-void CRankLogic::insertRank(int index)
+void CRankLogic::insertIndex(int rankIndex)
 {
-    int moveNumber = 9 - index;
+    if(rankIndex == -1)
+        return;
+    int moveNumber = 9 - rankIndex;
     for(int i = 0; i < moveNumber; i++)
-        crankdao->ranks[9 - i] = crankdao->ranks[8 - i];
-    crankdao->ranks[index] = &g_rank;
+    {
+        ranks[9 - i]->nTime = ranks[8 - i]->nTime;
+        ranks[9 - i]->nGrade = ranks[8 - i]->nGrade;
+        strcpy(ranks[9 - i]->strName, ranks[8 - i]->strName);
+    }
+    ranks[rankIndex]->nTime = g_rank.nTime;
+    ranks[rankIndex]->nGrade = g_rank.nGrade;
+    strcpy(ranks[rankIndex]->strName, g_rank.strName);
     crankdao->saveRank();
-}
-
-void CRankLogic::doNameConfirm(const char * name)
-{
-    strcpy(g_rank.strName, name);
-    delete [] name;
 }

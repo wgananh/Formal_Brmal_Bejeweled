@@ -15,14 +15,14 @@ CNameDlg::~CNameDlg()
 
 void CNameDlg::on_btn_confirm_clicked()
 {
-    char * name = new char[50];
-    strcpy(name, ui->lineEdit_name->text().toLatin1().toStdString().c_str());
-    emit nameConfirm(name);
+    memset(g_rank.strName, 0, sizeof (char) * 50);
+    strcpy(g_rank.strName, ui->lineEdit_name->text().toLatin1().toStdString().c_str());
     this->close();
+    emit nameConfirm();
 }
 
-void CNameDlg::closeEvent(QCloseEvent *event)
-{
-    event->ignore();
-    on_btn_confirm_clicked();
-}
+//void CNameDlg::closeEvent(QCloseEvent *event)
+//{
+//    event->ignore();
+//    on_btn_confirm_clicked();
+//}

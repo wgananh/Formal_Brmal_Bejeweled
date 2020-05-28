@@ -43,9 +43,6 @@
         <file>number9.png</file>
         <file>circle.png</file>
     </qresource>
-    <qresource prefix="/rank">
-        <file>rank.ini</file>
-    </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>
         <file>music off.png</file>

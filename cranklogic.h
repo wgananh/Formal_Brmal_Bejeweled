@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include "crankdao.h"
-#include "cnamedlg.h"
+#include"crankdlg.h"
 #include "Global.h"
 
 class CRankLogic : public QObject
@@ -12,16 +12,13 @@ class CRankLogic : public QObject
 public:
     explicit CRankLogic(QObject *parent = nullptr);
     void updateRank();
+    int getIndex();
+    void insertIndex(int rankIndex);
+
     CRankDao * crankdao;
 
 private:
-    int insertIndex();
-    void showNameDLg();
-    void insertRank(int index);
-    CNameDlg * cnamedlg;
 
-private slots:
-    void doNameConfirm(const char * name);
 };
 
 #endif // CRANKLOGIC_H
