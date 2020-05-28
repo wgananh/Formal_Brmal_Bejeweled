@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>541</width>
-    <height>377</height>
+    <height>353</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>20</x>
       <y>30</y>
       <width>491</width>
-      <height>231</height>
+      <height>191</height>
      </rect>
     </property>
     <property name="title">
@@ -87,82 +87,17 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QToolButton" name="toolButton_selsect_gemimags">
-     <property name="geometry">
-      <rect>
-       <x>420</x>
-       <y>120</y>
-       <width>47</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_path_gemiamgs">
-     <property name="geometry">
-      <rect>
-       <x>92</x>
-       <y>120</y>
-       <width>311</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
+       <y>130</y>
        <width>72</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>宝石图片</string>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="toolButton_selsect_maskimags">
-     <property name="geometry">
-      <rect>
-       <x>420</x>
-       <y>170</y>
-       <width>47</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_path_maskimags">
-     <property name="geometry">
-      <rect>
-       <x>92</x>
-       <y>170</y>
-       <width>311</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>170</y>
-       <width>72</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>掩码图片</string>
      </property>
     </widget>
     <widget class="QToolButton" name="toolButton_selsect_backgroundiamgs">
@@ -178,12 +113,22 @@
       <string>...</string>
      </property>
     </widget>
+    <widget class="QComboBox" name="comboBox_gemtype">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>130</y>
+       <width>311</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="btn_themeToSet">
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>280</y>
+      <y>250</y>
       <width>141</width>
       <height>41</height>
      </rect>
@@ -196,7 +141,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>280</y>
+      <y>250</y>
       <width>141</width>
       <height>41</height>
      </rect>

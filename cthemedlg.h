@@ -20,27 +20,19 @@ class CThemeDlg : public QMainWindow
 public:
     explicit CThemeDlg(QWidget *parent = nullptr);
     ~CThemeDlg();
+    void initialgemtype();
 
 signals:
     void themeToSet(); //主题设置返回设置的信号
     void set_theme_background_change(QString);
+    void set_theme_gem_change(QString);
 
 private slots:
     void doSetToTheme();
-
     void on_btn_themeToSet_clicked();
-
     void on_radioButton_Theme_default_clicked();
-
     void on_radioButton_Theme_custom_clicked();
-
     void on_toolButton_selsect_backgroundiamgs_clicked();
-
-    void on_toolButton_selsect_gemimags_clicked();
-
-    void on_toolButton_selsect_maskimags_clicked();
-
-
     void on_btn_theme_confirm_clicked();
 
 private:
@@ -50,10 +42,8 @@ private:
     Ui::CThemeDlg *ui;
     CConfig *config = new CConfig();
     //CConfigLogic *configlogic = new CConfigLogic();
-    //默认的背景图片、宝石图片、掩码图片的文件路径
-    QString backgroundimags_path=":/new/picture/background.bmp"
-            ,gemimags_path=":/new/picture/gem1.bmp,gem2.bmp,gem3.bmp,gem4.bmp,gem5.bmp,gem6.bmp,gem7.bmp,gem8.bmp"
-            ,maskiamgs_path;
+    //默认的背景图片的文件路径
+    QString backgroundimags_path=":/new/picture/background.bmp";
 };
 
 #endif // CTHEMEDLG_H

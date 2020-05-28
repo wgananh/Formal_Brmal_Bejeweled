@@ -9,11 +9,12 @@ CGameDlg::CGameDlg(QWidget *parent) :
     ui->setupUi(this);
     timer = new QTimer(this);
     this->hide();
+    connect(parent,SIGNAL(mainToGame()),this,SLOT(Game_start()));
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
     connect(timer, SIGNAL(timeout()), this, SLOT(update_timebar()));
-    connect(parent,SIGNAL(mainToGame()),this,SLOT(Game_start()));
     connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
     connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
+    connect(menu,SIGNAL(game_theme_gem_change(QString)),this,SLOT(do_theme_gem_change(QString)));
     connect(this,SIGNAL(gameToMenu()),this,SLOT(on_pushButton_stop_clicked())); //当点击“菜单”进入menu界面时，游戏自动暂停
 
     focus=0;
@@ -290,6 +291,12 @@ void CGameDlg::do_theme_background_change(QString path){
     this->setStyleSheet("#CGameDlg{border-image:url("+path+");}");
 }
 
+
+void CGameDlg::do_theme_gem_change(QString path){
+    gemtype=path;
+    qDebug()<<gemtype;
+}
+
 void CGameDlg::update_timebar(){
     int CurrentValue=ui->progressBar_time->value();
     CurrentValue--;
@@ -314,6 +321,7 @@ void CGameDlg::update_timebar(){
 //cgamelog界面显示时游戏开始
 void CGameDlg::Game_start(){
     timer->start(1000); //每一秒更新一次timerbar
+    gemtype="gem"; //默认宝石类型
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
     gamelogic->BuildMap(g_spc);  //初始化游戏地图

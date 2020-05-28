@@ -43,6 +43,7 @@ private slots:
     void doMenuToGame();
     void on_btn_gameToMenu_clicked();
     void do_theme_background_change(QString);
+    void do_theme_gem_change(QString);
     void on_pushButton_stop_clicked();
     void update_timebar(); //每隔一秒timebar就更新一次的槽函数
     void Game_start();
@@ -80,7 +81,8 @@ private:
     int midSituation[8][8];//消除中间过程（1，2，3，对应三张图片）
     string string_grade;//分数转成string类型
     int addScoreSituation=-1;//加分情况的状态（0-9）
-    int totaltime=60;
+    int totaltime=60; //时间
+    QString gemtype; //宝石类型，其值为"gem","fish","mine",默认值为"gem"
 
 protected:
     void mousePressEvent(QMouseEvent *ev);

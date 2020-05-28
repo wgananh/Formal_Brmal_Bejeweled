@@ -8,6 +8,7 @@ CThemeDlg::CThemeDlg(QWidget *parent) :
     ui->setupUi(this);
 
     connect(parent,SIGNAL(setToTheme()),this,SLOT(doSetToTheme()));
+    initialgemtype();
     Theme_default_locking();
 }
 
@@ -26,26 +27,27 @@ void CThemeDlg::on_btn_themeToSet_clicked()
     emit themeToSet();
 }
 
+void CThemeDlg::initialgemtype(){
+    ui->comboBox_gemtype->addItem("gem");
+    ui->comboBox_gemtype->addItem("fish");
+    ui->comboBox_gemtype->addItem("mine");
+}
+
 //当主题默认时，lineedit和toolbutton是锁定状态,并初始化lineedit中默认主题的图片路径
 void CThemeDlg::Theme_default_locking(){
     if(ui->radioButton_Theme_default->isChecked()){
         ui->lineEdit_path_backgroundimags->setEnabled(false);
-        ui->lineEdit_path_gemiamgs->setEnabled(false);
-        ui->lineEdit_path_maskimags->setEnabled(false);
         ui->toolButton_selsect_backgroundiamgs->setEnabled(false);
-        ui->toolButton_selsect_gemimags->setEnabled(false);
-        ui->toolButton_selsect_maskimags->setEnabled(false);
+        ui->comboBox_gemtype->setEnabled(false);
         ui->lineEdit_path_backgroundimags->setText(backgroundimags_path);
-        ui->lineEdit_path_gemiamgs->setText(gemimags_path);
-        ui->lineEdit_path_maskimags->setText(maskiamgs_path);
+        ui->comboBox_gemtype->setCurrentIndex(0);
     }
     else{
         ui->lineEdit_path_backgroundimags->setEnabled(true);
-        ui->lineEdit_path_gemiamgs->setEnabled(true);
-        ui->lineEdit_path_maskimags->setEnabled(true);
         ui->toolButton_selsect_backgroundiamgs->setEnabled(true);
-        ui->toolButton_selsect_gemimags->setEnabled(true);
-        ui->toolButton_selsect_maskimags->setEnabled(true);
+        ui->comboBox_gemtype->setEnabled(true);
+        ui->lineEdit_path_backgroundimags->setText(backgroundimags_path);
+        ui->comboBox_gemtype->setCurrentIndex(0);
     }
 }
 
@@ -69,10 +71,6 @@ void CThemeDlg::on_radioButton_Theme_custom_clicked()
     }
     else{
         ui->radioButton_Theme_custom->setChecked(true);
-        //当自定义按钮别选中时，lineedit里的文件路径清空
-        ui->lineEdit_path_backgroundimags->clear();
-        ui->lineEdit_path_gemiamgs->clear();
-        ui->lineEdit_path_maskimags->clear();
     }
     Theme_default_locking();
 }
@@ -86,24 +84,6 @@ void CThemeDlg::on_toolButton_selsect_backgroundiamgs_clicked()
     }
 }
 
-//自定义时，选择宝石图片，将路径传递到CConfig类
-void CThemeDlg::on_toolButton_selsect_gemimags_clicked()
-{
-    QString gem_path = QFileDialog::getOpenFileName(this, "选择宝石文件","/","所有文件 (*.*)");
-    if(!gem_path.isEmpty()){
-        ui->lineEdit_path_gemiamgs->setText(gem_path);
-    }
-}
-
-//自定义时，选择掩码图片，将路径传递到CConfig类
-void CThemeDlg::on_toolButton_selsect_maskimags_clicked()
-{
-    QString mask_path = QFileDialog::getOpenFileName(this, "选择掩码文件","/","所有文件 (*.*)");
-    if(!mask_path.isEmpty()){
-        ui->lineEdit_path_maskimags->setText(mask_path);
-    }
-}
-
 //确定后对背景图片、宝石图片、掩码图片进行更改，将其路径保存到config类中，在configlogic类中对cgame的背景、宝石图片进行具体修改
 void CThemeDlg::on_btn_theme_confirm_clicked()
 {
@@ -113,6 +93,7 @@ void CThemeDlg::on_btn_theme_confirm_clicked()
         config->set_theme_background(background_path);
         emit set_theme_background_change(background_path);
         config->set_theme_gem(gem_path);
+        emit set_theme_gem_change(ui->comboBox_gemtype->currentText());
         config->set_theme_mask(mask_path);
 
         emit themeToSet();

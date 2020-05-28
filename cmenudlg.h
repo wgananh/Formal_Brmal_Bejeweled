@@ -20,6 +20,7 @@ signals:
     void menuToGame();
     void menuToSet();
     void game_theme_background_change(QString);
+    void game_theme_gem_change(QString);
 
 private slots:
     void doGameToMenu();
@@ -31,6 +32,7 @@ private slots:
     void doSetToMenu();
 
     void do_theme_background_change(QString);
+    void do_theme_gem_change(QString);
 
 private:
     Ui::CMenuDlg *ui;
