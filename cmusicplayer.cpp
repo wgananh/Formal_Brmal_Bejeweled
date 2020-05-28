@@ -4,7 +4,10 @@
 
 CMusicPlayer::CMusicPlayer()
 {
-    gameSound->setMedia(QUrl("qrc:/bgm.mp3"));
+    gameList->addMedia(QUrl("qrc:/bgm.mp3"));
+    gameList->setCurrentIndex(1);
+    gameList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    gameSound->setPlaylist(gameList);
     gameSound->setVolume(10);
 }
 
