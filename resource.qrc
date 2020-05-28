@@ -50,5 +50,15 @@
         <file>bgm.mp3</file>
         <file>music off.png</file>
         <file>music on.png</file>
+        <file>eliminate_a.mp3</file>
+        <file>eliminate_b.mp3</file>
+        <file>eliminate_c.mp3</file>
+        <file>excellent.mp3</file>
+        <file>great.mp3</file>
+        <file>last_4s.mp3</file>
+        <file>last_10s.mp3</file>
+        <file>unbelievable.mp3</file>
+        <file>amazing.mp3</file>
+        <file>down.mp3</file>
     </qresource>
 </RCC>
