@@ -16,12 +16,18 @@ CGameDlg::CGameDlg(QWidget *parent) :
     connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
     connect(menu,SIGNAL(game_theme_gem_change(QString)),this,SLOT(do_theme_gem_change(QString)));
     connect(this,SIGNAL(gameToMenu()),this,SLOT(on_pushButton_stop_clicked())); //当点击“菜单”进入menu界面时，游戏自动暂停
+    connect(ui->pushButton_hint,SIGNAL(clicked()),this,SLOT(do_btn_hint()));
 
     focus=0;
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             isSelected[i][j]=0;//初始化为未被选中
             midSituation[i][j]=0;//状态为0
+        }
+    }
+    for(int i=0;i<2;i++){
+        for(int j=0;j<2;j++){
+            gamelogic->point[i][j]=-1;
         }
     }
     QString path;
@@ -64,9 +70,17 @@ void CGameDlg::paintEvent(QPaintEvent *event){
             //qDebug()<<num;
             //painter.drawPixmap(20+i*50,50+j*50,50,50,pixmap[num-1]);
             painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap[num-1]);
-            if(isSelected[i][j]==1){
+            if(isSelected[i][j]==1){//被选中的框
                 painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap_di);
                 isSelected[i][j]=0;
+            }
+            if(i==gamelogic->point[0][0]&&j==gamelogic->point[0][1]){//提示的框
+                painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap_di);
+                gamelogic->point[0][0]=gamelogic->point[0][1]=-1;//初始化
+            }
+            if(i==gamelogic->point[1][0]&&j==gamelogic->point[1][1]){
+                painter.drawPixmap(20+j*50,50+i*50,50,50,pixmap_di);
+                gamelogic->point[1][0]=gamelogic->point[1][1]=-1;//初始化
             }
             if(midSituation[i][j]==1){
                 painter.drawPixmap(20+j*50,50+i*50,50,50,disappear1);
@@ -124,8 +138,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
     xx=ev->x()-20;
     yy=ev->y()-50;
     focus_y=xx/50;
-    focus_x=yy/50;
-    if(focus_x<8){
+    focus_x=yy/50;//把点击的坐标翻译成了宝石矩阵的行列号，便于下面访问算法
+    if(focus_x<8&&focus_y<8){//仅在8*8宝石范围内相应鼠标点击事件
         if(focus==0){
             point.setX(focus_x);
             point.setY(focus_y);//存下了第一次点击的横纵坐标（换算后的，可以直接用来访问矩阵）
@@ -203,11 +217,6 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             {
                                 //更换图片
                                 midSituation[i][j]=3;//状态1
-                                //                                for(int k=0;k<10;k++){
-                                //                                    addScoreSituation=k;
-                                //                                    this->repaint();
-                                //                                    _sleep(100);
-                                //                                }
                             }
                         }
                     }
@@ -216,22 +225,20 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     for(int k=0;k<10;k++){
                         addScoreSituation=k;
                         this->repaint();
-                        _sleep(35);
+                        _sleep(25);
                     }
 
                     while(gamelogic->down()){
                         this->repaint();
                         _sleep(100);
                     }
-                    /*this->repaint();
-                        _sleep(500);*/
-                                            if(gamelogic->hint()==0)
-                                            {
-                                                gamelogic->BuildMap(g_spc);
-                                                this->repaint();
-                                            }
+                    if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
+                    {
+                         gamelogic->BuildMap(g_spc);
+                         this->repaint();
+                    }
                 }
-                if(g_rank.nGrade / 1000 != g_spc - 5)
+                if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
                 {
                     if(g_spc<8){
                         g_spc++;
@@ -247,14 +254,14 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
             }
         }
     }
-
-}
-void CGameDlg::mouseReleaseEvent(QMouseEvent *ev){
-
 }
 
 
-
+void CGameDlg::do_btn_hint(){
+    gamelogic->hint();//这里更新了point[2][2]数组
+    g_rank.nGrade-=30;
+    this->repaint();
+}
 void CGameDlg::on_btn_gameToMain_clicked()
 {
     this->hide();
@@ -395,6 +402,9 @@ void CGameDlg::on_pushButton_restart_clicked()
     //重新生成地图，待完成
     gamelogic->BuildMap(g_spc);
     gamelogic->setgame_running(true);
+    g_rank.nGrade=0;
+    string_grade="";
+    this->repaint();
 
     ui->pushButton_restart->hide();
     ui->pushButton_restart->setEnabled(false);

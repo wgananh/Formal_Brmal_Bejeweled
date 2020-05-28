@@ -49,6 +49,7 @@ private slots:
     void Game_start();
     void on_pushButton_continue_clicked();
     void on_pushButton_restart_clicked();
+    void do_btn_hint();//点击提示
     void paintEvent(QPaintEvent *event);
 
 
@@ -86,7 +87,6 @@ private:
 
 protected:
     void mousePressEvent(QMouseEvent *ev);
-    void mouseReleaseEvent(QMouseEvent *ev);
     QPoint mousePos;//鼠标位置a
 
 };

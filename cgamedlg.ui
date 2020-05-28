@@ -131,8 +131,8 @@ border-image: url(:/new/picture/background.bmp);}</string>
      <rect>
       <x>530</x>
       <y>220</y>
-      <width>93</width>
-      <height>31</height>
+      <width>90</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
