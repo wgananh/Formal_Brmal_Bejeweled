@@ -50,8 +50,22 @@ CGameDlg::CGameDlg(QWidget *parent) :
     disappear3.load(":/new/picture/tx3.png");
 
 
-    CMusicPlayer *mus = new CMusicPlayer;
-    mus->MusicOn();
+
+    //音乐按钮图片
+    QIcon icoOn(":/music on.png");
+    QIcon icoOff(":/music off.png");
+    ui->pushButton->setIcon(icoOn);
+    ui->pushButton_2->setIcon(icoOff);
+    ui->pushButton->setIconSize(QSize(50,50));
+    ui->pushButton->setFlat(true);
+    ui->pushButton_2->setIconSize(QSize(50,50));
+    ui->pushButton_2->setFlat(true);
+    if(music==1){
+        mus->MusicOn();
+    }else{
+        mus->MusicOff();
+    }
+
 }
 
 CGameDlg::~CGameDlg()
@@ -376,6 +390,7 @@ void CGameDlg::on_pushButton_stop_clicked()
     ui->pushButton_continue->show();
     ui->pushButton_stop->setEnabled(false);
     ui->pushButton_continue->setEnabled(true);
+    mus->gameSound->setVolume(0);
 
 }
 
@@ -388,6 +403,8 @@ void CGameDlg::on_pushButton_continue_clicked()
     ui->pushButton_continue->hide();
     ui->pushButton_stop->setEnabled(true);
     ui->pushButton_continue->setEnabled(false);
+    mus->gameSound->setVolume(10);
+
 }
 
 void CGameDlg::on_pushButton_restart_clicked()
@@ -411,4 +428,18 @@ void CGameDlg::on_pushButton_restart_clicked()
     ui->pushButton_stop->show();
     ui->pushButton_stop->setEnabled(true);
 
+}
+
+//音乐开
+void CGameDlg::on_pushButton_clicked()
+{
+    music = 1;
+    mus->gameSound->setVolume(10);
+}
+
+//音乐关
+void CGameDlg::on_pushButton_2_clicked()
+{
+    music = 0;
+    mus->gameSound->setVolume(0);
 }

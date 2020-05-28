@@ -48,5 +48,7 @@
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>
+        <file>music off.png</file>
+        <file>music on.png</file>
     </qresource>
 </RCC>

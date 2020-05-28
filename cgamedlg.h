@@ -53,6 +53,9 @@ private slots:
     void paintEvent(QPaintEvent *event);
 
 
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+
 private:
     Ui::CGameDlg *ui;
     QTimer *timer;
@@ -84,6 +87,8 @@ private:
     int addScoreSituation=-1;//加分情况的状态（0-9）
     int totaltime=60; //时间
     QString gemtype; //宝石类型，其值为"gem","fish","mine",默认值为"gem"
+    int music = 1;
+    CMusicPlayer *mus = new CMusicPlayer;
 
 protected:
     void mousePressEvent(QMouseEvent *ev);
