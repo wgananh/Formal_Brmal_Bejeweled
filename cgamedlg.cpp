@@ -225,11 +225,11 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     }
                     /*this->repaint();
                         _sleep(500);*/
-                    //                        if(gamelogic->hint())
-                    //                        {
-                    //                            gamelogic->BuildMap(g_spc);
-                    //                            this->repaint();
-                    //                        }
+                                            if(gamelogic->hint()==0)
+                                            {
+                                                gamelogic->BuildMap(g_spc);
+                                                this->repaint();
+                                            }
                 }
                 if(g_rank.nGrade / 1000 != g_spc - 5)
                 {
