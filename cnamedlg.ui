@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -28,7 +28,7 @@
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
-         <family>黑体</family>
+         <family>隶书</family>
          <pointsize>18</pointsize>
         </font>
        </property>
@@ -47,7 +47,7 @@
        </property>
        <property name="font">
         <font>
-         <family>黑体</family>
+         <family>隶书</family>
          <pointsize>18</pointsize>
         </font>
        </property>
@@ -63,7 +63,7 @@
       <widget class="QPushButton" name="btn_confirm">
        <property name="font">
         <font>
-         <family>黑体</family>
+         <family>隶书</family>
          <pointsize>18</pointsize>
         </font>
        </property>

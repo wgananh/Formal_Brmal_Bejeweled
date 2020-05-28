@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="btn_mainToGame">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>230</y>
+      <x>180</x>
+      <y>330</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="btn_mainToRank">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>310</y>
+      <x>520</x>
+      <y>330</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -43,11 +43,17 @@
    <widget class="QLabel" name="label_welcome">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>140</y>
-      <width>171</width>
-      <height>20</height>
+      <x>180</x>
+      <y>100</y>
+      <width>461</width>
+      <height>111</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文彩云</family>
+      <pointsize>28</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>您好，请先设置姓名</string>
@@ -57,7 +63,7 @@
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>390</y>
+      <y>230</y>
       <width>93</width>
       <height>28</height>
      </rect>
