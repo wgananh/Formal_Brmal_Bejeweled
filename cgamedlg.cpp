@@ -143,11 +143,12 @@ void CGameDlg::paintEvent(QPaintEvent *event){
         painter.drawPixmap(530+i*20,80,20,50,number[string_grade[i]-48]);//计分板图片更新
     }
     if(eli_music==1){
-        mus->Music_eliminate();
+        //mus1->Music_eliminate();
         eli_music=0;
     }
 }
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
+    int eli_number=0;
     if(!gamelogic->game_running)return;
     QPainter painter(this);
     mouseflag=1;
@@ -211,28 +212,17 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             }
                         }
                     }
+                    eli_number+=eliminateNumber;
                     g_rank.nGrade += eliminateNumber*10;//分数增加
                     string_grade=std::to_string(g_rank.nGrade);
                     if(eliminateNumber>=6){ //时间奖励，连续消去6个及以上的宝石，时间加5秒
                         ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
                     }
 
-                    //连消的音效播放
-                    if(eliminateNumber>=3&&eliminateNumber<4){
-                        mus->Music_great();
-                    }
-                    if(eliminateNumber>=4&&eliminateNumber<5){
-                        mus->Music_excellent();
-                    }
-                    if(eliminateNumber>=5&&eliminateNumber<6){
-                        mus->Music_amazing();
-                    }
-                    if(eliminateNumber>=6){
-                        mus->Music_unbelievable();
-                    }
+
 
                     //消除宝石的音效
-                    //mus->Music_eliminate();
+                    mus->Music_eliminate();
 
 
                     this->repaint();
@@ -279,6 +269,20 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                         gamelogic->BuildMap(g_spc);
                         this->repaint();
                     }
+                    _sleep(1000);
+                }
+                //连消的音效播放
+                if(eli_number>=3&&eli_number<4){
+                    mus1->Music_great();
+                }
+                if(eli_number>=4&&eli_number<5){
+                    mus1->Music_excellent();
+                }
+                if(eli_number>=5&&eli_number<6){
+                    mus1->Music_amazing();
+                }
+                if(eli_number>=6){
+                    mus1->Music_unbelievable();
                 }
                 if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
                 {

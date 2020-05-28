@@ -90,6 +90,7 @@ private:
     int music = 1;
     int eli_music=0;
     CMusicPlayer *mus = new CMusicPlayer;
+    CMusicPlayer *mus1 = new CMusicPlayer;
 
 protected:
     void mousePressEvent(QMouseEvent *ev);
