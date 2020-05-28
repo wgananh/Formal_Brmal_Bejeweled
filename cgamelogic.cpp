@@ -211,115 +211,117 @@ bool CGameLogic::swap(int a,int b,int m,int n){//传入坐标(a,b)和(m,n)
 }
 
 int CGameLogic::hint(){
-    int map[8][8];
-    int i,j;
-    int mid;//交换过渡
-    int tap = 0;//判断找到没有
-    int canExc = 0;
+    if(game_running){
+        int map[8][8];
+        int i,j;
+        int mid;//交换过渡
+        int tap = 0;//判断找到没有
+        int canExc = 0;
 
-    for(i = 0; i < 8; i++){
-            for(j = 0; j < 8; j++){
-                map[i][j]=m_aMap[i][j];
-            }
-        }
-
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 8; j++){
-            mid = map[i][j];
-            map[i][j] = map[i+1][j];
-            map[i+1][j] = mid;
-
-            int a,b;
-            for(b = i; b <= i+1; b++){
-                canExc = 0;
-                for(a = 0; a < 6; a++){
-                    if(map[b][a]==map[b][a+1]&&map[b][a+1]==map[b][a+2]){
-                        canExc = 1;
-                        a = 10; b = 10;
-                    }else{
-                        canExc = 0;
-                    }
-                 }
-             }
-
-             if(canExc == 0){
-                a = j;
-                for(b = 0; b < 6; b++){
-                    if(map[b][a]==map[b+1][a]&&map[b+1][a]==map[b+2][a]){
-                        canExc = 1;
-                        b = 10;
-                     }else{
-                        canExc = 0;
-                     }
-                 }
-              }
-              if(canExc == 1){
-                 point[0][0] = i;
-                 point[0][1] = j;
-                 point[1][0] = i+1;
-                 point[1][1] = j;
-                 return canExc;
-                 tap = 1;
-                 i = 10;j = 10;
-               }else{
-                  mid = map[i][j];
-                  map[i][j] = map[i+1][j];
-                  map[i+1][j] = mid;
-                  tap = 0;
-               }
-
-        }
-
-    }
-
-
-    if(tap == 0){
         for(i = 0; i < 8; i++){
-            for(j = 0; j < 7; j++){
+                for(j = 0; j < 8; j++){
+                    map[i][j]=m_aMap[i][j];
+                }
+            }
+
+        for(i = 0; i < 7; i++){
+            for(j = 0; j < 8; j++){
                 mid = map[i][j];
-                map[i][j] = map[i][j+1];
-                map[i][j+1] = mid;
+                map[i][j] = map[i+1][j];
+                map[i+1][j] = mid;
 
                 int a,b;
                 for(b = i; b <= i+1; b++){
                     canExc = 0;
                     for(a = 0; a < 6; a++){
-                        if(map[a][b]==map[a+1][b]&&map[a+1][b]==map[a+2][b]){
+                        if(map[b][a]==map[b][a+1]&&map[b][a+1]==map[b][a+2]){
                             canExc = 1;
                             a = 10; b = 10;
+                        }else{
+                            canExc = 0;
+                        }
+                     }
+                 }
+
+                 if(canExc == 0){
+                    a = j;
+                    for(b = 0; b < 6; b++){
+                        if(map[b][a]==map[b+1][a]&&map[b+1][a]==map[b+2][a]){
+                            canExc = 1;
+                            b = 10;
                          }else{
                             canExc = 0;
                          }
                      }
-                 }
-                 if(canExc == 0){
-                     a = i;
-                     for(b = 0; b < 6; b++){
-                         if(map[a][b]==map[a][b+1]&&map[a][b+1]==map[a][b+2]){
-                             canExc = 1;
-                             a = 10; b = 10;
-                          }else{
-                             canExc = 0;
-                          }
-                     }
                   }
                   if(canExc == 1){
-                      point[0][0] = i;
-                      point[0][1] = j;
-                      point[1][0] = i+1;
-                      point[1][1] = j;
-                      return canExc;
-                      tap = 1;
-                      i = 10;j=10;
+                     point[0][0] = i;
+                     point[0][1] = j;
+                     point[1][0] = i+1;
+                     point[1][1] = j;
+                     return canExc;
+                     tap = 1;
+                     i = 10;j = 10;
                    }else{
-                       mid = map[i][j];
-                       map[i][j] = map[i+1][j];
-                       map[i+1][j] = mid;
-                       tap = 0;
+                      mid = map[i][j];
+                      map[i][j] = map[i+1][j];
+                      map[i+1][j] = mid;
+                      tap = 0;
                    }
+
+            }
+
+        }
+
+
+        if(tap == 0){
+            for(i = 0; i < 8; i++){
+                for(j = 0; j < 7; j++){
+                    mid = map[i][j];
+                    map[i][j] = map[i][j+1];
+                    map[i][j+1] = mid;
+
+                    int a,b;
+                    for(b = i; b <= i+1; b++){
+                        canExc = 0;
+                        for(a = 0; a < 6; a++){
+                            if(map[a][b]==map[a+1][b]&&map[a+1][b]==map[a+2][b]){
+                                canExc = 1;
+                                a = 10; b = 10;
+                             }else{
+                                canExc = 0;
+                             }
+                         }
+                     }
+                     if(canExc == 0){
+                         a = i;
+                         for(b = 0; b < 6; b++){
+                             if(map[a][b]==map[a][b+1]&&map[a][b+1]==map[a][b+2]){
+                                 canExc = 1;
+                                 a = 10; b = 10;
+                              }else{
+                                 canExc = 0;
+                              }
+                         }
+                      }
+                      if(canExc == 1){
+                          point[0][0] = i;
+                          point[0][1] = j;
+                          point[1][0] = i+1;
+                          point[1][1] = j;
+                          return canExc;
+                          tap = 1;
+                          i = 10;j=10;
+                       }else{
+                           mid = map[i][j];
+                           map[i][j] = map[i+1][j];
+                           map[i+1][j] = mid;
+                           tap = 0;
+                       }
+                }
             }
         }
-    }
 
-    return canExc;
+        return canExc;
+    }
 }
