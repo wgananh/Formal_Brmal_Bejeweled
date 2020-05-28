@@ -176,6 +176,10 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     }
                     g_rank.nGrade += eliminateNumber*10;//分数增加
                     string_grade=std::to_string(g_rank.nGrade);
+                    if(eliminateNumber>=6){ //时间奖励，连续消去6个及以上的宝石，时间加5秒
+                        ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
+                    }
+
                     this->repaint();
                     _sleep(100);
                     for(int i = 0; i < 8; i++){
@@ -198,11 +202,11 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             {
                                 //更换图片
                                 midSituation[i][j]=3;//状态1
-//                                for(int k=0;k<10;k++){
-//                                    addScoreSituation=k;
-//                                    this->repaint();
-//                                    _sleep(100);
-//                                }
+                                //                                for(int k=0;k<10;k++){
+                                //                                    addScoreSituation=k;
+                                //                                    this->repaint();
+                                //                                    _sleep(100);
+                                //                                }
                             }
                         }
                     }
@@ -289,15 +293,15 @@ void CGameDlg::do_theme_background_change(QString path){
 void CGameDlg::update_timebar(){
     int CurrentValue=ui->progressBar_time->value();
     CurrentValue--;
-    if(CurrentValue>150&&CurrentValue<=300){
+    if(CurrentValue>(totaltime/2)&&CurrentValue<=totaltime){
         ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
         ui->progressBar_time->setAlignment(Qt::AlignCenter);
     }
-    if(CurrentValue>20&&CurrentValue<=150){
+    if(CurrentValue>(totaltime/6)&&CurrentValue<=(totaltime/2)){
         ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 255, 0) }");
         ui->progressBar_time->setAlignment(Qt::AlignCenter);
     }
-    if(CurrentValue<=20){
+    if(CurrentValue<=(totaltime/6)){
         ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 0, 0) }");
         ui->progressBar_time->setAlignment(Qt::AlignCenter);
     }
@@ -317,8 +321,8 @@ void CGameDlg::Game_start(){
     string_grade="";
     this->repaint();
 
-
-    ui->progressBar_time->setValue(60);
+    ui->progressBar_time->setMaximum(totaltime);
+    ui->progressBar_time->setValue(totaltime);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
     ui->pushButton_continue->hide(); //初始时"继续游戏"按钮不可见
@@ -375,7 +379,8 @@ void CGameDlg::on_pushButton_restart_clicked()
 {
     timer->start();
     label_image->hide();
-    ui->progressBar_time->setValue(60);
+    ui->progressBar_time->setMaximum(totaltime);
+    ui->progressBar_time->setValue(totaltime);
     ui->progressBar_time->setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 255, 0) }");
     ui->progressBar_time->setAlignment(Qt::AlignCenter);
 
