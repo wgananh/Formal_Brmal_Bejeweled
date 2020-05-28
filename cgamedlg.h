@@ -88,6 +88,7 @@ private:
     int totaltime=60; //时间
     QString gemtype; //宝石类型，其值为"gem","fish","mine",默认值为"gem"
     int music = 1;
+    int eli_music=0;
     CMusicPlayer *mus = new CMusicPlayer;
 
 protected:

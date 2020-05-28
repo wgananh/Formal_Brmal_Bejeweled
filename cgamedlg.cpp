@@ -19,6 +19,7 @@ CGameDlg::CGameDlg(QWidget *parent) :
     connect(ui->pushButton_hint,SIGNAL(clicked()),this,SLOT(do_btn_hint()));
 
     focus=0;
+    //gemtype="gem";
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             isSelected[i][j]=0;//初始化为未被选中
@@ -34,7 +35,7 @@ CGameDlg::CGameDlg(QWidget *parent) :
     int i;
     for(i=0;i<8;i++)
     {
-        path = ":/new/picture/gem" + QString::number(i+1,10) + ".png";//宝石图片
+        path = ":/new/picture/gem"  + QString::number(i+1,10) + ".png";//宝石图片
         pixmap[i].load(path);
     }
     for(i=0;i<10;i++)
@@ -141,7 +142,10 @@ void CGameDlg::paintEvent(QPaintEvent *event){
     for(int i=0;i<string_grade.length();i++){
         painter.drawPixmap(530+i*20,80,20,50,number[string_grade[i]-48]);//计分板图片更新
     }
-
+    if(eli_music==1){
+        mus->Music_eliminate();
+        eli_music=0;
+    }
 }
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
     if(!gamelogic->game_running)return;
@@ -191,6 +195,10 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
 
                 }
                 while (gamelogic->eliminate()) {
+                    if(gamelogic->eliminate()){
+                       eli_music=1;
+                       this->repaint();
+                    }
                     eliminateNumber = 0;
                     for(int i = 0; i < 8; i++){
                         for(int j = 0; j < 8; j++)
@@ -224,7 +232,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     }
 
                     //消除宝石的音效
-                    mus->Music_eliminate();
+                    //mus->Music_eliminate();
 
 
                     this->repaint();
@@ -249,6 +257,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             {
                                 //更换图片
                                 midSituation[i][j]=3;//状态1
+                                //mus->Music_eliminate();
                             }
                         }
                     }
@@ -261,6 +270,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     }
 
                     while(gamelogic->down()){
+                        mus->Music_down();
                         this->repaint();
                         _sleep(100);
                     }
@@ -333,6 +343,13 @@ void CGameDlg::do_theme_background_change(QString path){
 
 void CGameDlg::do_theme_gem_change(QString path){
     gemtype=path;
+    int i;
+    for(i=0;i<8;i++)
+    {
+        path = ":/new/picture/" + gemtype + QString::number(i+1,10) + ".png";//宝石图片
+        pixmap[i].load(path);
+    }
+    this->repaint();
     qDebug()<<gemtype;
 }
 

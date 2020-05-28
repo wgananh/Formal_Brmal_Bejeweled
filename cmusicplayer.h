@@ -1,4 +1,4 @@
-#ifndef CMUSICPLAYER_H
+ #ifndef CMUSICPLAYER_H
 #define CMUSICPLAYER_H
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
