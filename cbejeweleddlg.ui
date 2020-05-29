@@ -21,7 +21,7 @@ border-image: url(:/new/picture/background_2.png);}</string>
    <widget class="QPushButton" name="btn_mainToGame">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>180</x>
       <y>307</y>
       <width>131</width>
       <height>51</height>
@@ -38,7 +38,7 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
    <widget class="QPushButton" name="btn_mainToRank">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>480</x>
       <y>307</y>
       <width>131</width>
       <height>51</height>
