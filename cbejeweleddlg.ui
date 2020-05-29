@@ -7,21 +7,29 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>CBejeweledDlg</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#CBejeweledDlg{
+border-image: url(:/new/picture/background_2.png);}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btn_mainToGame">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>330</y>
-      <width>93</width>
-      <height>28</height>
+      <x>170</x>
+      <y>307</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 11pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="text">
      <string>开始游戏</string>
@@ -30,11 +38,15 @@
    <widget class="QPushButton" name="btn_mainToRank">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>330</y>
-      <width>93</width>
-      <height>28</height>
+      <x>490</x>
+      <y>307</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 11pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="text">
      <string>排行榜</string>
@@ -62,11 +74,15 @@
    <widget class="QPushButton" name="btn_name">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>330</x>
       <y>230</y>
-      <width>93</width>
-      <height>28</height>
+      <width>131</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 11pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="text">
      <string>设置姓名</string>
