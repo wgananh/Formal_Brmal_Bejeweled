@@ -14,7 +14,8 @@
    <string>排行榜</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(247, 255, 222);</string>
+   <string notr="true">background-color: rgb(247, 255, 222);
+selection-background-color: rgb(255, 0, 0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
