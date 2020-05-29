@@ -83,7 +83,7 @@ private:
     int midSituation[8][8];//消除中间过程（1，2，3，对应三张图片）
     string string_grade;//分数转成string类型
     int addScoreSituation=-1;//加分情况的状态（0-9）
-    int totaltime=10; //时间
+    int totaltime=60; //时间
     QString gemtype; //宝石类型，其值为"gem","fish","mine",默认值为"gem"
     int music = 1;
     int eli_music=0;
