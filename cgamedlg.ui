@@ -32,15 +32,15 @@ border-image: url(:/new/picture/background.bmp);}</string>
     </property>
     <property name="font">
      <font>
-      <family>幼圆</family>
+      <family>微软雅黑</family>
       <pointsize>10</pointsize>
-      <weight>50</weight>
+      <weight>9</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;幼圆&quot;;</string>
+     <string notr="true">font: 75 10pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="maximum">
      <number>60</number>
@@ -62,9 +62,9 @@ border-image: url(:/new/picture/background.bmp);}</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>400</y>
+      <y>390</y>
       <width>93</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -79,9 +79,9 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>340</y>
+      <y>330</y>
       <width>93</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -96,9 +96,9 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>280</y>
+      <y>270</y>
       <width>93</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -113,9 +113,9 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>340</y>
+      <y>330</y>
       <width>93</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -139,9 +139,9 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>340</y>
+      <y>330</y>
       <width>93</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -156,9 +156,9 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>220</y>
+      <y>209</y>
       <width>90</width>
-      <height>30</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
