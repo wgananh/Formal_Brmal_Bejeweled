@@ -44,6 +44,13 @@
         <file>circle.png</file>
         <file>pushbotton_background.png</file>
         <file>background_2.png</file>
+        <file>gem-1.png</file>
+        <file>gem-2.png</file>
+        <file>gem-3.png</file>
+        <file>gem-4.png</file>
+        <file>gem-5.png</file>
+        <file>gem-6.png</file>
+        <file>gem-7.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>
