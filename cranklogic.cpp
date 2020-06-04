@@ -3,6 +3,7 @@
 CRankLogic::CRankLogic(QObject *parent) : QObject(parent)
 {
     crankdao = new CRankDao();
+    crankdlg = CRankDlg::getCRankDlg();
 }
 
 void CRankLogic::updateRank()
@@ -14,6 +15,9 @@ int CRankLogic::getIndex()
 {
     int length = crankdao->getRank();
     int index;
+
+
+
     for(index = length; index > 0; index--)
         if(g_rank.nGrade < ranks[index - 1]->nGrade)
             break;
@@ -27,14 +31,25 @@ void CRankLogic::insertIndex(int rankIndex)
 {
     if(rankIndex == 10)
         return;
-    int moveNumber = 9 - rankIndex;
-    delete ranks[9];
+
+    int length = crankdao->getRank();
+    int index;
+    for(index = 0; index < length; index++)
+    {
+        if(!strcmp(g_rank.strName, ranks[index]->strName))
+        {
+            if(g_rank.nGrade <= ranks[index]->nGrade)
+                return;
+            else
+                break;
+        }
+    }
+
+    delete ranks[index];
+    int moveNumber = index - rankIndex;
     for(int i = 0; i < moveNumber; i++)
     {
-//        ranks[9 - i]->nTime = ranks[8 - i]->nTime;
-//        ranks[9 - i]->nGrade = ranks[8 - i]->nGrade;
-//        strcpy(ranks[9 - i]->strName, ranks[8 - i]->strName);
-        ranks[9 - i] = ranks[8 - i];
+        ranks[index - i] = ranks[index - 1 - i];
     }
     ranks[rankIndex] = new RANKINFOR();
     ranks[rankIndex]->nTime = g_rank.nTime;
@@ -43,4 +58,5 @@ void CRankLogic::insertIndex(int rankIndex)
         g_rank.strName[0] = '-';
     strcpy(ranks[rankIndex]->strName, g_rank.strName);
     crankdao->saveRank();
+    crankdlg->showRank();
 }

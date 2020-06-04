@@ -13,16 +13,17 @@ class CRankDlg : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit CRankDlg(QWidget *parent = nullptr);
+    static CRankDlg * getCRankDlg();
     void showRank();
     ~CRankDlg();
 
 private slots:
     void on_actionClear_triggered();
+
 private:
+    explicit CRankDlg(QWidget *parent = nullptr);
+    static CRankDlg * crankdlg;
     Ui::CRankDlg *ui;
     int ranknum;
-
 };
-
 #endif // CRANKDLG_H

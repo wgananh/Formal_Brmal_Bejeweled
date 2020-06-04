@@ -8,8 +8,6 @@ CGameDlg::CGameDlg(QWidget *parent) :
 {
     ui->setupUi(this);
     timer = new QTimer(this);
-    this->hide();
-    connect(parent,SIGNAL(mainToGame()),this,SLOT(Game_start()));
     connect(parent, SIGNAL(mainToGame()), this, SLOT(doMainToGame()));
     connect(timer, SIGNAL(timeout()), this, SLOT(update_timebar()));
     connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
@@ -302,16 +300,19 @@ void CGameDlg::do_btn_hint(){
     g_rank.nGrade-=30;
     this->repaint();
 }
+
 void CGameDlg::on_btn_gameToMain_clicked()
 {
     this->hide();
-    emit gameToMain();
     Game_over(false);      //当点击“返回标题”进入bejeweled的最初始界面时，游戏自动结束
+    emit gameToMain();
 }
 
 void CGameDlg::doMainToGame()
 {
     this->show();
+    this->setDisabled(false);
+    this->Game_start();
 }
 
 

@@ -1,12 +1,20 @@
 #include "crankdlg.h"
 #include "ui_crankdlg.h"
-#include <QDebug>
+
+CRankDlg * CRankDlg::crankdlg = nullptr;
+
+CRankDlg *CRankDlg::getCRankDlg()
+{
+    if(crankdlg == nullptr)
+        crankdlg = new CRankDlg;
+    return crankdlg;
+}
+
 CRankDlg::CRankDlg(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CRankDlg)
 {
     ui->setupUi(this);
-
 }
 
 void CRankDlg::showRank()
@@ -110,3 +118,4 @@ void CRankDlg::on_actionClear_triggered()
     this->close();
     this->showRank();
 }
+

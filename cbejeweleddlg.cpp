@@ -8,7 +8,7 @@ CBejeweledDlg::CBejeweledDlg(QWidget *parent)
     ui->setupUi(this);
 
     game = new CGameDlg(this);
-    rank = new CRankDlg(this);
+    rank = CRankDlg::getCRankDlg();
     name = new CNameDlg(this);
     connect(game, SIGNAL(gameToMain()), this, SLOT(doGameToMain()));
     connect(name, SIGNAL(nameConfirm()), this, SLOT(doNameConfirm()));
@@ -23,12 +23,13 @@ CBejeweledDlg::~CBejeweledDlg()
 
 void CBejeweledDlg::on_btn_mainToGame_clicked()
 {
-    this->hide();
+    this->setDisabled(true);
     emit mainToGame();
 }
 
 void CBejeweledDlg::doGameToMain()
 {
+    this->setDisabled(false);
     this->show();
 }
 

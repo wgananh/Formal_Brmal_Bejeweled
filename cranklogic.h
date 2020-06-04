@@ -14,10 +14,8 @@ public:
     void updateRank();
     int getIndex();
     void insertIndex(int rankIndex);
-
     CRankDao * crankdao;
-
-private:
+    CRankDlg * crankdlg;
 
 };
 
