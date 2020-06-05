@@ -51,6 +51,14 @@
         <file>gem-5.png</file>
         <file>gem-6.png</file>
         <file>gem-7.png</file>
+        <file>fruit1.png</file>
+        <file>fruit2.png</file>
+        <file>fruit3.png</file>
+        <file>fruit4.png</file>
+        <file>fruit5.png</file>
+        <file>fruit6.png</file>
+        <file>fruit7.png</file>
+        <file>fruit8.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>

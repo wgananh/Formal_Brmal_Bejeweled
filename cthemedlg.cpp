@@ -29,7 +29,7 @@ void CThemeDlg::on_btn_themeToSet_clicked()
 
 void CThemeDlg::initialgemtype(){
     ui->comboBox_gemtype->addItem("gem");
-    ui->comboBox_gemtype->addItem("fish");
+    ui->comboBox_gemtype->addItem("fruit");
     ui->comboBox_gemtype->addItem("mine");
 }
 
