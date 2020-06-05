@@ -62,6 +62,7 @@
         <file>bomb.png</file>
         <file>exchange.png</file>
         <file>hammer.png</file>
+        <file>connection.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>

@@ -485,3 +485,32 @@ void CGameDlg::on_pushButton_2_clicked()
     music = 0;
     mus->gameSound->setVolume(0);
 }
+
+
+
+
+//************* 道具部分 ***************
+
+//消除任意一个宝石
+void CGameDlg::on_pushButton_hammer_clicked()
+{
+
+}
+
+//交换地图中任意两个宝石
+void CGameDlg::on_pushButton_exchange_clicked()
+{
+
+}
+
+//消除地图中任意一行（还是列，暂时不确定）的宝石
+void CGameDlg::on_pushButton_connection_clicked()
+{
+
+}
+
+//产生爆炸，消除一定范围（数量待定）的宝石
+void CGameDlg::on_pushButton_bomb_clicked()
+{
+
+}

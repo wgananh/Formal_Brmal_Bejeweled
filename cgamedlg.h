@@ -54,6 +54,14 @@ private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
 
+    void on_pushButton_hammer_clicked();
+
+    void on_pushButton_exchange_clicked();
+
+    void on_pushButton_connection_clicked();
+
+    void on_pushButton_bomb_clicked();
+
 private:
     Ui::CGameDlg *ui;
     QTimer *timer;
