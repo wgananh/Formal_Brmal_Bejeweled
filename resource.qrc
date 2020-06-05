@@ -59,6 +59,9 @@
         <file>fruit6.png</file>
         <file>fruit7.png</file>
         <file>fruit8.png</file>
+        <file>bomb.png</file>
+        <file>exchange.png</file>
+        <file>hammer.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>

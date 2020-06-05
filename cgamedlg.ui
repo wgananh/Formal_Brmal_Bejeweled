@@ -62,7 +62,7 @@ border-image: url(:/new/picture/background.bmp);}</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>390</y>
+      <y>401</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -79,7 +79,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>330</y>
+      <y>341</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -96,7 +96,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>270</y>
+      <y>281</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -113,7 +113,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>330</y>
+      <y>341</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -139,7 +139,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>330</y>
+      <y>341</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -156,7 +156,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>209</y>
+      <y>220</y>
       <width>90</width>
       <height>41</height>
      </rect>
@@ -173,8 +173,8 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>340</y>
+      <x>520</x>
+      <y>170</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -186,14 +186,71 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>390</y>
+      <x>570</x>
+      <y>170</y>
       <width>41</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_hammer">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>280</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/picture/hammer.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_exchange">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>340</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/picture/exchange.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>390</y>
+      <width>61</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/picture/bomb.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
