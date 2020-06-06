@@ -352,27 +352,27 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                         _sleep(100);
                     }
                 }
-                //连消的音效播放
-                if(eli_number==5){//五连消
-                    mus1->Music_great();
-                }
-                if(eli_number>5&&eli_number<=7){ //6、7连消
-                    mus1->Music_excellent();
-                }
-                if(eli_number>7&&eli_number<=9){ //8、9连消
-                    mus1->Music_amazing();
-                }
-                if(eli_number>9){//时间奖励，连续消去10个及以上的宝石，时间加5秒
-                    mus1->Music_unbelievable();
-                    ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
-                }
+
             }
             else{
                 point.setX(focus_x);
                 point.setY(focus_y);
             }
         }
-
+        //连消的音效播放
+        if(eli_number==5){//五连消
+            mus1->Music_great();
+        }
+        if(eli_number>5&&eli_number<=7){ //6、7连消
+            mus1->Music_excellent();
+        }
+        if(eli_number>7&&eli_number<=9){ //8、9连消
+            mus1->Music_amazing();
+        }
+        if(eli_number>9){//时间奖励，连续消去10个及以上的宝石，时间加5秒
+            mus1->Music_unbelievable();
+            ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
+        }
         if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
         {
             if(g_spc<8){
