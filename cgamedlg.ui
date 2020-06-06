@@ -199,9 +199,9 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
    <widget class="QPushButton" name="pushButton_hammer">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>430</x>
       <y>230</y>
-      <width>41</width>
+      <width>51</width>
       <height>41</height>
      </rect>
     </property>
@@ -225,7 +225,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/new/picture/exchange.png);</string>
+     <string notr="true">image: url(:/new/picture/cross.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -244,7 +244,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/new/picture/bomb.png);</string>
+     <string notr="true">image: url(:/new/picture/boom.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -263,7 +263,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/new/picture/connection.png);</string>
+     <string notr="true">image: url(:/new/picture/color.png);</string>
     </property>
     <property name="text">
      <string/>

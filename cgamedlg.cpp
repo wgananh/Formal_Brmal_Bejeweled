@@ -187,11 +187,11 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                 color=false;
             }
 
-//            while(gamelogic->down()){
-//                mus->Music_down();
-//                this->repaint();
-//                _sleep(100);
-//            }
+            //            while(gamelogic->down()){
+            //                mus->Music_down();
+            //                this->repaint();
+            //                _sleep(100);
+            //            }
 
 
             do{
@@ -244,11 +244,11 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                 ui->label_color->setText(QString::number(g_props_color));
                 this->repaint();
                 _sleep(100);
-//                for(int k=0;k<10;k++){
-//                    addScoreSituation=k;
-//                    this->repaint();
-//                    _sleep(25);
-//                }
+                //                for(int k=0;k<10;k++){
+                //                    addScoreSituation=k;
+                //                    this->repaint();
+                //                    _sleep(25);
+                //                }
                 while(gamelogic->down()){
                     mus->Music_down();
                     this->repaint();
@@ -498,9 +498,9 @@ void CGameDlg::Game_start(){
     cross=false;
     boom=false;
     color=false;
-    //    g_props_boom=1;
-    //    g_props_color=1;
-    //    g_props_cross=1;
+    g_props_boom=1;
+    g_props_color=1;
+    g_props_cross=1;
     ui->label_hammer->setText("0");
     ui->label_boom->setText(QString::number(g_props_boom));
     ui->label_color->setText(QString::number(g_props_color));
@@ -579,9 +579,9 @@ void CGameDlg::on_pushButton_restart_clicked()
     cross=false;
     boom=false;
     color=false;
-//    g_props_boom=0;
-//    g_props_color=0;
-//    g_props_cross=0;
+    g_props_boom=1;
+    g_props_color=1;
+    g_props_cross=1;
     ui->label_hammer->setText("0");
     ui->label_boom->setText(QString::number(g_props_boom));
     ui->label_color->setText(QString::number(g_props_color));

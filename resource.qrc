@@ -63,6 +63,9 @@
         <file>exchange.png</file>
         <file>hammer.png</file>
         <file>connection.png</file>
+        <file>boom.png</file>
+        <file>color.png</file>
+        <file>cross.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>
