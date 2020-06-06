@@ -166,103 +166,96 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
         }
 
 
-//        //道具部分
-//        if(props&&focus==0){
-//            if(boom){
-//                gamelogic->propsEliminate(1,focus_x,focus_y);
-//                ui->label_boom->setText(QString::number(g_props_boom));
-//                props=false;
-//                boom=false;
-//            }
-//            if(cross){
-//                gamelogic->propsEliminate(2,focus_x,focus_y);
-//                ui->label_cross->setText(QString::number(g_props_cross));
-//                props=false;
-//                cross=false;
-//            }
-//            if(color){
-//                gamelogic->propsEliminate(3,focus_x,focus_y);
-//                ui->label_color->setText(QString::number(g_props_color));
-//                props=false;
-//                color=false;
-//            }
+        //道具部分
+        if(props){
+            if(boom){
+                gamelogic->propsEliminate(1,focus_x,focus_y);
+                ui->label_boom->setText(QString::number(g_props_boom));
+                props=false;
+                boom=false;
+            }
+            if(cross){
+                gamelogic->propsEliminate(2,focus_x,focus_y);
+                ui->label_cross->setText(QString::number(g_props_cross));
+                props=false;
+                cross=false;
+            }
+            if(color){
+                gamelogic->propsEliminate(3,focus_x,focus_y);
+                ui->label_color->setText(QString::number(g_props_color));
+                props=false;
+                color=false;
+            }
 
-//            while (gamelogic->eliminate()) {
-//                if(gamelogic->eliminate()){
-//                    eli_music=1;
-//                    this->repaint();
-//                }
-//                eliminateNumber = 0;
-//                for(int i = 0; i < 8; i++){
-//                    for(int j = 0; j < 8; j++)
-//                    {
-//                        if(gamelogic->m_aMap[i][j] == 0)
-//                        {
-//                            eliminateNumber++;//这个是0的个数 消除数
-//                            midSituation[i][j]=1;//状态1
-
-//                        }
-//                    }
-//                }
-//                eli_number+=eliminateNumber;
-//                g_rank.nGrade += eliminateNumber*10;//分数增加
-//                string_grade=std::to_string(g_rank.nGrade);
-
-//                //消除宝石的音效
-//                mus->Music_eliminate();
-
+//            while(gamelogic->down()){
+//                mus->Music_down();
 //                this->repaint();
 //                _sleep(100);
-//                for(int i = 0; i < 8; i++){
-//                    for(int j = 0; j < 8; j++)
-//                    {
-//                        if(gamelogic->m_aMap[i][j] == 0)
-//                        {
-//                            //更换图片
-//                            midSituation[i][j]=2;//状态1
+//            }
 
-//                        }
-//                    }
-//                }
-//                this->repaint();
-//                _sleep(100);
-//                for(int i = 0; i < 8; i++){
-//                    for(int j = 0; j < 8; j++)
-//                    {
-//                        if(gamelogic->m_aMap[i][j] == 0)
-//                        {
-//                            //更换图片
-//                            midSituation[i][j]=3;//状态1
-//                            //mus->Music_eliminate();
-//                        }
-//                    }
-//                }
-//                this->repaint();
-//                _sleep(100);
+
+            do{
+                eli_music=1;
+                eliminateNumber = 0;
+                for(int i = 0; i < 8; i++){
+                    for(int j = 0; j < 8; j++)
+                    {
+                        if(gamelogic->m_aMap[i][j] == 0)
+                        {
+                            eliminateNumber++;//这个是0的个数 消除数
+                            midSituation[i][j]=1;//状态1
+                        }
+                    }
+                }
+                eli_number+=eliminateNumber;
+                g_rank.nGrade += eliminateNumber*5;//分数增加
+                string_grade=std::to_string(g_rank.nGrade);
+
+                //消除宝石的音效
+                mus->Music_eliminate();
+
+                this->repaint();
+                _sleep(100);
+                for(int i = 0; i < 8; i++){
+                    for(int j = 0; j < 8; j++)
+                    {
+                        if(gamelogic->m_aMap[i][j] == 0)
+                        {
+                            //更换图片
+                            midSituation[i][j]=2;//状态1
+
+                        }
+                    }
+                }
+                this->repaint();
+                _sleep(100);
+                for(int i = 0; i < 8; i++){
+                    for(int j = 0; j < 8; j++)
+                    {
+                        if(gamelogic->m_aMap[i][j] == 0)
+                        {
+                            //更换图片
+                            midSituation[i][j]=3;//状态1
+                        }
+                    }
+                }
+                ui->label_boom->setText(QString::number(g_props_boom));
+                ui->label_cross->setText(QString::number(g_props_cross));
+                ui->label_color->setText(QString::number(g_props_color));
+                this->repaint();
+                _sleep(100);
 //                for(int k=0;k<10;k++){
 //                    addScoreSituation=k;
 //                    this->repaint();
 //                    _sleep(25);
 //                }
-
-//                while(gamelogic->down()){
-//                    mus->Music_down();
-//                    this->repaint();
-//                    _sleep(100);
-//                }
-//                if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
-//                {
-//                    gamelogic->BuildMap(g_spc);
-//                    this->repaint();
-//                }
-//            }
-//        }
-
-
-
-
-
-
+                while(gamelogic->down()){
+                    mus->Music_down();
+                    this->repaint();
+                    _sleep(100);
+                }
+            } while(gamelogic->eliminate());
+        }
 
         else{
             int x=point.x();
@@ -307,7 +300,6 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             {
                                 eliminateNumber++;//这个是0的个数 消除数
                                 midSituation[i][j]=1;//状态1
-
                             }
                         }
                     }
@@ -326,7 +318,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             if(gamelogic->m_aMap[i][j] == 0)
                             {
                                 //更换图片
-                                midSituation[i][j]=2;//状态1
+                                midSituation[i][j]=2;//状态2
 
                             }
                         }
@@ -339,11 +331,13 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                             if(gamelogic->m_aMap[i][j] == 0)
                             {
                                 //更换图片
-                                midSituation[i][j]=3;//状态1
-                                //mus->Music_eliminate();
+                                midSituation[i][j]=3;//状态3
                             }
                         }
                     }
+                    ui->label_boom->setText(QString::number(g_props_boom));
+                    ui->label_cross->setText(QString::number(g_props_cross));
+                    ui->label_color->setText(QString::number(g_props_color));
                     this->repaint();
                     _sleep(100);
                     for(int k=0;k<10;k++){
@@ -356,11 +350,6 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                         mus->Music_down();
                         this->repaint();
                         _sleep(100);
-                    }
-                    if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
-                    {
-                        gamelogic->BuildMap(g_spc);
-                        this->repaint();
                     }
                 }
                 //连消的音效播放
@@ -377,20 +366,25 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     mus1->Music_unbelievable();
                     ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
                 }
-                if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
-                {
-                    if(g_spc<8){
-                        g_spc++;
-                        gamelogic->BuildMap(g_spc);
-                        this->repaint();
-                    }
-                }
-
             }
             else{
                 point.setX(focus_x);
                 point.setY(focus_y);
             }
+        }
+
+        if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
+        {
+            if(g_spc<8){
+                g_spc++;
+                gamelogic->BuildMap(g_spc);
+                this->repaint();
+            }
+        }
+        if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
+        {
+            gamelogic->BuildMap(g_spc);
+            this->repaint();
         }
     }
 }
