@@ -287,11 +287,8 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                     _sleep(100);
 
                 }
-                while (gamelogic->eliminate()) {
-                    if(gamelogic->eliminate()){
-                        eli_music=1;
-                        this->repaint();
-                    }
+                while (gamelogic->eliminate()){
+                    eli_music=1;
                     eliminateNumber = 0;
                     for(int i = 0; i < 8; i++){
                         for(int j = 0; j < 8; j++)

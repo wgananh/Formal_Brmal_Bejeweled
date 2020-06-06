@@ -107,7 +107,6 @@ bool CGameLogic::eliminate(bool noChange)
 
     /*横排判断消除*/
     for(int j = 0; j < 8; j++)
-    {
         for(int i = 0; i < 6; i++)
         {
             current = m_aMap[i][j];
@@ -117,17 +116,12 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[i + 1][j] = 0;
                 temp_aMap[i + 2][j] = 0;
                 /*五连*/
-                if(i + 4 < 8 && temp_aMap[j][i + 3] == current && temp_aMap[j][i + 4] == current)
-                {
-                    g_props_color++;
+                if(i + 4 < 8 && m_aMap[j][i + 3] == current && m_aMap[j][i + 4] == current)
                     five_inline = true;
-                }
                 isChange = true;
             }
         }
-    }
     for(int j = 0; j < 8; j++)
-    {
         for(int i = 0; i < 6; i++)
         {
             current = m_aMap[j][i];
@@ -137,7 +131,7 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[j][i + 1] = 0;
                 temp_aMap[j][i + 2] = 0;
                 /*五连*/
-                if(i + 4 < 8 && temp_aMap[j][i + 3] == current && temp_aMap[j][i + 4] == current)
+                if(i + 4 < 8 && m_aMap[j][i + 3] == current && m_aMap[j][i + 4] == current)
                 {
                     g_props_color++;
                     five_inline = true;
@@ -145,7 +139,6 @@ bool CGameLogic::eliminate(bool noChange)
                 isChange = true;
             }
         }
-    }
     if(noChange)
         return isChange;
 
