@@ -4,6 +4,10 @@ RANKINFOR g_rank;
 
 RANKINFOR * ranks[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-PICELEM m_aMap[8][8];
-
 int g_spc = 5;
+
+int g_props_boom = 0;
+
+int g_props_cross = 0;
+
+int g_props_color = 0;

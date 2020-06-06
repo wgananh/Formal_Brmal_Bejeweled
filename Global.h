@@ -20,8 +20,13 @@ typedef struct PICTUREELEMENT
     int nPicNum;
 } PICELEM;
 
-extern PICELEM m_aMap[8][8];
-
 extern int g_spc;
+
+extern int g_props_boom;
+
+extern int g_props_cross;
+
+extern int g_props_color;
+
 
 #endif // GLOBAL_H

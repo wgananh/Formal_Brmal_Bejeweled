@@ -98,10 +98,14 @@ bool CGameLogic::eliminate(bool noChange)
 {
     if(!game_running)
         return false;
-    bool isChange = false;
-    int current = 0;
+    bool five_inline = false;//五个字以上的消除是否在一条线
+    int eliminate_number[8] = {0, 0, 0, 0, 0, 0, 0, 0};//各色宝石消除数量
+    bool isChange = false;//当前图是否可消除
+    int current = 0;//当前宝石颜色
     int temp_aMap[8][8];
     memcpy(temp_aMap, m_aMap, sizeof(m_aMap));
+
+    /*横排判断消除*/
     for(int j = 0; j < 8; j++)
     {
         for(int i = 0; i < 6; i++)
@@ -112,6 +116,12 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[i][j] = 0;
                 temp_aMap[i + 1][j] = 0;
                 temp_aMap[i + 2][j] = 0;
+                /*五连*/
+                if(i + 4 < 8 && temp_aMap[j][i + 3] == current && temp_aMap[j][i + 4] == current)
+                {
+                    g_props_color++;
+                    five_inline = true;
+                }
                 isChange = true;
             }
         }
@@ -126,13 +136,41 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[j][i] = 0;
                 temp_aMap[j][i + 1] = 0;
                 temp_aMap[j][i + 2] = 0;
+                /*五连*/
+                if(i + 4 < 8 && temp_aMap[j][i + 3] == current && temp_aMap[j][i + 4] == current)
+                {
+                    g_props_color++;
+                    five_inline = true;
+                }
                 isChange = true;
             }
         }
     }
     if(noChange)
         return isChange;
+
+    /*统计各色宝石消除量*/
+    for(int i = 0; i < 8; i++)
+        for(int j = 0; j < 8; j++)
+            if(temp_aMap[i][j] == 0)
+                eliminate_number[m_aMap[i][j]]++;
+
+    /*统计道具*/
+    for(int i = 0; i < 8; i++)
+    {
+        if(eliminate_number[i] >= 5)
+        {
+            if(five_inline == true)
+                g_props_color++;
+            else
+                g_props_cross++;
+        }
+        else if(eliminate_number[i] == 4)
+            g_props_boom++;
+    }
+
     memcpy(m_aMap, temp_aMap, sizeof(m_aMap));
+
     return isChange;
 }
 
@@ -151,7 +189,6 @@ bool CGameLogic::down()//每调用一次全图可以下移的下移一次
                 {
                     m_aMap[k][i] = m_aMap[k - 1][i];
                 }
-
                 m_aMap[0][i] = rand()%g_spc + 1;
                 isChanged = true;
                 break;
@@ -159,6 +196,47 @@ bool CGameLogic::down()//每调用一次全图可以下移的下移一次
         }
     }
     return isChanged;
+}
+
+void CGameLogic::propsEliminate(int propsSpc, int x, int y)
+{
+    switch (propsSpc) {
+    case 1: //3*3boom
+        m_aMap[x][y] = 0;
+        if(y != 0)
+            m_aMap[x][y - 1] = 0;
+        if(y != 7)
+            m_aMap[x][y + 1] = 0;
+        if(x != 0)
+            m_aMap[x - 1][y] = 0;
+        if(x != 0 && y != 0)
+            m_aMap[x - 1][y - 1] = 0;
+        if(x != 0 && y != 7)
+            m_aMap[x - 1][y + 1] = 0;
+        if(x != 7)
+            m_aMap[x + 1][y] = 0;
+        if(x != 7 && y != 0)
+            m_aMap[x + 1][y - 1] = 0;
+        if(x != 7 && y != 7)
+            m_aMap[x + 1][y + 1] = 0;
+        g_props_boom--;
+        break;
+    case 2: //line boom
+        for(int i = 0; i < 8; i++)
+            m_aMap[x][i] = 0;
+        for(int i = 0; i < 8; i++)
+            m_aMap[i][y] = 0;
+        g_props_cross--;
+        break;
+    case 3: //same gem delete
+        int gemspc = m_aMap[x][y];
+        for(int i = 0; i < 8; i++)
+            for(int j = 0; j < 8; j++)
+                if(m_aMap[i][j] == gemspc)
+                    m_aMap[i][j] = 0;
+        g_props_color--;
+        break;
+    }
 }
 
 void CGameLogic::setgame_running(bool game_running){
