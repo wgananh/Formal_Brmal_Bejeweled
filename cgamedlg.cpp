@@ -163,7 +163,108 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
             isSelected[focus_x][focus_y]=1;
             focus=1;
             this->repaint();//其实是调用了paintevent
-        }else{
+        }
+
+
+//        //道具部分
+//        if(props&&focus==0){
+//            if(boom){
+//                gamelogic->propsEliminate(1,focus_x,focus_y);
+//                ui->label_boom->setText(QString::number(g_props_boom));
+//                props=false;
+//                boom=false;
+//            }
+//            if(cross){
+//                gamelogic->propsEliminate(2,focus_x,focus_y);
+//                ui->label_cross->setText(QString::number(g_props_cross));
+//                props=false;
+//                cross=false;
+//            }
+//            if(color){
+//                gamelogic->propsEliminate(3,focus_x,focus_y);
+//                ui->label_color->setText(QString::number(g_props_color));
+//                props=false;
+//                color=false;
+//            }
+
+//            while (gamelogic->eliminate()) {
+//                if(gamelogic->eliminate()){
+//                    eli_music=1;
+//                    this->repaint();
+//                }
+//                eliminateNumber = 0;
+//                for(int i = 0; i < 8; i++){
+//                    for(int j = 0; j < 8; j++)
+//                    {
+//                        if(gamelogic->m_aMap[i][j] == 0)
+//                        {
+//                            eliminateNumber++;//这个是0的个数 消除数
+//                            midSituation[i][j]=1;//状态1
+
+//                        }
+//                    }
+//                }
+//                eli_number+=eliminateNumber;
+//                g_rank.nGrade += eliminateNumber*10;//分数增加
+//                string_grade=std::to_string(g_rank.nGrade);
+
+//                //消除宝石的音效
+//                mus->Music_eliminate();
+
+//                this->repaint();
+//                _sleep(100);
+//                for(int i = 0; i < 8; i++){
+//                    for(int j = 0; j < 8; j++)
+//                    {
+//                        if(gamelogic->m_aMap[i][j] == 0)
+//                        {
+//                            //更换图片
+//                            midSituation[i][j]=2;//状态1
+
+//                        }
+//                    }
+//                }
+//                this->repaint();
+//                _sleep(100);
+//                for(int i = 0; i < 8; i++){
+//                    for(int j = 0; j < 8; j++)
+//                    {
+//                        if(gamelogic->m_aMap[i][j] == 0)
+//                        {
+//                            //更换图片
+//                            midSituation[i][j]=3;//状态1
+//                            //mus->Music_eliminate();
+//                        }
+//                    }
+//                }
+//                this->repaint();
+//                _sleep(100);
+//                for(int k=0;k<10;k++){
+//                    addScoreSituation=k;
+//                    this->repaint();
+//                    _sleep(25);
+//                }
+
+//                while(gamelogic->down()){
+//                    mus->Music_down();
+//                    this->repaint();
+//                    _sleep(100);
+//                }
+//                if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
+//                {
+//                    gamelogic->BuildMap(g_spc);
+//                    this->repaint();
+//                }
+//            }
+//        }
+
+
+
+
+
+
+
+        else{
             int x=point.x();
             int y=point.y();//取得第一次点击的横纵坐标与新的坐标相比较
             isSelected[focus_x][focus_y]=1;
@@ -295,6 +396,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
 }
 
 
+
 void CGameDlg::do_btn_hint(){
     gamelogic->hint();//这里更新了point[2][2]数组
     g_rank.nGrade-=30;
@@ -400,6 +502,18 @@ void CGameDlg::Game_start(){
     ui->pushButton_restart->setEnabled(false); //初始时"重新开始"按钮不可用
     ui->pushButton_stop->setEnabled(true); //初始时"暂停游戏"按钮可用
     label_image->hide(); //初始时暂停游戏以及结束的图片都隐藏
+
+    props=false;
+    cross=false;
+    boom=false;
+    color=false;
+    //    g_props_boom=1;
+    //    g_props_color=1;
+    //    g_props_cross=1;
+    ui->label_hammer->setText("0");
+    ui->label_boom->setText(QString::number(g_props_boom));
+    ui->label_color->setText(QString::number(g_props_color));
+    ui->label_cross->setText(QString::number(g_props_cross));
 }
 
 //时间耗尽，游戏结束
@@ -470,6 +584,18 @@ void CGameDlg::on_pushButton_restart_clicked()
     ui->pushButton_stop->show();
     ui->pushButton_stop->setEnabled(true);
 
+    props=false;
+    cross=false;
+    boom=false;
+    color=false;
+//    g_props_boom=0;
+//    g_props_color=0;
+//    g_props_cross=0;
+    ui->label_hammer->setText("0");
+    ui->label_boom->setText(QString::number(g_props_boom));
+    ui->label_color->setText(QString::number(g_props_color));
+    ui->label_cross->setText(QString::number(g_props_cross));
+
 }
 
 //音乐开
@@ -500,17 +626,26 @@ void CGameDlg::on_pushButton_hammer_clicked()
 //交换地图中任意两个宝石
 void CGameDlg::on_pushButton_exchange_clicked()
 {
-
+    if(g_props_cross!=0){
+        props=true;
+        cross=true;
+    }
 }
 
 //消除地图中任意一行（还是列，暂时不确定）的宝石
 void CGameDlg::on_pushButton_connection_clicked()
 {
-
+    if(g_props_color!=0){
+        props=true;
+        color=true;
+    }
 }
 
 //产生爆炸，消除一定范围（数量待定）的宝石
 void CGameDlg::on_pushButton_bomb_clicked()
 {
-
+    if(g_props_boom){
+        props=true;
+        boom=true;
+    }
 }

@@ -98,6 +98,7 @@ private:
     CMusicPlayer *mus = new CMusicPlayer;
     CMusicPlayer *mus1 = new CMusicPlayer;
     CRankLogic * ranklogic = new CRankLogic();
+    bool props=false,boom=false,cross=false,color=false;
 
 protected:
     void mousePressEvent(QMouseEvent *ev);
