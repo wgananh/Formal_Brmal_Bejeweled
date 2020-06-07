@@ -67,6 +67,16 @@
         <file>color.png</file>
         <file>cross.png</file>
         <file>background3.jpg</file>
+        <file>d0.png</file>
+        <file>d1.png</file>
+        <file>d2.png</file>
+        <file>d3.png</file>
+        <file>d4.png</file>
+        <file>d5.png</file>
+        <file>d6.png</file>
+        <file>d7.png</file>
+        <file>d8.png</file>
+        <file>d9.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>
