@@ -4,7 +4,6 @@
 typedef struct RANKINFORMATION
 {
     char strName[50];
-    int nTime;
     int nGrade;
     int nRank;
 } RANKINFOR;

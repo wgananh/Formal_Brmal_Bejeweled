@@ -14,10 +14,9 @@ void CRankLogic::updateRank()
 int CRankLogic::getIndex()
 {
     int length = crankdao->getRank();
+    if(length == 0)
+        return 0;
     int index;
-
-
-
     for(index = length; index > 0; index--)
         if(g_rank.nGrade < ranks[index - 1]->nGrade)
             break;
@@ -29,9 +28,8 @@ int CRankLogic::getIndex()
 
 void CRankLogic::insertIndex(int rankIndex)
 {
-    if(rankIndex == 10)
+    if(rankIndex == 10 || g_rank.strName[0] == 0)
         return;
-
     int length = crankdao->getRank();
     int index;
     for(index = 0; index < length; index++)
@@ -52,10 +50,7 @@ void CRankLogic::insertIndex(int rankIndex)
         ranks[index - i] = ranks[index - 1 - i];
     }
     ranks[rankIndex] = new RANKINFOR();
-    ranks[rankIndex]->nTime = g_rank.nTime;
     ranks[rankIndex]->nGrade = g_rank.nGrade;
-    if(g_rank.strName[0] == 0)
-        g_rank.strName[0] = '-';
     strcpy(ranks[rankIndex]->strName, g_rank.strName);
     crankdao->saveRank();
     crankdlg->showRank();

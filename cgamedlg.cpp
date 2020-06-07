@@ -484,7 +484,7 @@ void CGameDlg::update_timebar(){
     if(CurrentValue==4)
         mus->Music_last_4sON();
     if (CurrentValue<=0){
-        Game_over(false);
+        Game_over(true);
     }
     ui->progressBar_time->setValue(CurrentValue);
 }
