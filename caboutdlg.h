@@ -2,6 +2,9 @@
 #define CABOUTDLG_H
 
 #include <QMainWindow>
+#include <QDebug>
+#include <QDate>
+#include <QTime>
 
 namespace Ui {
 class CAboutDlg;
@@ -17,6 +20,7 @@ public:
 
 private:
     Ui::CAboutDlg *ui;
+    QString lastupdatetime;
 };
 
 #endif // CABOUTDLG_H

@@ -7,11 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>600</height>
+    <height>364</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>关于</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/new/picture/background3.jpg);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
@@ -20,7 +23,7 @@
       <x>20</x>
       <y>20</y>
       <width>391</width>
-      <height>481</height>
+      <height>291</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -38,7 +41,7 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>50</y>
        <width>71</width>
        <height>31</height>
@@ -54,7 +57,7 @@
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>220</x>
        <y>50</y>
        <width>71</width>
        <height>31</height>
@@ -71,7 +74,7 @@ color: rgb(0, 0, 255);</string>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>100</y>
        <width>71</width>
        <height>41</height>
@@ -87,10 +90,10 @@ color: rgb(0, 0, 255);</string>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>100</y>
-       <width>311</width>
-       <height>41</height>
+       <x>170</x>
+       <y>90</y>
+       <width>181</width>
+       <height>71</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -101,13 +104,16 @@ color: rgb(0, 0, 255);</string>
       <string>于沛尧、李卓航、吴华昊、王乐言、王汉功</string>
      </property>
      <property name="textFormat">
-      <enum>Qt::AutoText</enum>
+      <enum>Qt::PlainText</enum>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>160</y>
        <width>71</width>
        <height>51</height>
@@ -123,7 +129,7 @@ color: rgb(0, 0, 255);</string>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>220</x>
        <y>170</y>
        <width>61</width>
        <height>31</height>
@@ -156,9 +162,9 @@ color: rgb(0, 0, 255);</string>
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>180</x>
        <y>230</y>
-       <width>91</width>
+       <width>171</width>
        <height>31</height>
       </rect>
      </property>
@@ -167,7 +173,7 @@ color: rgb(0, 0, 255);</string>
 color: rgb(0, 0, 255);</string>
      </property>
      <property name="text">
-      <string>2020.06.07</string>
+      <string/>
      </property>
     </widget>
    </widget>

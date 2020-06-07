@@ -42,7 +42,9 @@ void CMusicDlg::on_Button_sure_clicked()
 //        ui->radioButton_3->setChecked(false);
 //        ui->radioButton_4->setChecked(true);
 //    }
+    this->hide();
     emit set_music_background_change(ui->textEdit->toPlainText());
+    emit musicToSet();
 }
 
 void CMusicDlg::on_btn_path_clicked()

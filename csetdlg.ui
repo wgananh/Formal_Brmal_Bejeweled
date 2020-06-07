@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>50</y>
+      <y>190</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -35,7 +35,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>120</y>
+      <y>50</y>
       <width>93</width>
       <height>41</height>
      </rect>
@@ -52,7 +52,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>190</y>
+      <y>120</y>
       <width>93</width>
       <height>41</height>
      </rect>
