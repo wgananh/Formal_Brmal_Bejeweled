@@ -64,3 +64,10 @@ void CMusicPlayer::Music_last_4sOFF(){
 void CMusicPlayer::Music_down(){
     gameSound_down->play();
 }
+
+void CMusicPlayer::Music_switch(QString musicPath){
+    gameList->removeMedia(gameList->currentIndex());
+    gameList->addMedia(QUrl::fromLocalFile(musicPath));
+    gameSound->setPlaylist(gameList);
+    gameSound->play();
+}

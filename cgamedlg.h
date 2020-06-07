@@ -44,6 +44,7 @@ private slots:
     void on_btn_gameToMenu_clicked();
     void do_theme_background_change(QString);
     void do_theme_gem_change(QString);
+    void do_music_background_change(QString);
     void on_pushButton_stop_clicked();
     void update_timebar(); //每隔一秒timebar就更新一次的槽函数
     void Game_start();

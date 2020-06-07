@@ -2,7 +2,9 @@
 #define CMUSICDLG_H
 
 #include <QMainWindow>
+#include <QFileDialog>
 #include "cconfig.h"
+#include "cmusicplayer.h"
 
 namespace Ui {
 class CMusicDlg;
@@ -13,7 +15,7 @@ class CMusicDlg : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit CMusicDlg(QWidget *parent = nullptr);
+    CMusicDlg(QWidget *parent = nullptr);
     ~CMusicDlg();
 
 private slots:
@@ -22,9 +24,11 @@ private slots:
 
     void on_Button_sure_clicked();
 
+    void on_btn_path_clicked();
+
 signals:
     void musicToSet();
-
+    void set_music_background_change(QString);
 private:
     Ui::CMusicDlg *ui;
 

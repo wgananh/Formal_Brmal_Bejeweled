@@ -12,6 +12,7 @@ CGameDlg::CGameDlg(QWidget *parent) :
     connect(menu,SIGNAL(menuToGame()),this,SLOT(doMenuToGame()));
     connect(menu,SIGNAL(game_theme_background_change(QString)),this,SLOT(do_theme_background_change(QString)));
     connect(menu,SIGNAL(game_theme_gem_change(QString)),this,SLOT(do_theme_gem_change(QString)));
+    connect(menu,SIGNAL(game_music_background_change(QString)),this,SLOT(do_music_background_change(QString)));
     connect(this,SIGNAL(gameToMenu()),this,SLOT(on_pushButton_stop_clicked())); //当点击“菜单”进入menu界面时，游戏自动暂停
     connect(ui->pushButton_hint,SIGNAL(clicked()),this,SLOT(do_btn_hint()));
 
@@ -456,6 +457,11 @@ void CGameDlg::do_theme_gem_change(QString path){
     }
     this->repaint();
     qDebug()<<gemtype;
+}
+
+void CGameDlg::do_music_background_change(QString path)
+{
+    mus->Music_switch(path);
 }
 
 void CGameDlg::update_timebar(){

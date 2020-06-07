@@ -29,6 +29,7 @@ public:
     void Music_last_4sON();
     void Music_last_4sOFF();
     void Music_down();
+    void Music_switch(QString musicPath);
 };
 
 #endif // CMUSICPLAYER_H
