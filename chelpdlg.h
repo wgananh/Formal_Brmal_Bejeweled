@@ -14,7 +14,6 @@ class CHelpDlg : public QMainWindow
 public:
     explicit CHelpDlg(QWidget *parent = nullptr);
     ~CHelpDlg();
-    void Maintohelp();
 
 
 private:

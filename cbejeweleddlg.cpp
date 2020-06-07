@@ -10,6 +10,8 @@ CBejeweledDlg::CBejeweledDlg(QWidget *parent)
     game = new CGameDlg(this);
     rank = CRankDlg::getCRankDlg();
     name = new CNameDlg(this);
+    help = new CHelpDlg(this);
+    about = new CAboutDlg(this);
     connect(game, SIGNAL(gameToMain()), this, SLOT(doGameToMain()));
     connect(name, SIGNAL(nameConfirm()), this, SLOT(doNameConfirm()));
     ui->label_welcome->setText("您好！请先设置姓名");
@@ -50,7 +52,6 @@ void CBejeweledDlg::on_btn_name_clicked()
 
 void CBejeweledDlg::on_btn_help_clicked()
 {
-    qDebug()<<"sds";
     help->show();
 }
 

@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>463</width>
-    <height>581</height>
+    <width>413</width>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>帮助</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-image: url(:/new/picture/background3.jpg);</string>
@@ -20,7 +20,7 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>20</x>
       <y>20</y>
       <width>371</width>
       <height>491</height>
@@ -55,7 +55,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>463</width>
+     <width>413</width>
      <height>26</height>
     </rect>
    </property>
