@@ -1,6 +1,5 @@
 #include "cgamedlg.h"
 #include "ui_cgamedlg.h"
-#include "cmusicplayer.h"
 
 CGameDlg::CGameDlg(QWidget *parent) :
     QMainWindow(parent),
@@ -48,7 +47,10 @@ CGameDlg::CGameDlg(QWidget *parent) :
     disappear3.load(":/new/picture/tx3.png");//三消的动画过程
     disappear3.load(":/new/picture/tx3.png");
 
-
+    //道具按钮
+    this->ui->pushButton_boom->setCheckable(true);
+    this->ui->pushButton_cross->setCheckable(true);
+    this->ui->pushButton_color->setCheckable(true);
 
     //音乐按钮图片
     QIcon icoOn(":/music on.png");
@@ -145,6 +147,13 @@ void CGameDlg::paintEvent(QPaintEvent *event){
         eli_music=0;
     }
 }
+
+void CGameDlg::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event);
+    emit gameToMain();
+}
+
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
     int eli_number=0;
     if(!gamelogic->game_running)return;
@@ -169,29 +178,26 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
         //道具部分
         if(props){
             if(boom){
+                this->ui->pushButton_boom->setChecked(false);
                 gamelogic->propsEliminate(1,focus_x,focus_y);
                 ui->label_boom->setText(QString::number(g_props_boom));
                 props=false;
                 boom=false;
             }
-            if(cross){
+            else if(cross){
+                this->ui->pushButton_cross->setChecked(false);
                 gamelogic->propsEliminate(2,focus_x,focus_y);
                 ui->label_cross->setText(QString::number(g_props_cross));
                 props=false;
                 cross=false;
             }
-            if(color){
+            else if(color){
+                this->ui->pushButton_color->setChecked(false);
                 gamelogic->propsEliminate(3,focus_x,focus_y);
                 ui->label_color->setText(QString::number(g_props_color));
                 props=false;
                 color=false;
             }
-
-            //            while(gamelogic->down()){
-            //                mus->Music_down();
-            //                this->repaint();
-            //                _sleep(100);
-            //            }
 
 
             do{
@@ -378,10 +384,17 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
                 this->repaint();
             }
         }
-        if(gamelogic->hint()==0)//当前整个地图没有可以交换产生三连->重新构图
+        if(!gamelogic->hint())//当前整个地图没有可以交换产生三连->重新构图
         {
             gamelogic->BuildMap(g_spc);
             this->repaint();
+        }
+        else//复原因为调用hint而改变的提示框位置
+        {
+            gamelogic->point[0][0] = -1;
+            gamelogic->point[0][1] = -1;
+            gamelogic->point[1][0] = -1;
+            gamelogic->point[1][1] = -1;
         }
     }
 }
@@ -477,6 +490,9 @@ void CGameDlg::Game_start(){
 
     gamelogic->setgame_running(true); //初始设置游戏处于运行状态
     g_spc=5;
+    g_props_boom = 1;
+    g_props_color = 1;
+    g_props_cross = 1;
     gamelogic->BuildMap(g_spc);  //初始化游戏地图
     g_rank.nGrade=0;
     string_grade="";
@@ -564,6 +580,9 @@ void CGameDlg::on_pushButton_restart_clicked()
 
     //重新生成地图，待完成
     g_spc=5;
+    g_props_boom = 1;
+    g_props_color = 1;
+    g_props_cross = 1;
     gamelogic->BuildMap(g_spc);
     gamelogic->setgame_running(true);
     g_rank.nGrade=0;
@@ -614,29 +633,62 @@ void CGameDlg::on_pushButton_hammer_clicked()
 
 }
 
-//交换地图中任意两个宝石
-void CGameDlg::on_pushButton_exchange_clicked()
+//消除地图中十字上的宝石
+void CGameDlg::on_pushButton_cross_clicked()
 {
-    if(g_props_cross!=0){
+    if(g_props_cross == 0 || (props && !cross))
+    {
+        this->ui->pushButton_cross->setChecked(false);
+        return;
+    }
+    if(cross == true){
+        props = false;
+        cross = false;
+        this->ui->pushButton_cross->setChecked(false);
+    }
+    else if(!props && !cross){
         props=true;
         cross=true;
+        this->ui->pushButton_cross->setChecked(true);
     }
 }
 
-//消除地图中任意一行（还是列，暂时不确定）的宝石
-void CGameDlg::on_pushButton_connection_clicked()
+//消除地图中相同颜色的宝石
+void CGameDlg::on_pushButton_color_clicked()
 {
-    if(g_props_color!=0){
+    if(g_props_color == 0 || (props && !color))
+    {
+        this->ui->pushButton_color->setChecked(false);
+        return;
+    }
+    if(color){
+        props = false;
+        color = false;
+        this->ui->pushButton_color->setChecked(false);
+    }
+    else if(!props && !color){
         props=true;
         color=true;
+        this->ui->pushButton_color->setChecked(true);
     }
 }
 
-//产生爆炸，消除一定范围（数量待定）的宝石
-void CGameDlg::on_pushButton_bomb_clicked()
+//产生爆炸，消除3*3范围的宝石
+void CGameDlg::on_pushButton_boom_clicked()
 {
-    if(g_props_boom){
+    if(g_props_boom == 0 || (props && !boom))
+    {
+        this->ui->pushButton_boom->setChecked(false);
+        return;
+    }
+    if(boom == true){
+        props = false;
+        boom = false;
+        this->ui->pushButton_boom->setChecked(false);
+    }
+    else if(!props && !boom){
         props=true;
         boom=true;
+        this->ui->pushButton_boom->setChecked(true);
     }
 }

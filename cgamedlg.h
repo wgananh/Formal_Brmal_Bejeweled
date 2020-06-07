@@ -7,6 +7,7 @@
 #include "cmenudlg.h"
 #include "cranklogic.h"
 #include "cthemedlg.h"
+#include "cmusicplayer.h"
 #include <string.h>
 #include <QDebug>
 #include <QTimer>
@@ -14,6 +15,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QCloseEvent>
 
 namespace Ui {
 class CGameDlg;
@@ -49,18 +51,18 @@ private slots:
     void on_pushButton_restart_clicked();
     void do_btn_hint();//点击提示
     void paintEvent(QPaintEvent *event);
-
+    void closeEvent(QCloseEvent *event);
 
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
 
     void on_pushButton_hammer_clicked();
 
-    void on_pushButton_exchange_clicked();
+    void on_pushButton_cross_clicked();
 
-    void on_pushButton_connection_clicked();
+    void on_pushButton_color_clicked();
 
-    void on_pushButton_bomb_clicked();
+    void on_pushButton_boom_clicked();
 
 private:
     Ui::CGameDlg *ui;

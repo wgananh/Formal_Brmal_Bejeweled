@@ -215,7 +215,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_exchange">
+   <widget class="QPushButton" name="pushButton_cross">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -234,7 +234,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_bomb">
+   <widget class="QPushButton" name="pushButton_boom">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -253,7 +253,7 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_connection">
+   <widget class="QPushButton" name="pushButton_color">
     <property name="geometry">
      <rect>
       <x>430</x>

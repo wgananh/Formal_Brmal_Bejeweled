@@ -98,7 +98,6 @@ bool CGameLogic::eliminate(bool noChange)
 {
     if(!game_running)
         return false;
-    bool five_inline = false;//五个字以上的消除是否在一条线
     int eliminate_number[8] = {0, 0, 0, 0, 0, 0, 0, 0};//各色宝石消除数量
     bool isChange = false;//当前图是否可消除
     int current = 0;//当前宝石颜色
@@ -116,8 +115,11 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[i + 1][j] = 0;
                 temp_aMap[i + 2][j] = 0;
                 /*五连*/
-                if(i + 4 < 8 && m_aMap[j][i + 3] == current && m_aMap[j][i + 4] == current)
-                    five_inline = true;
+                if(noChange && i + 4 < 8 && m_aMap[i + 3][j] == current && m_aMap[i + 4][j] == current)
+                {
+                    g_props_color++;
+                    g_props_cross--;
+                }
                 isChange = true;
             }
         }
@@ -131,10 +133,10 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[j][i + 1] = 0;
                 temp_aMap[j][i + 2] = 0;
                 /*五连*/
-                if(i + 4 < 8 && m_aMap[j][i + 3] == current && m_aMap[j][i + 4] == current)
+                if(noChange && i + 4 < 8 && m_aMap[j][i + 3] == current && m_aMap[j][i + 4] == current)
                 {
                     g_props_color++;
-                    five_inline = true;
+                    g_props_cross--;
                 }
                 isChange = true;
             }
@@ -146,18 +148,13 @@ bool CGameLogic::eliminate(bool noChange)
     for(int i = 0; i < 8; i++)
         for(int j = 0; j < 8; j++)
             if(temp_aMap[i][j] == 0)
-                eliminate_number[m_aMap[i][j]]++;
+                eliminate_number[m_aMap[i][j] - 1]++;
 
     /*统计道具*/
     for(int i = 0; i < 8; i++)
     {
         if(eliminate_number[i] >= 5)
-        {
-            if(five_inline == true)
-                g_props_color++;
-            else
-                g_props_cross++;
-        }
+            g_props_cross++;
         else if(eliminate_number[i] == 4)
             g_props_boom++;
     }
