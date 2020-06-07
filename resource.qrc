@@ -66,6 +66,7 @@
         <file>boom.png</file>
         <file>color.png</file>
         <file>cross.png</file>
+        <file>background3.jpg</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>

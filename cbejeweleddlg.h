@@ -35,6 +35,10 @@ private slots:
 
     void on_btn_name_clicked();
 
+    void on_btn_help_clicked();
+
+    void on_btn_about_clicked();
+
 signals:
     void mainToGame();
 
@@ -42,6 +46,8 @@ private:
     Ui::CBejeweledDlg *ui;
     CGameDlg *game;
     CNameDlg *name;
+    CHelpDlg *help;
+    CAboutDlg *about;
 
 };
 #endif // CBEJEWELEDDLG_H

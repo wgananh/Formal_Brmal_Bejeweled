@@ -47,3 +47,14 @@ void CBejeweledDlg::on_btn_name_clicked()
 {
     name->show();
 }
+
+void CBejeweledDlg::on_btn_help_clicked()
+{
+    qDebug()<<"sds";
+    help->show();
+}
+
+void CBejeweledDlg::on_btn_about_clicked()
+{
+    about->show();
+}

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CBejeweledDlg</string>
+   <string>宝石迷阵</string>
   </property>
   <property name="styleSheet">
    <string notr="true">#CBejeweledDlg{
@@ -21,8 +21,8 @@ border-image: url(:/new/picture/background_2.png);}</string>
    <widget class="QPushButton" name="btn_mainToGame">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>307</y>
+      <x>200</x>
+      <y>290</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -38,8 +38,8 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
    <widget class="QPushButton" name="btn_mainToRank">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>307</y>
+      <x>460</x>
+      <y>290</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -75,7 +75,7 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>230</y>
+      <y>210</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -86,6 +86,40 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="text">
      <string>设置姓名</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_help">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>370</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 11pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>帮助</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_about">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>370</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 11pt &quot;微软雅黑&quot;;</string>
+    </property>
+    <property name="text">
+     <string>关于</string>
     </property>
    </widget>
   </widget>

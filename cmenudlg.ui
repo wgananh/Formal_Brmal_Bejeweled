@@ -6,35 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>642</width>
-    <height>484</height>
+    <width>256</width>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CMenuDlg</string>
+   <string>菜单</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btn_menuToGame">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>80</x>
       <y>160</y>
       <width>93</width>
-      <height>28</height>
+      <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 9pt &quot;微软雅黑&quot;;</string>
+    </property>
     <property name="text">
-     <string>返回Game</string>
+     <string>返回游戏</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_menuToSet">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>250</y>
+      <x>80</x>
+      <y>60</y>
       <width>93</width>
-      <height>28</height>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/new/picture/pushbotton_background.png);
+font: 75 9pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="text">
      <string>设置</string>
@@ -46,7 +54,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>642</width>
+     <width>256</width>
      <height>26</height>
     </rect>
    </property>

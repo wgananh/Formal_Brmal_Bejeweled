@@ -152,6 +152,7 @@ void CGameDlg::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
     emit gameToMain();
+    Game_over(false);
 }
 
 void CGameDlg::mousePressEvent(QMouseEvent *ev){
@@ -376,7 +377,7 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
             mus1->Music_unbelievable();
             ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
         }
-        if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级
+        if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级，每超过1000分宝石种类加1
         {
             if(g_spc<8){
                 g_spc++;
@@ -424,7 +425,6 @@ void CGameDlg::doMainToGame()
 
 void CGameDlg::on_btn_gameToMenu_clicked()
 {
-    this->hide();
     emit gameToMenu();
 }
 
@@ -478,7 +478,7 @@ void CGameDlg::update_timebar(){
     if(CurrentValue==4)
         mus->Music_last_4sON();
     if (CurrentValue<=0){
-        Game_over();
+        Game_over(false);
     }
     ui->progressBar_time->setValue(CurrentValue);
 }
@@ -517,7 +517,6 @@ void CGameDlg::Game_start(){
     g_props_boom=1;
     g_props_color=1;
     g_props_cross=1;
-    ui->label_hammer->setText("0");
     ui->label_boom->setText(QString::number(g_props_boom));
     ui->label_color->setText(QString::number(g_props_color));
     ui->label_cross->setText(QString::number(g_props_cross));
@@ -601,7 +600,6 @@ void CGameDlg::on_pushButton_restart_clicked()
     g_props_boom=1;
     g_props_color=1;
     g_props_cross=1;
-    ui->label_hammer->setText("0");
     ui->label_boom->setText(QString::number(g_props_boom));
     ui->label_color->setText(QString::number(g_props_color));
     ui->label_cross->setText(QString::number(g_props_cross));
@@ -627,11 +625,6 @@ void CGameDlg::on_pushButton_2_clicked()
 
 //************* 道具部分 ***************
 
-//消除任意一个宝石
-void CGameDlg::on_pushButton_hammer_clicked()
-{
-
-}
 
 //消除地图中十字上的宝石
 void CGameDlg::on_pushButton_cross_clicked()

@@ -52,16 +52,10 @@ private slots:
     void do_btn_hint();//点击提示
     void paintEvent(QPaintEvent *event);
     void closeEvent(QCloseEvent *event);
-
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
-
-    void on_pushButton_hammer_clicked();
-
     void on_pushButton_cross_clicked();
-
     void on_pushButton_color_clicked();
-
     void on_pushButton_boom_clicked();
 
 private:
@@ -100,7 +94,7 @@ private:
     CMusicPlayer *mus = new CMusicPlayer;
     CMusicPlayer *mus1 = new CMusicPlayer;
     CRankLogic * ranklogic = new CRankLogic();
-    bool props=false,boom=false,cross=false,color=false;
+    bool props=false,boom=false,cross=false,color=false; //判断是否选择道具
 
 protected:
     void mousePressEvent(QMouseEvent *ev);

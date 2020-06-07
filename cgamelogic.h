@@ -38,7 +38,6 @@ public:
     void newGrade();//不太清楚怎么做
     bool isWin();//胜负判断？或者升级？
     int hint();//提示（需要扣分）
-    //应该没了，大家有需要再补充
 
 };
 
