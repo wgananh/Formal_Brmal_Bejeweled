@@ -56,9 +56,9 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>100</y>
+      <y>110</y>
       <width>461</width>
-      <height>111</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
@@ -120,6 +120,22 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
     </property>
     <property name="text">
      <string>关于</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>20</y>
+      <width>341</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/picture/title.png);</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

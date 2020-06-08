@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CGameDlg</string>
+   <string>宝石迷阵</string>
   </property>
   <property name="styleSheet">
    <string notr="true">#CGameDlg{

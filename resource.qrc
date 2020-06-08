@@ -78,6 +78,7 @@
         <file>d8.png</file>
         <file>d9.png</file>
         <file>background_4.png</file>
+        <file>title.png</file>
     </qresource>
     <qresource prefix="/">
         <file>bgm.mp3</file>
