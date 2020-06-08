@@ -79,3 +79,6 @@ RESOURCES += \
     resource.qrc
 
 QT += multimediawidgets
+
+
+RC_ICONS = exe_ico.ico
