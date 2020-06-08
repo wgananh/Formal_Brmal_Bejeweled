@@ -13,6 +13,18 @@
     <height>484</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>642</width>
+    <height>484</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>642</width>
+    <height>484</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>宝石迷阵</string>
   </property>

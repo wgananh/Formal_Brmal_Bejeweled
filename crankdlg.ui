@@ -10,6 +10,18 @@
     <height>476</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>557</width>
+    <height>476</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>557</width>
+    <height>476</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>排行榜</string>
   </property>

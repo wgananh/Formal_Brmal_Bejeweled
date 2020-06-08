@@ -10,6 +10,18 @@
     <height>537</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>413</width>
+    <height>537</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>413</width>
+    <height>537</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>帮助</string>
   </property>

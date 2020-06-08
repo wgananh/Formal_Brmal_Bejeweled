@@ -10,6 +10,18 @@
     <height>368</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>610</width>
+    <height>368</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>610</width>
+    <height>368</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>音效设置</string>
   </property>

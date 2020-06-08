@@ -10,6 +10,18 @@
     <height>204</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>632</width>
+    <height>204</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>632</width>
+    <height>204</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>设置姓名</string>
   </property>
