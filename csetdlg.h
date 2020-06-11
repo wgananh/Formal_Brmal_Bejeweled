@@ -2,6 +2,7 @@
 #define CSETDLG_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include "cmusicdlg.h"
 #include "cconfiglogic.h"
 #include "cthemedlg.h"
@@ -23,6 +24,7 @@ private:
     Ui::CSetDlg *ui;
     CMusicDlg *music;
     CThemeDlg *theme;
+    void closeEvent(QCloseEvent *event);
 
 signals:
     void setToMenu();

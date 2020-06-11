@@ -24,6 +24,12 @@ CSetDlg::~CSetDlg()
     delete ui;
 }
 
+void CSetDlg::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event);
+    on_btn_setToMenu_clicked();
+}
+
 void CSetDlg::doMenuToSet(){
     this->show();
 }

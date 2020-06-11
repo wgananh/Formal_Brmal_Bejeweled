@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "csetdlg.h"
+#include <QCloseEvent>
 
 namespace Ui {
 class CMenuDlg;
@@ -36,6 +37,7 @@ private slots:
     void do_music_background_change(QString);
 private:
     Ui::CMenuDlg *ui;
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // CMENUDLG_H

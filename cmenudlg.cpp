@@ -54,3 +54,9 @@ void CMenuDlg::do_music_background_change(QString path)
 {
     emit game_music_background_change(path);
 }
+
+void CMenuDlg::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event);
+    on_btn_menuToGame_clicked();
+}
