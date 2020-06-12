@@ -274,6 +274,15 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 20pt &quot;幼圆&quot;;</string>
     </property>
@@ -290,6 +299,15 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 20pt &quot;幼圆&quot;;</string>
     </property>
@@ -305,6 +323,15 @@ font: 75 9pt &quot;微软雅黑&quot;;</string>
       <width>41</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 20pt &quot;幼圆&quot;;</string>

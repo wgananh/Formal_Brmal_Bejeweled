@@ -374,15 +374,19 @@ void CGameDlg::mousePressEvent(QMouseEvent *ev){
         if(eli_number>7&&eli_number<=9){ //8、9连消
             mus1->Music_amazing();
         }
-        if(eli_number>9){//时间奖励，连续消去10个及以上的宝石，时间加5秒
+        if(eli_number>9){//时间奖励，连续消去10个及以上的宝石，时间加n/2秒
             mus1->Music_unbelievable();
-            ui->progressBar_time->setValue(ui->progressBar_time->value()+5);
+            int time = ui->progressBar_time->value()+(int)(eli_number/2);
+            if(time > 60)
+                time = 60;
+            ui->progressBar_time->setValue(time);
         }
         if(g_rank.nGrade / 1000 != g_spc - 5)//确定等级，每超过1000分宝石种类加1
         {
             if(g_spc<8){
                 g_spc++;
                 gamelogic->BuildMap(g_spc);
+                ui->progressBar_time->setValue(60);
                 this->repaint();
             }
         }
