@@ -114,15 +114,11 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[i][j] = 0;
                 temp_aMap[i + 1][j] = 0;
                 temp_aMap[i + 2][j] = 0;
-                /*四连和五连*/
-                if(noChange && i + 3 < 8 && m_aMap[i + 3][j] == current)
+                /*五连*/
+                if(noChange && i + 4 < 8 && m_aMap[i + 3][j] == current && m_aMap[i + 4][j] == current)
                 {
-                    g_props_boom++;
-                    if(i + 4 < 8 && m_aMap[i + 4][j] == current)
-                    {
-                        g_props_color++;
-                        g_props_cross--;
-                    }
+                    g_props_color++;
+                    g_props_cross--;
                 }
                 isChange = true;
             }
@@ -136,15 +132,11 @@ bool CGameLogic::eliminate(bool noChange)
                 temp_aMap[j][i] = 0;
                 temp_aMap[j][i + 1] = 0;
                 temp_aMap[j][i + 2] = 0;
-                /*四连和五连*/
-                if(noChange && i + 3 < 8 && m_aMap[j][i + 3] == current)
+                /*五连*/
+                if(noChange && i + 4 < 8 && m_aMap[j][i + 4] == current && m_aMap[j][i + 3] == current)
                 {
-                    g_props_boom++;
-                    if(i + 4 < 8 && m_aMap[j][i + 4] == current)
-                    {
-                        g_props_color++;
-                        g_props_cross--;
-                    }
+                    g_props_color++;
+                    g_props_cross--;
                 }
                 isChange = true;
             }
@@ -163,6 +155,8 @@ bool CGameLogic::eliminate(bool noChange)
     {
         if(eliminate_number[i] >= 5)
             g_props_cross++;
+        else if(eliminate_number[i] == 4)
+            g_props_boom++;
     }
 
     memcpy(m_aMap, temp_aMap, sizeof(m_aMap));
